@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+#heroVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: blur(2px); 
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.hero p {
+    font-size: 24px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.about {
+    padding: 50px 0;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.about h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #333;
+    margin: 10px auto 0;
+}
+
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile-image img {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.skills {
+    max-width: 600px;
+    flex: 1;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.skills-tags span {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.about-description {
+    background-color: #282727;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-description h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-description p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.about-description a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.services span {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 18px;
+}
+
+.portfolio {
+    padding: 100px 50px;
+    background-color: #000;
+}
+
+.portfolio h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.edits {
+    display: flex;
+    justify-content: space-around;
+}
+
+.edit {
+    text-align: center;
+}
+
+.edit img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.testimonials {
+    padding: 100px 50px;
+    text-align: center;
+    background-color: #111;
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.testimonial {
+    margin-bottom: 30px;
+}
+
+.contact {
+    padding: 100px 50px;
+    text-align: center;
+    background-color: #000;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+form input, form textarea {
+    width: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background-color: #800080;
+    color: #fff;
+    cursor: pointer;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #111;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
