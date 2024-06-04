@@ -11,16 +11,7 @@ html {
 
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    background-color: #000;
-    position: fixed;
-    width: 95%;
-    top: 0;
-    z-index: 1000;
-}
+
 
 header .logo {
     font-size: 24px;
@@ -139,12 +130,7 @@ header nav ul li a {
     gap: 20px;
 }
 
-.profile-image img {
-    width: 350px;
-    height: auto;
-    border-radius: 30px;
-    margin-top: -200px;
-}
+
 
 .skills {
     max-width: 600px;
@@ -438,10 +424,130 @@ footer a {
     transform: scale(1.2); 
 }
 
-/* Slideshow container */
+
+
+
+/* For phones */
+@media only screen and (max-width: 700px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 50px;
+        background-color: #000;
+        position: fixed;
+        width: 87%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .profile-image img {
+        width: 350px;
+        height: auto;
+        border-radius: 30px;
+        margin-top: 0px;
+    }
+   /* Slideshow container */
 .slideshow-container {
     position: relative;
-    width: 1000px; 
+    width: 420px; 
+    height: 605px;
+    margin: auto;
+    overflow: hidden; 
+    object-fit: scale-down;
+    user-select: none;
+}
+
+.thumbnail  {
+    object-fit: cover;
+    width: 420px; 
+    height: 605px;
+    user-select: none;
+}
+
+.game-icon {
+    position: absolute;
+    top: 30px; 
+    left: 130px; 
+    width: 150px; 
+    height: 150px;
+    z-index: 2; 
+    animation: glowing 2s infinite;
+    border-radius: 20px; 
+    object-fit: cover;
+    user-select: none;
+}
+
+.game-button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    z-index: 2; 
+    background-color: #333 !important; 
+    
+}
+
+.game-button:hover {
+    transition: all 0.3s ease-in-out !important; 
+    transform: scale(1.05); 
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.prev-point,
+.next-point {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    z-index: 5;
+    user-select: none;
+}
+
+.prev-point {
+    left: 10px;
+    user-select: none;
+}
+
+.next-point {
+    right: 10px;
+    user-select: none;
+}
+
+}
+
+/* For larger screens */
+@media only screen and (min-width: 701px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 50px;
+        background-color: #000;
+        position: fixed;
+        width: 95%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .profile-image img {
+        width: 350px;
+        height: auto;
+        border-radius: 30px;
+        margin-top: -200px;
+    }
+    /* Slideshow container */
+.slideshow-container {
+    position: relative;
+    width: 1300px; 
     height: 550px;
     margin: auto;
     overflow: hidden; 
@@ -451,47 +557,8 @@ footer a {
 
 .thumbnail  {
     object-fit: cover;
-    width: 1000px; 
+    width: 1300px; 
     height: 550px;
-    user-select: none;
-}
-
-
-.slide {
-    display: none;
-    width: 100%; 
-    object-fit: scale-down;
-    user-select: none;
-}
-
-
-.description {
-    position: absolute;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box; 
-    user-select: none;
-}
-
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-    user-select: none;
-}
-
-
-.active {
-    background-color: #717171;
     user-select: none;
 }
 
@@ -552,6 +619,53 @@ footer a {
     right: 10px;
     user-select: none;
 }
+
+}
+
+
+
+
+.slide {
+    display: none;
+    width: 100%; 
+    object-fit: scale-down;
+    user-select: none;
+}
+
+
+.description {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box; 
+    user-select: none;
+}
+
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    user-select: none;
+}
+
+
+.active {
+    background-color: #717171;
+    user-select: none;
+}
+
+
+
+
 
 body::-webkit-scrollbar {
     width: 1px;
