@@ -31,7 +31,7 @@ header nav ul {
     display: flex;
     list-style: none;
     margin: 0;
-    padding-left: 10px; /* Add padding to the left */
+    padding-left: 10px;
     padding: 0;
 }
 
@@ -64,7 +64,7 @@ header nav ul li a {
     object-fit: cover;
     transform: translate(-50%, -50%);
     z-index: -1;
-    filter: blur(2px); 
+    filter: blur(9px); 
 }
 
 .hero-content {
@@ -99,12 +99,12 @@ header nav ul li a {
     background-color: #333;
     color: #fff;
     cursor: pointer;
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
+    transition: all 0.3s ease-in-out !important; 
 }
 
 .hero button:hover {
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
-    transform: scale(1.2); /* Increase size by 10% */
+    transition: all 0.3s ease-in-out !important; 
+    transform: scale(1.2); 
     cursor: pointer;
 }
 
@@ -165,12 +165,12 @@ header nav ul li a {
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 14px;
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
+    transition: all 0.3s ease-in-out !important; 
 }
 
 .skills-tags span:hover {
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
-    transform: scale(1.3); /* Increase size by 10% */
+    transition: all 0.3s ease-in-out !important; 
+    transform: scale(1.3); 
     cursor: pointer;
 }
 
@@ -189,15 +189,28 @@ header nav ul li a {
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 14px;
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
+    transition: all 0.3s ease-in-out !important; 
 }
 
 .skills-tags2 span:hover {
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
-    transform: scale(1.3); /* Increase size by 10% */
+    transition: all 0.3s ease-in-out !important; 
+    transform: scale(1.3);
     cursor: pointer;
 }
 
+.privateico {
+    background-color: #710000 !important;
+}
+
+.publicico {
+    background-color: #13a73f !important;
+}
+
+.link-icon {
+    width: 15px;
+    height: 15px;
+    padding: -1px;
+}
 
 .about-description {
     background-color: #282727;
@@ -277,15 +290,15 @@ header nav ul li a {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border-radius: 0px; /* Optional: Add border radius */
+    border-radius: 0px;
     animation: glowing 2s infinite;
-    border-radius: 20px; /* Add rounded corners */
-    transition:  0.3s ease-in-out !important; /* Added transition for smooth animation */
+    border-radius: 20px;
+    transition:  0.3s ease-in-out !important; 
 }
 
 .edit img:hover {
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
-    transform: scale(1.1); /* Increase size by 10% */
+    transition: all 0.3s ease-in-out !important; 
+    transform: scale(1.1); 
     cursor: pointer;
 }
 
@@ -355,7 +368,7 @@ a:link {
   }
   a:hover {
     color: rgb(95, 95, 95);
-    transition: all 0.1s ease-in-out !important; /* Added transition for smooth animation */
+    transition: all 0.1s ease-in-out !important; 
 
   }
   a:active {
@@ -399,13 +412,13 @@ footer a {
 
 .contact-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    padding: 10px; /* Adjust padding as needed */
+    justify-content: center; 
+    align-items: center; 
+    padding: 10px; 
 }
 
 .contact-info {
-    text-align: left; /* Align text to the left */
+    text-align: left; 
 }
 
 .contact-info p {
@@ -415,40 +428,43 @@ footer a {
 }
 
 .contact-info img {
-    width: 20px; /* Adjust the size of the icons */
+    width: 20px; 
     height: 20px;
-    margin-right: 10px; /* Add some space between the icon and text */
-    transition: transform 0.3s ease-in-out; /* Add transition effect */
+    margin-right: 10px; 
+    transition: transform 0.3s ease-in-out; 
 }
 
 .contact-info img:hover {
-    transform: scale(1.2); /* Scale the icon on hover */
+    transform: scale(1.2); 
 }
 
 /* Slideshow container */
 .slideshow-container {
     position: relative;
-    width: 1000px; /* Adjust the maximum width as needed */
+    width: 1000px; 
     height: 550px;
     margin: auto;
-    overflow: hidden; /* Hide overflowing content */
+    overflow: hidden; 
     object-fit: scale-down;
+    user-select: none;
 }
 
 .thumbnail  {
     object-fit: cover;
-    width: 1000px; /* Adjust the maximum width as needed */
+    width: 1000px; 
     height: 550px;
+    user-select: none;
 }
 
-/* Hide the images by default */
+
 .slide {
     display: none;
-    width: 100%; /* Ensure images take full width of container */
+    width: 100%; 
     object-fit: scale-down;
+    user-select: none;
 }
 
-/* Description of each slide */
+
 .description {
     position: absolute;
     bottom: 0;
@@ -456,10 +472,11 @@ footer a {
     color: white;
     width: 100%;
     padding: 20px;
-    box-sizing: border-box; /* Include padding in width calculation */
+    box-sizing: border-box; 
+    user-select: none;
 }
 
-/* Navigation dots */
+
 .dot {
     cursor: pointer;
     height: 15px;
@@ -469,23 +486,26 @@ footer a {
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
+    user-select: none;
 }
 
-/* Change the background color of active dots */
+
 .active {
     background-color: #717171;
+    user-select: none;
 }
 
 .game-icon {
     position: absolute;
-    top: 50px; /* Adjust the top position as needed */
-    left: 50px; /* Adjust the left position as needed */
-    width: 200px; /* Adjust the width of the icon as needed */
-    height: 200px; /* Maintain aspect ratio */
-    z-index: 2; /* Ensure the icon appears above the slide content */
+    top: 40px; 
+    left: 90px; 
+    width: 200px; 
+    height: 200px;
+    z-index: 2; 
     animation: glowing 2s infinite;
-    border-radius: 20px; /* Add rounded corners */
+    border-radius: 20px; 
     object-fit: cover;
+    user-select: none;
 }
 
 .game-button {
@@ -494,20 +514,22 @@ footer a {
     font-size: 18px;
     color: #fff;
     border-radius: 5px;
-    z-index: 2; /* Ensure the icon appears above the slide content */
-    background-color: #333 !important; /* Change background color on hover */
+    z-index: 2; 
+    background-color: #333 !important; 
+    
 }
 
 .game-button:hover {
-    transition: all 0.3s ease-in-out !important; /* Added transition for smooth animation */
-    transform: scale(1.1); /* Increase size by 10% */
+    transition: all 0.3s ease-in-out !important; 
+    transform: scale(1.05); 
     cursor: pointer;
+    user-select: none;
 }
 
 .prev-point,
 .next-point {
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
@@ -517,14 +539,29 @@ footer a {
     text-align: center;
     line-height: 30px;
     cursor: pointer;
-    z-index: 5; /* Ensure the icon appears above the slide content */
+    z-index: 5;
+    user-select: none;
 }
 
 .prev-point {
     left: 10px;
-    
+    user-select: none;
 }
 
 .next-point {
     right: 10px;
+    user-select: none;
+}
+
+body::-webkit-scrollbar {
+    width: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
 }
