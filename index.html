@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K5 Studio - Jakub Drużbiński</title>
+    <meta name="description" content="Jakub Drużbiński's K5 Studio: Programming, graphic design, video, and 3D services. Explore my portfolio and get in touch.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="logo">K5 STUDIO</div>
+        <div class="logo"><a href="#home">K5 STUDIO</a></div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <!--<li><a href="#testimonials">Testimonials</a></li>-->
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -28,8 +28,8 @@
         <div class="hero-content">
             <h1>K5 Studio - Jakub Drużbiński</h1>
             <h2>&nbsp;</h2>
-            <p>Programming, graphic, video and 3D services</p>
-            <button>Let's Talk</button>
+            <p>Programming, graphic, video and 3D services for everyone!</p>
+            <a href="#about"><button>About me</button></a>
         </div>
     </section>
 
@@ -47,14 +47,20 @@
                     <span>HTML</span>
                     <span>CSS</span>
                     <span>Git/GitHub</span>
-                    <span>CI/CD</span>
-                    <span>FTP</span>
-               
+                    <span>Blender 3D</span>
+                    <span>VBA</span>
+                    <span>Adobe Photoshop</span>
                 </div>
                 <div class="about-description">
                     <h3>Creativity is my secound Name! </h3>
                     <p>
                         Hello, I'm Jakub, a student at the University of Łódź. I'm a self-taught programmer, graphic designer, and 3D artist. My journey into all of that started at 14, driven by a passion for creating games. Currently studying computer science at the Faculty of Economics and Sociology, I know programming languages such as Lua, C#, VBA, Python, and a bit of PHP. In the realm of 3D art, I use Blender 3D, and for 2D work Adobe Photoshop. I acquired these skills purely out of passion and now aim to share my work with the world! I invite you to explore my portfolio and I hope to work for you soon!
+                    </p>
+                    <h3>Languages I Speak</h3>
+                    <p>
+                        <strong>English:</strong> Conversational<br>
+                        <strong>Polish:</strong> Native/Bilingual<br>
+                        <strong>German:</strong> Learning/Basic
                     </p>
                     <a href="#"></a>
                 </div>
@@ -64,23 +70,85 @@
 
     <section id="portfolio" class="portfolio">
         <h2>My Work</h2>
-        <div class="edits">
-            <div class="edit">
-                <img src="images/gaming simulator ikona.png" alt="Cash Cow">
-                <p>Gaming Simulator</p>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img class="thumbnail" src="images/thumbails/gamingsim.png" alt="Gaming Simulator">
+                <!-- Add the game icon at the top-left corner -->
+                <img class="game-icon" src="images/gaming simulator ikona.png" alt="Game Icon">
+                <!-- Points to navigate to previous and next slides -->
+                <div class="nav-points">
+                    <div class="prev-point">&#9664;</div>
+                    <div class="next-point">&#9654;</div>
+                </div>
+                <div class="description">
+                    <h3>Gaming Simulator</h3>
+                    <p>This is a description of the Gaming Simulator project. You can provide more details about the project here.</p>
+                    <!-- Button to redirect to game link -->
+                    <a href="game_link_for_gaming_simulator" class="game-button">Play Now</a>
+                    <a>&nbsp;</a>
+                <div class="skills-tags2">
+                    <span>Roblox</span>
+                    <span>Lua</span>
+                    <span>Blender 3D</span>
+                    <span>Adobe Photoshop</span>
+                </div>
+                </div>
             </div>
-            <div class="edit">
-                <img src="images/gim31royaleikona.jpg" alt="Reel">
-                <p>Gim 31 Battle Royale - The Definitve Edition BETA</p>
+            <div class="slide fade">
+                <img class="thumbnail" src="images/thumbails/gim31.png" alt="Gim31 Battle Royale">
+                <img class="game-icon" src="images/gim31royaleikona.jpg" alt="Game Icon">
+                <div class="nav-points">
+                    <div class="prev-point">&#9664;</div>
+                    <div class="next-point">&#9654;</div>
+                </div>
+                <div class="description">
+                    <h3>Gim31 Battle Royale</h3>
+                    <p>This is a description of the Gim31 Battle Royale project. You can provide more details about the project here.</p>
+                <!-- Button to redirect to game link -->
+                <a href="game_link_for_gaming_simulator" class="game-button">Play Now</a>
+                <a>&nbsp;</a>
+                <div class="skills-tags2">
+                    <span>Roblox</span>
+                    <span>Lua</span>
+                    <span>Blender 3D</span>
+                    <span>Adobe Photoshop</span>
+                </div>
+                </div>
             </div>
-            <div class="edit">
-                <img src="vlog.jpg" alt="Vlog">
-                <p>Vlog</p>
+            <div class="slide fade">
+                <img class="thumbnail" src="images/thumbails/RadioGamingDark.png" alt="Radio Gaming">
+                <img class="game-icon" src="images/Radio Gaming Logo.png" alt="Game Icon">
+                <div class="nav-points">
+                    <div class="prev-point">&#9664;</div>
+                    <div class="next-point">&#9654;</div>
+                </div>
+                <div class="description">
+                    <h3>Radio Gaming</h3>
+                    <p>This is a description of the Radio Gaming project. You can provide more details about the project here.</p>
+                <!-- Button to redirect to game link -->
+                <a href="game_link_for_gaming_simulator" class="game-button">Play Now</a>
+                <a>&nbsp;</a>
+                <div class="skills-tags2">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Adobe Photoshop</span>
+                </div>
+                </div>
             </div>
+            <!-- Add more slides as needed -->
+        </div>
+        <br>
+        <!-- Navigation dots for slideshow -->
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <!-- Add more dots as needed -->
         </div>
     </section>
+    
 
-    <section id="testimonials" class="testimonials">
+    <!--<section id="testimonials" class="testimonials">
         <h2>Testimonials</h2>
         <div class="testimonial">
             <h3>Marcus</h3>
@@ -94,7 +162,7 @@
             <h3>Jane</h3>
             <p>Jimmy Was Wonderful To Work With. Will Definitely Hire Him Again.</p>
         </div>
-    </section>
+    </section> -->
 
     <section id="contact" class="contact">
         <h2>Contant</h2>
@@ -104,16 +172,70 @@
             <textarea name="message" placeholder="Message"></textarea>
             <button type="submit">Send</button>
         </form> -->
-        <div class="contact-info">
-            <!-- <p>+92 455 478 112</p> -->
-            <!-- <p>Defense Phase 3, Lahore Pakistan</p> -->
-            <p></p>
-            <p>druzbinskijakub@gmail.com</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p><img src="images/icons/mail.png" alt="Email Icon">&nbsp;<a href="mailto:druzbinskijakub@gmail.com">DruzbinskiJakub@gmail.com</a></p>
+                <p><img src="images/icons/fiverr.png" alt="Fiverr Icon">&nbsp;<a href="https://fiverr.com/kubado515">@kubado515</a></p>
+                <p><img src="images/icons/github.png" alt="Github Icon">&nbsp;<a href="https://github.com/kubadoPL">kubadoPL</a></p>
+            </div>
         </div>
     </section>
 
     <footer>
         <a href="#home">Go Back To The Top</a>
+        <p>Jakub Drużbiński © 2024</p>
     </footer>
+
+
+
+
+    <script>
+        var slideIndex = 0;
+        var slideshowTimeout;
+
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            slideshowTimeout = setTimeout(showSlides, 5000); // Change image every 5 seconds
+
+            // Add event listeners to the navigation points
+            var prevPoint = document.querySelector(".prev-point");
+            var nextPoint = document.querySelector(".next-point");
+
+            prevPoint.addEventListener("click", function() {
+                clearTimeout(slideshowTimeout); // Cancel automatic slideshow
+                navigateSlide(-1); // Navigate to the previous slide
+            });
+
+            nextPoint.addEventListener("click", function() {
+                clearTimeout(slideshowTimeout); // Cancel automatic slideshow
+                navigateSlide(1); // Navigate to the next slide
+            });
+        }
+
+        function navigateSlide(n) {
+            showSlides(slideIndex += n);
+        }
+    </script>
+    
+    
+
+
+
+
 </body>
 </html>
+
