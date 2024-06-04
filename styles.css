@@ -623,7 +623,7 @@ body::-webkit-scrollbar-track {
 }
 
 .thumbnail  {
-    object-fit: scale-down;
+    object-fit: cover;
     width:  auto; 
     height: auto;
     user-select: none;
