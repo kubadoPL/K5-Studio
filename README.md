@@ -1,3 +1,5 @@
+This is my portfolio website!
+
 ![Main Page Image](https://github.com/kubadoPL/K5-Studio/blob/main/images/MainPage.png)
 
 
