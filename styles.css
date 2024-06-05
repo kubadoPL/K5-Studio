@@ -13,6 +13,7 @@ html {
 
 header {
     display: flex;
+    align-items: center;
     position: fixed;
     padding: 20px 10px;
     background-color: #000;
@@ -25,14 +26,18 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
+    margin-right: auto; /* Pushes the logo to the left */
+    white-space: nowrap; /* Ensure the logo stays on one line */
 }
 
+header nav {
+    margin-left: auto; /* Pushes the navigation to the right */
+}
 
 header nav ul {
     display: flex;
     list-style: none;
     margin: 0;
-    padding-left: 10px;
     padding: 0;
 }
 
@@ -44,6 +49,7 @@ header nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
 
 .hero {
     position: relative;
@@ -492,18 +498,29 @@ body::-webkit-scrollbar-track {
 
 /* For phones */
 @media only screen and (max-width: 700px) {
-    header nav  {
-        padding-left: 0px;
-        display: block !important;
-        display: none !important;
+    header {
+        padding: 10px 20px;
     }
     
-    .header nav ul {
-        display: none;
-        list-style: none;
-        margin: 0;
-        padding-left: 10px;
-        padding: 0;
+   
+    
+    header nav {
+        display: flex; /* Ensure the navigation is visible */
+        flex-direction: row; /* Display the navigation items in a row */
+        align-items: center; /* Align navigation items vertically centered */
+        justify-content: flex-end; /* Align navigation items to the right */
+        background-color: #000;
+        width: 100%;
+    }
+    
+    header nav ul {
+        flex-direction: row; /* Display the navigation items in a row */
+        width: auto;
+    }
+    
+    header nav ul li {
+        margin: 0 10px; /* Adjust the spacing between navigation items */
+        text-align: left;
     }
     .profile-image img {
         width: 350px;
@@ -626,7 +643,7 @@ body::-webkit-scrollbar-track {
     height: auto;
     user-select: none;
     object-position: 55%;
-    transform: scale(1) translate(0, -15%);
+    transform: scale(1.1) translate(0, -10%);
 }
 
 .game-icon {
