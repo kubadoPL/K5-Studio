@@ -215,13 +215,15 @@
     <script>
         var slideIndex = 1;
         var slideshowTimeout;
-    
-        showSlides();
-        slideshowTimeout = setTimeout(showSlides, 5000); 
-        function showSlides() {
+
+        showSlides(slideIndex);
+
+        function showSlides(n) {
             var i;
             var slides = document.getElementsByClassName("slide");
             var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";  
             }
@@ -230,30 +232,38 @@
             }
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
-        }
-    
-        function navigateSlide(n) {
             clearTimeout(slideshowTimeout); 
-            slideIndex += n;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            if (slideIndex < 1) {slideIndex = slides.length}
-            showSlides();
+            // I changed my mind disable auto slide changer
+           // slideshowTimeout = setTimeout(function() { showSlides(slideIndex += 1); }, 5000); 
         }
-    
+
+        function navigateSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
         // Add event listeners to the navigation points
         var prevPoint = document.querySelector(".prev-point");
         var nextPoint = document.querySelector(".next-point");
-        var slides = document.getElementsByClassName("slide");
-    
+
         prevPoint.addEventListener("click", function() {
             navigateSlide(-1); 
-            slideshowTimeout = setTimeout(showSlides, 5000); 
         });
-    
+
         nextPoint.addEventListener("click", function() {
             navigateSlide(1); 
-            slideshowTimeout = setTimeout(showSlides, 5000); 
         });
+
+        // Add event listeners to the dots
+        var dots = document.getElementsByClassName("dot");
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].addEventListener("click", function() {
+                currentSlide(i + 1); 
+            });
+        }
     </script>
 
 
