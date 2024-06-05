@@ -505,7 +505,7 @@ body::-webkit-scrollbar-track {
 
 
 /* For phones */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1000px) {
    
     
    
@@ -530,14 +530,7 @@ body::-webkit-scrollbar-track {
         border-radius: 60px;
     }
 
-    .thumbnail {
-        object-fit: cover;
-        width:  auto;
-        height: 600px;
-        user-select: none;
-        object-position: 55%;
-        transform: scale(1.1) translate(-25%, 10%);
-    }
+    
 
     .game-icon {
         position: absolute;
@@ -600,10 +593,14 @@ body::-webkit-scrollbar-track {
         user-select: none;
     }
 
+    .thumbnail {
+   
+    transform: scale(1) translate(-40%, -10%);
+}
 }
 
 /* For larger screens */
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 1001px) {
     
     
     .profile-image img {
@@ -624,13 +621,12 @@ body::-webkit-scrollbar-track {
     border-radius: 30px;
 }
 
-.thumbnail  {
+.thumbnail {
     object-fit: cover;
-    width:  100%; 
-    height: auto;
+    width:  100%;
+    height: 100%;
     user-select: none;
-    object-position: 55%;
-    transform: scale(1.1) translate(0, -8%);
+    transform: scale(1) translate(0, -10%);
 }
 
 .game-icon {
