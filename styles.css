@@ -626,11 +626,11 @@ body::-webkit-scrollbar-track {
 
 .thumbnail  {
     object-fit: cover;
-    width:  auto; 
+    width:  100%; 
     height: auto;
     user-select: none;
     object-position: 55%;
-    transform: scale(1.1) translate(0, -10%);
+    transform: scale(1.1) translate(0, -8%);
 }
 
 .game-icon {
