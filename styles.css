@@ -437,7 +437,7 @@ footer a {
 .slide {
     display: none;
     width: 100%; 
-    object-fit: scale-down;
+    object-fit: cover;
     user-select: none;
 }
 
@@ -615,7 +615,7 @@ body::-webkit-scrollbar-track {
     height: 550px;
     margin: auto;
     overflow: hidden; 
-    object-fit: scale-down;
+    object-fit: cover;
     user-select: none;
     border-radius: 30px;
 }
