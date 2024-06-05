@@ -26,12 +26,17 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
-    margin-right: auto; /* Pushes the logo to the left */
-    white-space: nowrap; /* Ensure the logo stays on one line */
+    margin-right: auto; 
+    white-space: nowrap; 
 }
 
 header nav {
-    margin-left: auto; /* Pushes the navigation to the right */
+    margin-left: auto; 
+    margin-right: 20px;
+    flex-grow: 1; 
+    text-align: right; 
+    display: flex; 
+    justify-content: flex-end; 
 }
 
 header nav ul {
@@ -39,15 +44,18 @@ header nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    flex-direction: row; 
 }
 
 header nav ul li {
-    margin-left: 20px;
+    white-space: nowrap;
+    margin: 0 10px; 
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    white-space: nowrap; 
 }
 
 
@@ -498,30 +506,12 @@ body::-webkit-scrollbar-track {
 
 /* For phones */
 @media only screen and (max-width: 700px) {
-    header {
-        padding: 10px 20px;
-    }
+   
     
    
     
-    header nav {
-        display: flex; /* Ensure the navigation is visible */
-        flex-direction: row; /* Display the navigation items in a row */
-        align-items: center; /* Align navigation items vertically centered */
-        justify-content: flex-end; /* Align navigation items to the right */
-        background-color: #000;
-        width: 100%;
-    }
-    
-    header nav ul {
-        flex-direction: row; /* Display the navigation items in a row */
-        width: auto;
-    }
-    
-    header nav ul li {
-        margin: 0 10px; /* Adjust the spacing between navigation items */
-        text-align: left;
-    }
+   
+
     .profile-image img {
         width: 350px;
         height: auto;
@@ -529,7 +519,7 @@ body::-webkit-scrollbar-track {
         margin-top: 0px;
     }
 
-    /* Slideshow container */
+    
     .slideshow-container {
         position: relative;
         width: auto;
@@ -615,9 +605,6 @@ body::-webkit-scrollbar-track {
 /* For larger screens */
 @media only screen and (min-width: 700px) {
     
-    header nav  {
-        padding-left: 1100px;
-    }
     
     .profile-image img {
         width: 350px;
@@ -625,7 +612,7 @@ body::-webkit-scrollbar-track {
         border-radius: 30px;
         margin-top: -200px;
     }
-    /* Slideshow container */
+    
 .slideshow-container {
     position: relative;
     width: auto; 
