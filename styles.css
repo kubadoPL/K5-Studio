@@ -594,8 +594,11 @@ body::-webkit-scrollbar-track {
     }
 
     .thumbnail {
-   
-    transform: scale(1) translate(-40%, -10%);
+        object-fit: cover;
+        width:  100%;
+        height: 600px;
+        user-select: none;
+ 
 }
 }
 
@@ -605,18 +608,18 @@ body::-webkit-scrollbar-track {
     
     .profile-image img {
         width: 350px;
-        height: auto;
+        height: 100%;
         border-radius: 30px;
-        margin-top: -200px;
+        margin-top: auto;
     }
     
 .slideshow-container {
     position: relative;
-    width: auto; 
-    height: 550px;
+    width: 80%; 
+    height: 600px;
     margin: auto;
     overflow: hidden; 
-    object-fit: cover;
+    object-fit: scale-down;
     user-select: none;
     border-radius: 30px;
 }
@@ -624,9 +627,9 @@ body::-webkit-scrollbar-track {
 .thumbnail {
     object-fit: cover;
     width:  100%;
-    height: 100%;
+    height: 600px;
     user-select: none;
-    transform: scale(1) translate(0, -10%);
+   
 }
 
 .game-icon {
