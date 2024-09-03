@@ -509,8 +509,18 @@ body::-webkit-scrollbar-track {
    
     
    
-    
-   
+    .review-container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .review-text {
+        margin-bottom: 10px;
+        text-align: center;
+      }
 
     .profile-image img {
         width: 350px;
@@ -606,6 +616,21 @@ body::-webkit-scrollbar-track {
 @media only screen and (min-width: 1001px) {
     
     
+    .review-container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto; 
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        width: 40%; 
+      }
+
+      .review-text {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
     .profile-image img {
         width: 350px;
         height: 100%;
@@ -690,4 +715,105 @@ body::-webkit-scrollbar-track {
     user-select: none;
 }
 
+}
+
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .user-location {
+    color: #777;
+    display: flex;
+    align-items: center; 
+}
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .star {
+    font-size: 20px;
+    color: gold;
+    margin-right: 5px;
+    margin-top: -6px;
+  }
+  
+ 
+  
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+  }
+  
+  .detail-value {
+    color: #777;
+  }
+  
+  .detail-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .detail-item img {
+    width: 40%;
+    margin-bottom: 10px;
+  }
+  
+  .detail-item a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  
+
+  @media (max-width: 768px) {
+    .details {
+      flex-direction: column;
+    }
+    
+    .detail-label {
+      margin-bottom: 5px;
+    }
+  }
+
+  .testimonials h2:after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 10px auto 0;
+}
+
+.location-flag {
+    width: 16px;
+    height: auto;
+    margin-left: 5px;
+    vertical-align: middle; 
 }
