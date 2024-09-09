@@ -513,9 +513,9 @@ body::-webkit-scrollbar-track {
         display: flex;
         flex-direction: column;
         margin: 20px;
-        border: 1px solid #ddd;
+        border: 2px solid #ddd;
         padding: 10px;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       .review-text {
         margin-bottom: 10px;
@@ -533,7 +533,7 @@ body::-webkit-scrollbar-track {
     .slideshow-container {
         position: relative;
         width: auto;
-        height: 600px;
+        height: 490px;
         margin: auto;
         overflow: hidden;
         user-select: none;
@@ -620,9 +620,9 @@ body::-webkit-scrollbar-track {
         display: flex;
         flex-direction: column;
         margin: 20px auto; 
-        border: 1px solid #ddd;
+        border: 2px solid #ddd;
         padding: 10px;
-        border-radius: 5px;
+        border-radius: 20px;
         width: 40%; 
       }
 
@@ -641,7 +641,7 @@ body::-webkit-scrollbar-track {
 .slideshow-container {
     position: relative;
     width: 80%; 
-    height: 600px;
+    height: 490px;
     margin: auto;
     overflow: hidden; 
     object-fit: scale-down;
@@ -659,10 +659,10 @@ body::-webkit-scrollbar-track {
 
 .game-icon {
     position: absolute;
-    top: 40px; 
+    top: 30px; 
     left: 90px; 
-    width: 200px; 
-    height: 200px;
+    width: 180px; 
+    height: 180px;
     z-index: 2; 
     animation: glowing 2s infinite;
     border-radius: 20px; 
