@@ -30,33 +30,7 @@ header .logo {
     white-space: nowrap; 
 }
 
-header nav {
-    margin-left: auto; 
-    margin-right: 20px;
-    flex-grow: 1; 
-    text-align: right; 
-    display: flex; 
-    justify-content: flex-end; 
-}
 
-header nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    flex-direction: row; 
-}
-
-header nav ul li {
-    white-space: nowrap;
-    margin: 0 10px; 
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    white-space: nowrap; 
-}
 
 
 .hero {
@@ -507,7 +481,34 @@ body::-webkit-scrollbar-track {
 /* For phones */
 @media only screen and (max-width: 1000px) {
    
+    header nav {
+        margin-left: auto; 
+        margin-right: 20px;
+        flex-grow: 1; 
+        text-align: right; 
+        display: flex; 
+        justify-content: flex-end; 
+    }
     
+    header nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-direction: row; 
+    }
+    
+    header nav ul li {
+        white-space: nowrap;
+        margin: 0 10px; 
+    }
+    
+    header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap; 
+        font-size: 12px;
+    }
    
     .review-container {
         display: flex;
@@ -615,7 +616,34 @@ body::-webkit-scrollbar-track {
 /* For larger screens */
 @media only screen and (min-width: 1001px) {
     
+    header nav {
+        margin-left: auto; 
+        margin-right: 20px;
+        flex-grow: 1; 
+        text-align: right; 
+        display: flex; 
+        justify-content: flex-end; 
+    }
     
+    header nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-direction: row; 
+    }
+    
+    header nav ul li {
+        white-space: nowrap;
+        margin: 0 10px; 
+    }
+    
+    header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap; 
+    }
+
     .review-container {
         display: flex;
         flex-direction: column;
