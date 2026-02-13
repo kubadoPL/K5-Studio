@@ -428,7 +428,7 @@ header nav ul li a:hover {
    ABOUT SECTION
    ═══════════════════════════════ */
 .about {
-    padding: 60px 40px;
+    padding: 12px 20px;
     background: var(--bg-primary);
     position: relative;
 }
@@ -1097,7 +1097,7 @@ footer p {
     .slideshow-container {
         position: relative;
         width: auto;
-        height: 680px;
+        height: 500px;
         margin: auto;
         overflow: hidden;
         user-select: none;
@@ -1205,7 +1205,7 @@ footer p {
     .slideshow-container {
         position: relative;
         width: 80%;
-        height: 650px;
+        height: 500px;
         margin: auto;
         overflow: hidden;
         object-fit: scale-down;
