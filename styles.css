@@ -104,16 +104,52 @@ a:active {
 }
 
 /* ─── Scroll Reveal Animations ─── */
+/* ─── Scroll Reveal Animations ─── */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* Variations */
+.reveal.reveal-left {
+    transform: translateX(-60px);
+}
+
+.reveal.reveal-right {
+    transform: translateX(60px);
+}
+
+.reveal.reveal-zoom {
+    transform: scale(0.85);
 }
 
 .reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0) scale(1);
+}
+
+/* Stagger Delays */
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.delay-500 {
+    transition-delay: 0.5s;
 }
 
 /* ═══════════════════════════════
@@ -362,6 +398,7 @@ header nav ul li a:hover {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    cursor: pointer;
 }
 
 .scroll-arrow {
@@ -391,7 +428,7 @@ header nav ul li a:hover {
    ABOUT SECTION
    ═══════════════════════════════ */
 .about {
-    padding: 100px 40px;
+    padding: 60px 40px;
     background: var(--bg-primary);
     position: relative;
 }
@@ -411,7 +448,7 @@ header nav ul li a:hover {
     text-align: center;
     font-size: 42px;
     font-weight: 800;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     position: relative;
     letter-spacing: -1px;
 }
@@ -489,6 +526,7 @@ header nav ul li a:hover {
     border: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
+    animation: border-glow 6s infinite alternate;
 }
 
 .about-description h3 {
@@ -519,7 +557,7 @@ header nav ul li a:hover {
    PORTFOLIO / SLIDESHOW
    ═══════════════════════════════ */
 .portfolio {
-    padding: 100px 50px;
+    padding: 60px 50px;
     background: var(--bg-secondary);
     position: relative;
 }
@@ -587,25 +625,29 @@ header nav ul li a:hover {
     object-fit: cover;
     user-select: none;
     opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.1) translateX(50px);
+    filter: blur(10px);
+    transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+        filter 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     pointer-events: none;
     z-index: 0;
 }
 
 .slide.slide-active {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1) translateX(0);
+    filter: blur(0);
     pointer-events: auto;
-    z-index: 1;
+    z-index: 2;
 }
 
 .slide.slide-exit {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: scale(0.95) translateX(-50px);
+    filter: blur(5px);
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
 }
 
 .description {
@@ -618,6 +660,14 @@ header nav ul li a:hover {
     box-sizing: border-box;
     user-select: none;
     backdrop-filter: blur(5px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s 0.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.slide.slide-active .description {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .description h3 {
@@ -671,6 +721,37 @@ header nav ul li a:hover {
     }
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes border-glow {
+    0% {
+        border-color: rgba(139, 92, 246, 0.3);
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+    }
+
+    50% {
+        border-color: rgba(6, 182, 212, 0.35);
+        box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
+    }
+
+    100% {
+        border-color: rgba(139, 92, 246, 0.3);
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+    }
+}
+
 .edit img {
     width: 200px;
     height: 200px;
@@ -689,7 +770,7 @@ header nav ul li a:hover {
    TESTIMONIALS / REVIEWS
    ═══════════════════════════════ */
 .testimonials {
-    padding: 100px 50px;
+    padding: 60px 50px;
     text-align: center;
     background: var(--bg-primary);
     position: relative;
@@ -721,6 +802,7 @@ header nav ul li a:hover {
     background: var(--bg-card);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-md);
+    animation: border-glow 5s infinite alternate-reverse;
     text-align: left;
     transition: all var(--transition-base);
     position: relative;
@@ -847,7 +929,7 @@ header nav ul li a:hover {
    CONTACT SECTION
    ═══════════════════════════════ */
 .contact {
-    padding: 100px 50px;
+    padding: 60px 50px;
     text-align: center;
     background: var(--bg-secondary);
     position: relative;
@@ -905,6 +987,7 @@ header nav ul li a:hover {
     color: var(--text-primary) !important;
     transform: translateX(8px);
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+    animation: border-glow 3s infinite alternate;
 }
 
 .contact-card:hover img {
@@ -984,7 +1067,7 @@ footer p {
     }
 
     .about {
-        padding: 80px 20px;
+        padding: 40px 20px;
     }
 
     .about-content {
@@ -1019,6 +1102,7 @@ footer p {
         overflow: hidden;
         user-select: none;
         border-radius: var(--radius-xl);
+        animation: border-glow 4s infinite alternate;
     }
 
     .game-icon {
@@ -1028,7 +1112,8 @@ footer p {
         width: 150px;
         height: 150px;
         z-index: 2;
-        animation: glowing 2s infinite;
+        z-index: 2;
+        animation: glowing 2s infinite, float 4s ease-in-out infinite;
         border-radius: var(--radius-md);
         object-fit: cover;
         user-select: none;
@@ -1095,11 +1180,11 @@ footer p {
     }
 
     .portfolio {
-        padding: 80px 20px;
+        padding: 40px 20px;
     }
 
     .contact {
-        padding: 80px 20px;
+        padding: 40px 20px;
     }
 
     .contact-card {
@@ -1108,7 +1193,7 @@ footer p {
     }
 
     .testimonials {
-        padding: 80px 20px;
+        padding: 40px 20px;
     }
 }
 
@@ -1128,6 +1213,7 @@ footer p {
         border-radius: var(--radius-lg);
         border: 1px solid rgba(255, 255, 255, 0.06);
         box-shadow: var(--shadow-lg);
+        animation: border-glow 4s infinite alternate;
     }
 
     .thumbnail {
@@ -1144,7 +1230,8 @@ footer p {
         width: 160px;
         height: 160px;
         z-index: 2;
-        animation: glowing 2s infinite;
+        z-index: 2;
+        animation: glowing 2s infinite, float 4s ease-in-out infinite;
         border-radius: var(--radius-md);
         object-fit: cover;
         user-select: none;

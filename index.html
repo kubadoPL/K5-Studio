@@ -43,19 +43,19 @@
             <p>Programming, graphic, video and 3D services for everyone!</p>
             <a href="#about"><button class="hero-btn">Explore My Work</button></a>
         </div>
-        <div class="scroll-indicator">
+        <a href="#about" class="scroll-indicator">
             <div class="scroll-arrow"></div>
-        </div>
+        </a>
     </section>
 
     <section id="about" class="about">
         <h2 class="section-title reveal">About me</h2>
-        <div class="about-content reveal">
-            <div class="profile-image">
+        <div class="about-content">
+            <div class="profile-image reveal reveal-left">
                 <img src="images/profile.jpg" alt="Profile Image">
             </div>
             <div class="skills">
-                <div class="skills-tags">
+                <div class="skills-tags reveal reveal-right delay-200">
                     <span>🌙 Lua</span>
                     <span>⚙️ C#</span>
                     <span>🐍 Python</span>
@@ -71,16 +71,20 @@
                     <span>🎮 Roblox Studio</span>
                     <span>💻 Visual Studio</span>
                 </div>
-                <div class="about-description">
+                <div class="about-description reveal delay-300">
                     <h3>Creativity is my second Name!</h3>
                     <p>
                         Hello, I'm Jakub, a student at the University of Łódź. I'm a self-taught programmer, graphic
                         designer, and 3D artist. My journey into all of that started at 14, driven by a passion for
-                        creating games. Currently studying computer science at the Faculty of Economics and Sociology, I
-                        know programming languages such as Lua, C#, VBA, Python, and a bit of PHP. In the realm of 3D
+                        creating games. I know programming languages such as Lua, C#, VBA, Python, and a bit of PHP. In
+                        the realm of 3D
                         art, I use Blender 3D, and for 2D work Adobe Photoshop. I acquired these skills purely out of
-                        passion and now aim to share my work with the world! I'm currently working for the company
-                        <strong><a href="https://www.game-changer.pl/" target="_blank" rel="noopener">Game Changer</a>
+                        passion and now aim to share my work with the world! I'm currently working for the companys
+                        <strong><a href="https://www.game-changer.pl/" target="_blank" rel="noopener">Game
+                                Changer</a></strong>
+                        and
+                        <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener">Fair
+                                Entertainment</a>
                         </strong>, where I continue to grow and apply my skills in new
                         projects. I invite you to explore my portfolio and I hope to work for you soon!
                     </p>
@@ -291,8 +295,8 @@
 
     <section id="testimonials" class="testimonials">
         <h2 class="section-title reveal">Reviews</h2>
-        <div class="testimonial reveal">
-            <div class="review-container">
+        <div class="testimonial">
+            <div class="review-container reveal reveal-zoom">
                 <div class="user-info">
                     <img src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_original/v1/attachments/profile/photo/dc5eea421b6bb9322cf33f9292a32d71-1563708990918/c93bd0ac-94ea-4657-805f-f1bc18ac0a42.jpg"
                         alt="User Avatar" class="user-avatar">
@@ -347,26 +351,29 @@
     <section id="contact" class="contact">
         <h2 class="section-title reveal">Contact</h2>
 
-        <div class="contact-container reveal">
+        <div class="contact-container">
             <div class="contact-info">
-                <a href="mailto:druzbinskijakub@gmail.com" target="_blank" class="contact-card">
+                <a href="mailto:druzbinskijakub@gmail.com" target="_blank"
+                    class="contact-card reveal reveal-zoom delay-100">
                     <img src="images/icons/mail.png" alt="Email Icon">
                     <span>DruzbinskiJakub@gmail.com</span>
                 </a>
-                <a href="mailto:j.druzbinski@game-changer.pl" target="_blank" class="contact-card">
+                <a href="mailto:j.druzbinski@game-changer.pl" target="_blank"
+                    class="contact-card reveal reveal-zoom delay-200">
                     <img src="images/icons/mail.png" alt="Email Icon">
                     <span>J.Druzbinski@game-changer.pl</span>
                 </a>
-                <a href="https://fiverr.com/kubado515" target="_blank" class="contact-card">
+                <a href="https://fiverr.com/kubado515" target="_blank"
+                    class="contact-card reveal reveal-zoom delay-300">
                     <img src="images/icons/fiverr.png" alt="Fiverr Icon">
                     <span>@kubado515</span>
                 </a>
-                <a href="https://github.com/kubadoPL" target="_blank" class="contact-card">
+                <a href="https://github.com/kubadoPL" target="_blank" class="contact-card reveal reveal-zoom delay-400">
                     <img src="images/icons/github.png" alt="Github Icon">
                     <span>kubadoPL</span>
                 </a>
                 <a href="https://www.linkedin.com/in/jakub-dru%C5%BCbi%C5%84ski-53a240347/" target="_blank"
-                    class="contact-card">
+                    class="contact-card reveal reveal-zoom delay-500">
                     <img src="images/icons/linkedin.png" alt="Linkedin Icon">
                     <span>LinkedIn</span>
                 </a>
@@ -429,7 +436,7 @@
                         slides[j].classList.remove("slide-exit");
                     }
                 }
-            }, 600);
+            }, 900);
 
             clearTimeout(slideshowTimeout);
         }
@@ -512,8 +519,8 @@
                 }
             });
         }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
