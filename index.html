@@ -8,9 +8,16 @@
     <meta name="description" content="K5 Studio: Programming, graphic design, video, and 3D services.">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <!-- Gradient noise overlay for depth -->
+    <div class="noise-overlay"></div>
+
     <header>
         <div class="logo"><a href="#home">K5 STUDIO</a></div>
         <nav>
@@ -28,36 +35,41 @@
             <source src="videos/portfolio full.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>K5 Studio - Jakub Drużbiński</h1>
-            <h2>&nbsp;</h2>
+            <!-- <span class="hero-badge">🚀 Available for Work</span> -->
+            <h1>K5 Studio</h1>
+            <h2 class="typing-subtitle"><span id="typed-text"></span><span class="cursor">|</span></h2>
             <p>Programming, graphic, video and 3D services for everyone!</p>
-            <a href="#about"><button>About me</button></a>
+            <a href="#about"><button class="hero-btn">Explore My Work</button></a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
     <section id="about" class="about">
-        <h2>About me</h2>
-        <div class="about-content">
+        <h2 class="section-title reveal">About me</h2>
+        <div class="about-content reveal">
             <div class="profile-image">
                 <img src="images/profile.jpg" alt="Profile Image">
             </div>
             <div class="skills">
                 <div class="skills-tags">
-                    <span>Lua</span>
-                    <span>C#</span>
-                    <span>Python</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>VBA</span>
-                    <span>JavaScript</span>
-                    <span>Git/GitHub</span>
-                    <span>Blender 3D</span>
-                    <span>Adobe Photoshop</span>
-                    <span>Wallpaper Engine</span>
-                    <span>MCreator</span>
-                    <span>Roblox Studio</span>
-                    <span>Visual Studio</span>
+                    <span>🌙 Lua</span>
+                    <span>⚙️ C#</span>
+                    <span>🐍 Python</span>
+                    <span>🌐 HTML</span>
+                    <span>🎨 CSS</span>
+                    <span>📊 VBA</span>
+                    <span>⚡ JavaScript</span>
+                    <span>🔗 Git/GitHub</span>
+                    <span>🧊 Blender 3D</span>
+                    <span>🖌️ Adobe Photoshop</span>
+                    <span>🖥️ Wallpaper Engine</span>
+                    <span>🔧 MCreator</span>
+                    <span>🎮 Roblox Studio</span>
+                    <span>💻 Visual Studio</span>
                 </div>
                 <div class="about-description">
                     <h3>Creativity is my second Name!</h3>
@@ -80,8 +92,8 @@
     </section>
 
     <section id="portfolio" class="portfolio">
-        <h2>My Work</h2>
-        <div class="slideshow-container">
+        <h2 class="section-title reveal">My Work</h2>
+        <div class="slideshow-container reveal">
             <!-- Points to navigate to previous and next slides -->
             <div class="nav-points">
                 <div class="prev-point">&#9664;</div>
@@ -103,13 +115,13 @@
                             class="link-icon" src="images/icons/link.png" alt="link Icon"> View Documentation</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Python</span>
-                        <span>ICECAST</span>
-                        <span>Adobe Photoshop</span>
-                        <span class="publicico">Public Project</span>
+                        <span>🌐 HTML</span>
+                        <span>🎨 CSS</span>
+                        <span>⚡ JavaScript</span>
+                        <span>🐍 Python</span>
+                        <span>📻 ICECAST</span>
+                        <span>🖌️ Adobe Photoshop</span>
+                        <span class="publicico">🔓 Public Project</span>
                     </div>
                 </div>
             </div>
@@ -130,11 +142,11 @@
                             class="link-icon" src="images/icons/link.png" alt="link Icon"> See Recent Trailer</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>Roblox</span>
-                        <span>Lua</span>
-                        <span>Blender 3D</span>
-                        <span>Adobe Photoshop</span>
-                        <span class="privateico">Private Project</span>
+                        <span>🎮 Roblox</span>
+                        <span>🌙 Lua</span>
+                        <span>🧊 Blender 3D</span>
+                        <span>🖌️ Adobe Photoshop</span>
+                        <span class="privateico">🔒 Private Project</span>
                     </div>
                 </div>
             </div>
@@ -144,23 +156,25 @@
 
                 <div class="description">
                     <h3>Discord Bot Launcher Manager</h3>
-                    <p>A Python program for managing multiple Discord.py bots by downloading their repositories from GitHub, extracting them, and running them. Supports API and Web Panel!</p>
+                    <p>A Python program for managing multiple Discord.py bots by downloading their repositories from
+                        GitHub, extracting them, and running them. Supports API and Web Panel!</p>
 
                     <a href="https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/" target="_blank"
                         class="game-button"><img class="link-icon" src="images/icons/link.png" alt="link Icon"> See
                         Panel</a>
-                    <a href="https://github.com/kubadoPL/Discord-Bot-Launcher-Manager" target="_blank" class="game-button"><img class="link-icon"
-                            src="images/icons/link.png" alt="link Icon"> See Source Code</a>
+                    <a href="https://github.com/kubadoPL/Discord-Bot-Launcher-Manager" target="_blank"
+                        class="game-button"><img class="link-icon" src="images/icons/link.png" alt="link Icon"> See
+                        Source Code</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>Python</span>
-                        <span>CSS</span>
-                        <span>HTML</span>
-                        <span>JavaScript</span>
-                        <span>Heroku</span>
-                        <span>Github</span>
-                        <span>Flask</span>
-                        <span class="publicico">Public Project</span>
+                        <span>🐍 Python</span>
+                        <span>🎨 CSS</span>
+                        <span>🌐 HTML</span>
+                        <span>⚡ JavaScript</span>
+                        <span>☁️ Heroku</span>
+                        <span>🔗 GitHub</span>
+                        <span>🧪 Flask</span>
+                        <span class="publicico">🔓 Public Project</span>
                     </div>
                 </div>
             </div>
@@ -175,15 +189,15 @@
                     <!--<a href="https://www.roblox.com/games/8458974184/Miasto-ING-Sezon-4-Bitwa-na-Rymy" target="_blank"
                         class="game-button"><img class="link-icon" src="images/icons/link.png" alt="link Icon"> Play
                         Here</a>-->
-                    <a href="https://youtu.be/iNhwDOUnHpc?si=oeHyRqZxyoYpJjrh" target="_blank" class="game-button"><img class="link-icon"
-                            src="images/icons/link.png" alt="link Icon"> See Recent Trailer</a>
+                    <a href="https://youtu.be/iNhwDOUnHpc?si=oeHyRqZxyoYpJjrh" target="_blank" class="game-button"><img
+                            class="link-icon" src="images/icons/link.png" alt="link Icon"> See Recent Trailer</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>Roblox</span>
-                        <span>Lua</span>
-                        <span>Blender 3D</span>
-                        <span>Adobe Photoshop</span>
-                        <span class="privateico">Private Project</span>
+                        <span>🎮 Roblox</span>
+                        <span>🌙 Lua</span>
+                        <span>🧊 Blender 3D</span>
+                        <span>🖌️ Adobe Photoshop</span>
+                        <span class="privateico">🔒 Private Project</span>
                     </div>
                 </div>
             </div>
@@ -204,11 +218,11 @@
                             class="link-icon" src="images/icons/link.png" alt="link Icon"> See Recent Trailer</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>Roblox</span>
-                        <span>Lua</span>
-                        <span>Blender 3D</span>
-                        <span>Adobe Photoshop</span>
-                        <span class="publicico">Public Project</span>
+                        <span>🎮 Roblox</span>
+                        <span>🌙 Lua</span>
+                        <span>🧊 Blender 3D</span>
+                        <span>🖌️ Adobe Photoshop</span>
+                        <span class="publicico">🔓 Public Project</span>
                     </div>
                 </div>
             </div>
@@ -227,10 +241,10 @@
                             class="link-icon" src="images/icons/link.png" alt="link Icon"> View Preview</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>Wallpaper Engine</span>
-                        <span>Scene Script</span>
-                        <span>Adobe Photoshop</span>
-                        <span class="publicico">Public Project</span>
+                        <span>🖥️ Wallpaper Engine</span>
+                        <span>📜 Scene Script</span>
+                        <span>🖌️ Adobe Photoshop</span>
+                        <span class="publicico">🔓 Public Project</span>
                     </div>
                 </div>
             </div>
@@ -250,10 +264,10 @@
                             class="link-icon" src="images/icons/link.png" alt="link Icon"> View Preview</a>
                     <a>&nbsp;</a>
                     <div class="skills-tags2">
-                        <span>Wallpaper Engine</span>
-                        <span>Scene Script</span>
-                        <span>Adobe Photoshop</span>
-                        <span class="publicico">Public Project</span>
+                        <span>🖥️ Wallpaper Engine</span>
+                        <span>📜 Scene Script</span>
+                        <span>🖌️ Adobe Photoshop</span>
+                        <span class="publicico">🔓 Public Project</span>
                     </div>
                 </div>
             </div>
@@ -276,8 +290,8 @@
 
 
     <section id="testimonials" class="testimonials">
-        <h2>Reviews</h2>
-        <div class="testimonial">
+        <h2 class="section-title reveal">Reviews</h2>
+        <div class="testimonial reveal">
             <div class="review-container">
                 <div class="user-info">
                     <img src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_original/v1/attachments/profile/photo/dc5eea421b6bb9322cf33f9292a32d71-1563708990918/c93bd0ac-94ea-4657-805f-f1bc18ac0a42.jpg"
@@ -331,34 +345,46 @@
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact</h2>
+        <h2 class="section-title reveal">Contact</h2>
 
-        <div class="contact-container">
+        <div class="contact-container reveal">
             <div class="contact-info">
-                <p><img src="images/icons/mail.png" alt="Email Icon">&nbsp;<a href="mailto:druzbinskijakub@gmail.com"
-                        target="_blank">DruzbinskiJakub@gmail.com</a></p>
-                <p><img src="images/icons/mail.png" alt="Email Icon">&nbsp;<a href="mailto:j.druzbinski@game-changer.pl"
-                        target="_blank">J.Druzbinski@game-changer.pl</a></p>
-                <p><img src="images/icons/fiverr.png" alt="Fiverr Icon">&nbsp;<a href="https://fiverr.com/kubado515"
-                        target="_blank">@kubado515</a></p>
-                <p><img src="images/icons/github.png" alt="Github Icon">&nbsp;<a href="https://github.com/kubadoPL"
-                        target="_blank">kubadoPL</a></p>
-                <p><img src="images/icons/linkedin.png" alt="Linkedin Icon">&nbsp;<a
-                        href="https://www.linkedin.com/in/jakub-dru%C5%BCbi%C5%84ski-53a240347/"
-                        target="_blank">LinkedIn</a></p>
+                <a href="mailto:druzbinskijakub@gmail.com" target="_blank" class="contact-card">
+                    <img src="images/icons/mail.png" alt="Email Icon">
+                    <span>DruzbinskiJakub@gmail.com</span>
+                </a>
+                <a href="mailto:j.druzbinski@game-changer.pl" target="_blank" class="contact-card">
+                    <img src="images/icons/mail.png" alt="Email Icon">
+                    <span>J.Druzbinski@game-changer.pl</span>
+                </a>
+                <a href="https://fiverr.com/kubado515" target="_blank" class="contact-card">
+                    <img src="images/icons/fiverr.png" alt="Fiverr Icon">
+                    <span>@kubado515</span>
+                </a>
+                <a href="https://github.com/kubadoPL" target="_blank" class="contact-card">
+                    <img src="images/icons/github.png" alt="Github Icon">
+                    <span>kubadoPL</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jakub-dru%C5%BCbi%C5%84ski-53a240347/" target="_blank"
+                    class="contact-card">
+                    <img src="images/icons/linkedin.png" alt="Linkedin Icon">
+                    <span>LinkedIn</span>
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
+        <div class="footer-accent"></div>
         <a href="#home">Go Back To The Top</a>
-        <p>Jakub Drużbiński © 2025</p>
+        <p>Jakub Drużbiński © 2026</p>
     </footer>
 
 
 
 
     <script>
+        // ─── Slideshow ───
         var slideIndex = 1;
         var slideshowTimeout;
 
@@ -370,17 +396,42 @@
             var dots = document.getElementsByClassName("dot");
             if (n > slides.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = slides.length }
+
+            // Handle transitions
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                // If this is the slide we're leaving (it was active)
+                if (slides[i].classList.contains("slide-active")) {
+                    slides[i].classList.remove("slide-active");
+                    slides[i].classList.add("slide-exit");
+                }
+                // Clean up previous exit classes for non-active slides
+                else if (slides[i].classList.contains("slide-exit")) {
+                    // check if animation done (optional cleanup could be here)
+                }
             }
+
+            // Remove active status from dots
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[slideIndex - 1].style.display = "block";
+
+            // Set up the new active slide
+            // Ensure no exit class on the new active slide
+            slides[slideIndex - 1].classList.remove("slide-exit");
+            slides[slideIndex - 1].classList.add("slide-active");
+
             dots[slideIndex - 1].className += " active";
+
+            // Cleanup exit classes after transition is likely done (0.5s)
+            setTimeout(() => {
+                for (var j = 0; j < slides.length; j++) {
+                    if (!slides[j].classList.contains("slide-active")) {
+                        slides[j].classList.remove("slide-exit");
+                    }
+                }
+            }, 600);
+
             clearTimeout(slideshowTimeout);
-            // I changed my mind disable auto slide changer
-            // slideshowTimeout = setTimeout(function() { showSlides(slideIndex += 1); }, 5000); 
         }
 
         function navigateSlide(n) {
@@ -410,8 +461,73 @@
                 currentSlide(i + 1);
             });
         }
-    </script>
 
+        // ─── Typing Effect ───
+        const phrases = [
+            "Jakub Drużbiński",
+            "Game Developer",
+            "3D Artist",
+            "Web Developer",
+            "Graphic Designer"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedText = document.getElementById("typed-text");
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        typeEffect();
+
+        // ─── Scroll Reveal ───
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ─── Header scroll effect ───
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
 
 
 
