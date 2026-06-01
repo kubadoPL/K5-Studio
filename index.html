@@ -360,6 +360,21 @@
                 row.appendChild(tiles);
             }
 
+            // Server uptime stat tile
+            if (p.showUptime) {
+                const tiles = document.createElement('div');
+                tiles.className = 'stat-tiles';
+                tiles.innerHTML = `
+                    <div class="stat-tile stat-tile-live">
+                        <span class="stat-icon">⏱️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="uptime-val-${p.key}">...</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                    </div>`;
+                row.appendChild(tiles);
+            }
+
             desc.appendChild(row);
 
             // Tags
@@ -584,6 +599,36 @@
                     }
                     const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
                     setEl('radio-online-val-' + p.key, totalOnline.toLocaleString());
+                } catch (e) { /* silently fail */ }
+            }
+
+            // 6) Fetch server uptime for bot-launcher
+            const uptimeProjects = projects.filter(p => p.showUptime);
+            if (uptimeProjects.length > 0) {
+                try {
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/api/uptime');
+                    if (res.ok) {
+                        const data = await res.json();
+                        const startedAt = data.started_at * 1000;
+                        function updateUptimeDisplay() {
+                            const diff = Date.now() - startedAt;
+                            const totalSec = Math.floor(diff / 1000);
+                            const d = Math.floor(totalSec / 86400);
+                            const h = Math.floor((totalSec % 86400) / 3600);
+                            const m = Math.floor((totalSec % 3600) / 60);
+                            const s = totalSec % 60;
+                            let text = '';
+                            if (d > 0) text += d + 'd ';
+                            if (d > 0 || h > 0) text += h + 'h ';
+                            text += m + 'm ' + s + 's';
+                            uptimeProjects.forEach(p => {
+                                const el = document.getElementById('uptime-val-' + p.key);
+                                if (el) el.textContent = text;
+                            });
+                        }
+                        updateUptimeDisplay();
+                        setInterval(updateUptimeDisplay, 1000);
+                    }
                 } catch (e) { /* silently fail */ }
             }
         })().catch(() => { });
