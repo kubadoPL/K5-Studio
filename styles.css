@@ -810,6 +810,16 @@ header nav ul li a:hover {
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
 }
 
+.stat-tile-likes {
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+.stat-tile-likes:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+}
+
 .stat-icon {
     font-size: 18px;
     line-height: 1;

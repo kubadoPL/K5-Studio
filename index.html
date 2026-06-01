@@ -311,6 +311,13 @@
                                 <span class="stat-label">Playing Now</span>
                             </div>
                         </div>
+                        <div class="stat-tile stat-tile-likes">
+                            <span class="stat-icon">👍</span>
+                            <div class="stat-info">
+                                <span class="stat-value" id="likes-val-animal">...</span>
+                                <span class="stat-label">Likes</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="skills-tags2">
                         <span>🎮 Roblox</span>
@@ -351,6 +358,13 @@
                             <div class="stat-info">
                                 <span class="stat-value" id="players-val-create">...</span>
                                 <span class="stat-label">Playing Now</span>
+                            </div>
+                        </div>
+                        <div class="stat-tile stat-tile-likes">
+                            <span class="stat-icon">👍</span>
+                            <div class="stat-info">
+                                <span class="stat-value" id="likes-val-create">...</span>
+                                <span class="stat-label">Likes</span>
                             </div>
                         </div>
                     </div>
@@ -669,6 +683,26 @@
                     if (v && v.textContent === '...') v.textContent = vals.visits;
                     if (p && p.textContent === '...') p.textContent = vals.players;
                     if (i && i.textContent === '...') i.textContent = vals.visits;
+                }
+            }
+        })();
+
+        // ─── Fetch Roblox Votes (Likes) ───
+        (async function fetchVotes() {
+            const universeMap = {
+                '9305408287': 'create',
+                '9943413601': 'animal'
+            };
+            for (const [uid, key] of Object.entries(universeMap)) {
+                try {
+                    const res = await fetch('https://games.roproxy.com/v1/games/' + uid + '/votes');
+                    const data = await res.json();
+                    const el = document.getElementById('likes-val-' + key);
+                    if (el && data.upVotes != null) {
+                        el.textContent = data.upVotes.toLocaleString();
+                    }
+                } catch (e) {
+                    // silently fail, leave "..."
                 }
             }
         })();
