@@ -96,7 +96,7 @@
     </section>
 
     <section id="portfolio" class="portfolio">
-        <h2 class="section-title reveal">My Work</h2>
+        <h2 class="section-title reveal">My Best Work</h2>
         <div class="slideshow-container reveal">
             <!-- Points to navigate to previous and next slides -->
             <div class="nav-points">
@@ -638,72 +638,62 @@
             }
         });
 
-        // ─── Fetch Fair Games Visit Stats ───
-        (async function fetchFairGamesStats() {
-            const placeMap = {
-                '74637189843837': 'create',
-                '125616007292860': 'animal'
-            };
-            function formatNum(n) {
-                if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
-                if (n >= 1_000) return (n / 1_000).toFixed(1) + 'K';
-                return n.toLocaleString();
-            }
+        // ─── Project Config (single source of truth) ───
+        const PROJECTS = [
+            { key: 'create', placeId: '74637189843837', universeId: '9305408287' },
+            { key: 'animal', placeId: '125616007292860', universeId: '9943413601' }
+        ];
+
+        function formatNum(n) {
+            if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
+            if (n >= 1_000) return (n / 1_000).toFixed(1) + 'K';
+            return n.toLocaleString();
+        }
+
+        // ─── Fetch Fair Games Visit Stats + Votes ───
+        (async function fetchAllStats() {
+            // 1) Visits & Players from fairgames
             try {
                 const res = await fetch('https://fairgames.gg/puppeteer-cached-stats');
                 const data = await res.json();
+                const placeToKey = Object.fromEntries(PROJECTS.map(p => [p.placeId, p.key]));
                 data.details.forEach(entry => {
-                    const key = placeMap[entry.placeId];
+                    const key = placeToKey[entry.placeId];
                     if (!key) return;
-                    // Inline text span
-                    const inlineEl = document.getElementById('visits-' + key);
-                    if (inlineEl && entry.visits != null) {
-                        inlineEl.textContent = formatNum(entry.visits) + '+';
+                    const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+                    if (entry.visits != null) {
+                        setEl('visits-' + key, formatNum(entry.visits) + '+');
+                        setEl('visits-val-' + key, formatNum(entry.visits) + '+');
                     }
-                    // Stat tile — visits
-                    const visitsVal = document.getElementById('visits-val-' + key);
-                    if (visitsVal && entry.visits != null) {
-                        visitsVal.textContent = formatNum(entry.visits) + '+';
-                    }
-                    // Stat tile — players
-                    const playersVal = document.getElementById('players-val-' + key);
-                    if (playersVal && entry.players != null) {
-                        playersVal.textContent = entry.players.toLocaleString();
-                    } else if (playersVal) {
-                        playersVal.textContent = '—';
+                    if (entry.players != null) {
+                        setEl('players-val-' + key, entry.players.toLocaleString());
+                    } else {
+                        setEl('players-val-' + key, '—');
                     }
                 });
             } catch (e) {
-                // Fallback defaults
-                const fb = { create: { visits: '24M+', players: '—' }, animal: { visits: '10M+', players: '—' } };
-                for (const [key, vals] of Object.entries(fb)) {
-                    const v = document.getElementById('visits-val-' + key);
-                    const p = document.getElementById('players-val-' + key);
-                    const i = document.getElementById('visits-' + key);
-                    if (v && v.textContent === '...') v.textContent = vals.visits;
-                    if (p && p.textContent === '...') p.textContent = vals.players;
-                    if (i && i.textContent === '...') i.textContent = vals.visits;
+                const fb = { create: '24M+', animal: '10M+' };
+                for (const p of PROJECTS) {
+                    const def = fb[p.key] || '—';
+                    ['visits-val-', 'visits-'].forEach(prefix => {
+                        const el = document.getElementById(prefix + p.key);
+                        if (el && el.textContent === '...') el.textContent = def;
+                    });
+                    const pl = document.getElementById('players-val-' + p.key);
+                    if (pl && pl.textContent === '...') pl.textContent = '—';
                 }
             }
-        })();
 
-        // ─── Fetch Roblox Votes (Likes) ───
-        (async function fetchVotes() {
-            const universeMap = {
-                '9305408287': 'create',
-                '9943413601': 'animal'
-            };
-            for (const [uid, key] of Object.entries(universeMap)) {
+            // 2) Likes from roproxy
+            for (const p of PROJECTS) {
                 try {
-                    const res = await fetch('https://games.roproxy.com/v1/games/' + uid + '/votes');
+                    const res = await fetch('https://games.roproxy.com/v1/games/' + p.universeId + '/votes');
                     const data = await res.json();
-                    const el = document.getElementById('likes-val-' + key);
+                    const el = document.getElementById('likes-val-' + p.key);
                     if (el && data.upVotes != null) {
                         el.textContent = data.upVotes.toLocaleString();
                     }
-                } catch (e) {
-                    // silently fail, leave "..."
-                }
+                } catch (e) { /* silently fail */ }
             }
         })();
     </script>
