@@ -10,7 +10,8 @@
             { "label": "View Documentation", "url": "https://github.com/kubadoPL/Gaming-Radio" }
         ],
         "tags": ["🌐 HTML", "🎨 CSS", "⚡ JavaScript", "🐍 Python", "📻 ICECAST", "🖌️ Adobe Photoshop"],
-        "visibility": "public"
+        "visibility": "public",
+        "radioStations": ["RADIOGAMING", "RADIOGAMINGDARK", "RADIOGAMINGMARONFM"]
     },
     {
         "key": "gaming-simulator",
