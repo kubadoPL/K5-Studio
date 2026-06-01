@@ -13,6 +13,20 @@
         "visibility": "public",
         "radioStations": ["RADIOGAMING", "RADIOGAMINGDARK", "RADIOGAMINGMARONFM"]
     },
+     {
+        "key": "bot-launcher",
+        "title": "Discord Bot and Web Services Launcher Manager",
+        "thumbnail": "images/thumbails/bot launcher.png",
+        "icon": "images/launcher ikona.jpg",
+        "description": "A Python program for managing multiple Discord.py bots and web services by downloading their repositories from GitHub, extracting them, and running them. Supports API and Web Panel! You can run anything from web development projects to discord bots keeping all of them in one place!",
+        "buttons": [
+            { "label": "See Panel", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/" },
+            { "label": "See Source Code", "url": "https://github.com/kubadoPL/Discord-Bot-Launcher-Manager" }
+        ],
+        "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "☁️ Heroku", "🔗 GitHub", "🧪 Flask"],
+        "visibility": "public",
+        "showUptime": true
+    },
     {
         "key": "gaming-simulator",
         "title": "Gaming Simulator",
@@ -26,20 +40,6 @@
         ],
         "tags": ["🎮 Roblox", "🌙 Lua", "🧊 Blender 3D", "🖌️ Adobe Photoshop"],
         "visibility": "private"
-    },
-    {
-        "key": "bot-launcher",
-        "title": "Discord Bot and Web Services Launcher Manager",
-        "thumbnail": "images/thumbails/bot launcher.png",
-        "icon": "images/launcher ikona.jpg",
-        "description": "A Python program for managing multiple Discord.py bots and web services by downloading their repositories from GitHub, extracting them, and running them. Supports API and Web Panel! You can run anything from web development projects to discord bots keeping all of them in one place!",
-        "buttons": [
-            { "label": "See Panel", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/" },
-            { "label": "See Source Code", "url": "https://github.com/kubadoPL/Discord-Bot-Launcher-Manager" }
-        ],
-        "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "☁️ Heroku", "🔗 GitHub", "🧪 Flask"],
-        "visibility": "public",
-        "showUptime": true
     },
     {
         "key": "scp-game",
