@@ -7,7 +7,7 @@
         "description": "Are you ready to immerse yourself in the ultimate music experience? Whether you're a casual gamer, a competitive esports enthusiast, or simply someone who loves great music, Radio GAMING has something for everyone.",
         "buttons": [
             { "label": "Visit Website", "url": "https://radio-gaming.stream/" },
-            { "label": "View Documentation", "url": "https://github.com/kubadoPL/Gaming-Radio" }
+            { "label": "See Source Code", "url": "https://github.com/kubadoPL/Gaming-Radio" }
         ],
         "tags": ["🌐 HTML", "🎨 CSS", "⚡ JavaScript", "🐍 Python", "📻 ICECAST", "🖌️ Adobe Photoshop"],
         "visibility": "public",
@@ -20,7 +20,7 @@
         "icon": "images/launcher ikona.jpg",
         "description": "A Python program for managing multiple Discord.py bots and web services by downloading their repositories from GitHub, extracting them, and running them. Supports API and Web Panel! You can run anything from web development projects to discord bots keeping all of them in one place!",
         "buttons": [
-            { "label": "See Panel", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/" },
+            { "label": "Visit Website", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/" },
             { "label": "See Source Code", "url": "https://github.com/kubadoPL/Discord-Bot-Launcher-Manager" }
         ],
         "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "☁️ Heroku", "🔗 GitHub", "🧪 Flask"],
@@ -34,7 +34,7 @@
         "icon": "images/formboticon.png",
         "description": "An intelligent form auto-filler that supports Google Forms and Microsoft Forms. Features AI-powered answers via Gemini for realistic, coherent responses with persona generation. Includes customizable timing delays, weighted answer control, real-time preview, live server statistics, and a queue system for concurrent sessions.",
         "buttons": [
-            { "label": "Open FormBot", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/" }
+            { "label": "Visit Website", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/" }
         ],
         "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "🧪 Flask", "🤖 Gemini AI", "☁️ Heroku"],
         "visibility": "private",
