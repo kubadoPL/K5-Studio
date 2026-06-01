@@ -608,6 +608,12 @@ header nav ul li a:hover {
     border-color: rgba(16, 185, 129, 0.3) !important;
 }
 
+.popularico {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+    color: #fbbf24 !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+}
+
 .link-icon {
     width: 14px;
     height: 14px;
