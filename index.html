@@ -382,6 +382,35 @@
                 row.appendChild(tiles);
             }
 
+            // FormBot stat tiles (online, forms submitted, questions answered)
+            if (p.showFormbotStats) {
+                const tiles = document.createElement('div');
+                tiles.className = 'stat-tiles';
+                tiles.innerHTML = `
+                    <div class="stat-tile stat-tile-live">
+                        <span class="stat-icon">🟢</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="formbot-online-val-${p.key}">...</span>
+                            <span class="stat-label">Online Now</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">📝</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="formbot-forms-val-${p.key}">...</span>
+                            <span class="stat-label">Forms Submitted</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">❓</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="formbot-questions-val-${p.key}">...</span>
+                            <span class="stat-label">Questions Answered</span>
+                        </div>
+                    </div>`;
+                row.appendChild(tiles);
+            }
+
             desc.appendChild(row);
 
             // Tags
@@ -641,6 +670,23 @@
                         }
                         updateUptimeDisplay();
                         setInterval(updateUptimeDisplay, 1000);
+                    }
+                } catch (e) { /* silently fail */ }
+            }
+            // 7) Fetch FormBot stats
+            const formbotProjects = projects.filter(p => p.showFormbotStats);
+            if (formbotProjects.length > 0) {
+                try {
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/api/stats');
+                    if (res.ok) {
+                        const data = await res.json();
+                        const g = data.global || {};
+                        formbotProjects.forEach(p => {
+                            const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+                            setEl('formbot-online-val-' + p.key, (data.online || 0).toLocaleString());
+                            setEl('formbot-forms-val-' + p.key, formatNum(g.forms_submitted || 0));
+                            setEl('formbot-questions-val-' + p.key, formatNum(g.questions_answered || 0));
+                        });
                     }
                 } catch (e) { /* silently fail */ }
             }

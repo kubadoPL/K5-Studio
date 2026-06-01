@@ -28,6 +28,19 @@
         "showUptime": true
     },
     {
+        "key": "formbot",
+        "title": "FormBot - AI Form Auto-filler",
+        "thumbnail": "images/thumbails/formbot.webp",
+        "icon": "images/formboticon.png",
+        "description": "An intelligent form auto-filler that supports Google Forms and Microsoft Forms. Features AI-powered answers via Gemini for realistic, coherent responses with persona generation. Includes customizable timing delays, weighted answer control, real-time preview, live server statistics, and a queue system for concurrent sessions.",
+        "buttons": [
+            { "label": "Open FormBot", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/" }
+        ],
+        "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "🧪 Flask", "🤖 Gemini AI", "☁️ Heroku"],
+        "visibility": "private",
+        "showFormbotStats": true
+    },
+    {
         "key": "gaming-simulator",
         "title": "Gaming Simulator",
         "thumbnail": "images/thumbails/gamingsimnew.png",
