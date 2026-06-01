@@ -256,7 +256,10 @@
                 a.textContent = p.madeFor.name;
                 strong.appendChild(a);
                 para.appendChild(strong);
-                para.appendChild(document.createTextNode(', who hold full rights to the project. The game has reached over '));
+                para.appendChild(document.createTextNode(', who hold full rights to the project.'));
+            }
+            if (p.fairgames) {
+                para.appendChild(document.createTextNode(' The game has reached over '));
                 const visitSpan = document.createElement('span');
                 visitSpan.id = 'visits-' + p.key;
                 visitSpan.textContent = '...';
@@ -285,8 +288,8 @@
             spacer.innerHTML = '&nbsp;';
             desc.appendChild(spacer);
 
-            // Stat tiles (only for projects with placeId)
-            if (p.placeId) {
+            // Stat tiles (only for projects with universeId)
+            if (p.universeId) {
                 const tiles = document.createElement('div');
                 tiles.className = 'stat-tiles';
                 tiles.innerHTML = `
@@ -324,7 +327,10 @@
             });
             // Visibility badge
             const visBadge = document.createElement('span');
-            if (p.visibility === 'public') {
+            if (p.visibility === 'commissioned') {
+                visBadge.className = 'commissionedico';
+                visBadge.textContent = '💼 Commissioned Project';
+            } else if (p.visibility === 'public') {
                 visBadge.className = 'publicico';
                 visBadge.textContent = '🔓 Public Project';
             } else {
@@ -396,7 +402,7 @@
             let projects = [];
             try {
                 const res = await fetch('projects.json');
-                projects = await res.json();
+                projects = (await res.json()).filter(p => !p.hideProject);
             } catch (e) {
                 console.error('Failed to load projects.json', e);
                 return;
@@ -420,8 +426,8 @@
             document.querySelector(".prev-point").addEventListener("click", () => navigateSlide(-1));
             document.querySelector(".next-point").addEventListener("click", () => navigateSlide(1));
 
-            // 2) Fetch live stats for fairgames projects
-            const fairgamesProjects = projects.filter(p => p.placeId);
+            // 2) Fetch live stats from fairgames API (only for projects with fairgames flag)
+            const fairgamesProjects = projects.filter(p => p.fairgames);
             if (fairgamesProjects.length > 0) {
                 try {
                     const res = await fetch('https://fairgames.gg/puppeteer-cached-stats');
@@ -442,20 +448,66 @@
                         }
                     });
                 } catch (e) { /* silently fail, leave "..." */ }
+            }
 
-                // 3) Fetch votes (likes)
-                for (const p of fairgamesProjects) {
-                    try {
-                        const res = await fetch('https://games.roproxy.com/v1/games/' + p.universeId + '/votes');
-                        const data = await res.json();
-                        const el = document.getElementById('likes-val-' + p.key);
-                        if (el && data.upVotes != null) {
-                            el.textContent = data.upVotes.toLocaleString();
+            // 2.5) Fetch visits/players from Roblox API for non-fairgames projects with universeId
+            const robloxProjects = projects.filter(p => p.universeId && !p.fairgames);
+            if (robloxProjects.length > 0) {
+                const uids = robloxProjects.map(p => p.universeId).join(',');
+                const foundKeys = new Set();
+                try {
+                    const res = await fetch('https://games.roproxy.com/v1/games?universeIds=' + uids);
+                    const data = await res.json();
+                    const uidToKey = Object.fromEntries(robloxProjects.map(p => [String(p.universeId), p.key]));
+                    (data.data || []).forEach(game => {
+                        const key = uidToKey[String(game.id)];
+                        if (!key) return;
+                        foundKeys.add(key);
+                        const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+                        if (game.visits != null) {
+                            setEl('visits-val-' + key, formatNum(game.visits) + '+');
                         }
-                    } catch (e) { /* silently fail */ }
+                        if (game.playing != null) {
+                            setEl('players-val-' + key, game.playing.toLocaleString());
+                        } else {
+                            setEl('players-val-' + key, '—');
+                        }
+                    });
+                } catch (e) { /* silently fail */ }
+                // Hide stat tiles for projects not returned by API (e.g. private games)
+                for (const p of robloxProjects) {
+                    if (!foundKeys.has(p.key)) {
+                        const tiles = document.querySelector('#visits-val-' + p.key)?.closest('.stat-tiles');
+                        if (tiles) tiles.style.display = 'none';
+                    }
                 }
             }
-        })();
+
+            // 3) Fetch votes/likes (only public projects with universeId) — hide tile for others
+            const projectsWithUniverse = projects.filter(p => p.universeId);
+            for (const p of projectsWithUniverse) {
+                const el = document.getElementById('likes-val-' + p.key);
+                if (p.visibility === 'private') {
+                    if (el) el.closest('.stat-tile-likes').style.display = 'none';
+                    continue;
+                }
+                try {
+                    const res = await fetch('https://games.roproxy.com/v1/games/' + p.universeId + '/votes');
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (el && data.upVotes != null) {
+                            el.textContent = data.upVotes.toLocaleString();
+                        } else if (el) {
+                            el.closest('.stat-tile-likes').style.display = 'none';
+                        }
+                    } else if (el) {
+                        el.closest('.stat-tile-likes').style.display = 'none';
+                    }
+                } catch (e) {
+                    if (el) el.closest('.stat-tile-likes').style.display = 'none';
+                }
+            }
+        })().catch(() => { });
 
         // ─── Typing Effect ───
         const phrases = [

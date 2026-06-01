@@ -614,6 +614,12 @@ header nav ul li a:hover {
     border-color: rgba(251, 191, 36, 0.3) !important;
 }
 
+.commissionedico {
+    background-color: rgba(99, 102, 241, 0.15) !important;
+    color: #818cf8 !important;
+    border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
 .link-icon {
     width: 14px;
     height: 14px;
@@ -632,10 +638,8 @@ header nav ul li a:hover {
     user-select: none;
     opacity: 0;
     transform: scale(1.1) translateX(50px);
-    filter: blur(10px);
     transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.2, 1, 0.3, 1),
-        filter 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     pointer-events: none;
     z-index: 0;
 }
@@ -643,7 +647,6 @@ header nav ul li a:hover {
 .slide.slide-active {
     opacity: 1;
     transform: scale(1) translateX(0);
-    filter: blur(0);
     pointer-events: auto;
     z-index: 2;
 }
@@ -651,7 +654,6 @@ header nav ul li a:hover {
 .slide.slide-exit {
     opacity: 0;
     transform: scale(0.95) translateX(-50px);
-    filter: blur(5px);
     pointer-events: none;
     z-index: 1;
 }
@@ -786,10 +788,9 @@ header nav ul li a:hover {
     align-items: center;
     gap: 8px;
     padding: 8px 14px;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(15, 15, 25, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-sm);
-    backdrop-filter: blur(8px);
     transition: all var(--transition-fast);
 }
 
