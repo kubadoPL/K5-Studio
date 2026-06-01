@@ -72,6 +72,7 @@
         "thumbnail": "images/thumbails/alitawallpaper.png",
         "icon": "images/wallpaperengine.png",
         "description": "Alita: Battle Angel with a sword standing in front of Zalem. Wallpaper for Wallpaper Engine",
+        "steamWorkshopId": "2961836726",
         "buttons": [
             { "label": "Get Here", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2961836726" },
             { "label": "View Preview", "url": "https://youtu.be/I1JjL6urVi8?si=mbv6huqn4sb02ZXq" }
@@ -85,6 +86,7 @@
         "thumbnail": "images/thumbails/wednesdaythumbnail.png",
         "icon": "images/wallpaperengine.png",
         "description": "Wednesday Addams from new Netflix series wearing all favorite black cat suit. Wallpaper for Wallpaper Engine",
+        "steamWorkshopId": "2908364654",
         "buttons": [
             { "label": "Get Here", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2908364654" },
             { "label": "View Preview", "url": "https://youtu.be/uHSP8eTkRmo?si=V9HtYsKgeuWPmkgX" }
