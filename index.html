@@ -325,8 +325,15 @@
                     <div class="stat-tile">
                         <span class="stat-icon">📥</span>
                         <div class="stat-info">
-                            <span class="stat-value" id="subs-val-${p.key}">...</span>
-                            <span class="stat-label">Subscribers</span>
+                            <span class="stat-value" id="subs-ever-val-${p.key}">...</span>
+                            <span class="stat-label">Ever Subscribed</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile stat-tile-live">
+                        <span class="stat-icon">🟢</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="subs-cur-val-${p.key}">...</span>
+                            <span class="stat-label">Currently Subscribed</span>
                         </div>
                     </div>
                     <div class="stat-tile stat-tile-likes">
@@ -542,8 +549,9 @@
                         const key = idToKey[item.publishedfileid];
                         if (!key) return;
                         const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-                        setEl('subs-val-' + key, (item.subscriptions || 0).toLocaleString());
-                        setEl('favs-val-' + key, (item.favorited || 0).toLocaleString());
+                        setEl('subs-ever-val-' + key, (item.lifetime_subscriptions || 0).toLocaleString());
+                        setEl('subs-cur-val-' + key, (item.subscriptions || 0).toLocaleString());
+                        setEl('favs-val-' + key, (item.lifetime_favorited || 0).toLocaleString());
                     });
                 } catch (e) { /* silently fail */ }
             }
