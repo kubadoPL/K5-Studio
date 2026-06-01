@@ -268,6 +268,10 @@
             }
             desc.appendChild(para);
 
+            // Buttons + Stats row (shared flex container)
+            const row = document.createElement('div');
+            row.className = 'buttons-stats-row';
+
             // Buttons
             p.buttons.forEach(btn => {
                 const a = document.createElement('a');
@@ -280,13 +284,8 @@
                 img.alt = 'link Icon';
                 a.appendChild(img);
                 a.appendChild(document.createTextNode(' ' + btn.label));
-                desc.appendChild(a);
+                row.appendChild(a);
             });
-
-            // Spacer
-            const spacer = document.createElement('a');
-            spacer.innerHTML = '&nbsp;';
-            desc.appendChild(spacer);
 
             // Stat tiles (only for projects with universeId)
             if (p.universeId) {
@@ -314,7 +313,7 @@
                             <span class="stat-label">Likes</span>
                         </div>
                     </div>`;
-                desc.appendChild(tiles);
+                row.appendChild(tiles);
             }
 
             // Steam Workshop stat tiles
@@ -343,7 +342,7 @@
                             <span class="stat-label">Favorites</span>
                         </div>
                     </div>`;
-                desc.appendChild(tiles);
+                row.appendChild(tiles);
             }
 
             // Radio station stat tiles (online listeners)
@@ -358,8 +357,10 @@
                             <span class="stat-label">Listening Now</span>
                         </div>
                     </div>`;
-                desc.appendChild(tiles);
+                row.appendChild(tiles);
             }
+
+            desc.appendChild(row);
 
             // Tags
             const tagsDiv = document.createElement('div');

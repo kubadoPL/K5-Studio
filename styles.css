@@ -777,10 +777,17 @@ header nav ul li a:hover {
 /* ═══════════════════════════════
    STAT TILES (Live Stats)
    ═══════════════════════════════ */
+.buttons-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
 .stat-tiles {
     display: flex;
     gap: 10px;
-    margin-top: 4px;
 }
 
 .stat-tile {
@@ -822,25 +829,26 @@ header nav ul li a:hover {
 }
 
 .stat-icon {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1;
 }
 
 .stat-info {
     display: flex;
-    flex-direction: column;
-    line-height: 1.2;
+    align-items: baseline;
+    gap: 5px;
+    line-height: 1;
 }
 
 .stat-value {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--text-primary);
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
 }
 
 .stat-label {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--text-muted);
     text-transform: uppercase;
