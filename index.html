@@ -289,13 +289,29 @@
                         rare species and compete with friends! Made for
                         <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener">Fair
                                 Entertainment</a></strong>, who hold full rights to the project. The game has reached
-                        over 9M+ visits since launch!
+                        over <span id="visits-animal" data-placeid="125616007292860">...</span> visits since launch!
                     </p>
 
                     <a href="https://www.roblox.com/games/125616007292860/Grow-An-Animal" target="_blank"
                         class="game-button"><img class="link-icon" src="images/icons/link.png" alt="link Icon"> Play Now
                         on Roblox</a>
                     <a>&nbsp;</a>
+                    <div class="stat-tiles">
+                        <div class="stat-tile">
+                            <span class="stat-icon">👀</span>
+                            <div class="stat-info">
+                                <span class="stat-value" id="visits-val-animal">...</span>
+                                <span class="stat-label">Total Visits</span>
+                            </div>
+                        </div>
+                        <div class="stat-tile stat-tile-live">
+                            <span class="stat-icon">🟢</span>
+                            <div class="stat-info">
+                                <span class="stat-value" id="players-val-animal">...</span>
+                                <span class="stat-label">Playing Now</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="skills-tags2">
                         <span>🎮 Roblox</span>
                         <span>🌙 Lua</span>
@@ -315,13 +331,29 @@
                         unique brainrot character. Made for
                         <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener">Fair
                                 Entertainment</a></strong>, who hold full rights to the project. The game has reached
-                        over 24.1M+ visits since launch!
+                        over <span id="visits-create" data-placeid="74637189843837">...</span> visits since launch!
                     </p>
 
                     <a href="https://www.roblox.com/games/74637189843837/Create-your-BRAINROT" target="_blank"
                         class="game-button"><img class="link-icon" src="images/icons/link.png" alt="link Icon"> Play Now
                         on Roblox</a>
                     <a>&nbsp;</a>
+                    <div class="stat-tiles">
+                        <div class="stat-tile">
+                            <span class="stat-icon">👀</span>
+                            <div class="stat-info">
+                                <span class="stat-value" id="visits-val-create">...</span>
+                                <span class="stat-label">Total Visits</span>
+                            </div>
+                        </div>
+                        <div class="stat-tile stat-tile-live">
+                            <span class="stat-icon">🟢</span>
+                            <div class="stat-info">
+                                <span class="stat-value" id="players-val-create">...</span>
+                                <span class="stat-label">Playing Now</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="skills-tags2">
                         <span>🎮 Roblox</span>
                         <span>🌙 Lua</span>
@@ -591,6 +623,55 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        // ─── Fetch Fair Games Visit Stats ───
+        (async function fetchFairGamesStats() {
+            const placeMap = {
+                '74637189843837': 'create',
+                '125616007292860': 'animal'
+            };
+            function formatNum(n) {
+                if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
+                if (n >= 1_000) return (n / 1_000).toFixed(1) + 'K';
+                return n.toLocaleString();
+            }
+            try {
+                const res = await fetch('https://fairgames.gg/puppeteer-cached-stats');
+                const data = await res.json();
+                data.details.forEach(entry => {
+                    const key = placeMap[entry.placeId];
+                    if (!key) return;
+                    // Inline text span
+                    const inlineEl = document.getElementById('visits-' + key);
+                    if (inlineEl && entry.visits != null) {
+                        inlineEl.textContent = formatNum(entry.visits) + '+';
+                    }
+                    // Stat tile — visits
+                    const visitsVal = document.getElementById('visits-val-' + key);
+                    if (visitsVal && entry.visits != null) {
+                        visitsVal.textContent = formatNum(entry.visits) + '+';
+                    }
+                    // Stat tile — players
+                    const playersVal = document.getElementById('players-val-' + key);
+                    if (playersVal && entry.players != null) {
+                        playersVal.textContent = entry.players.toLocaleString();
+                    } else if (playersVal) {
+                        playersVal.textContent = '—';
+                    }
+                });
+            } catch (e) {
+                // Fallback defaults
+                const fb = { create: { visits: '24M+', players: '—' }, animal: { visits: '10M+', players: '—' } };
+                for (const [key, vals] of Object.entries(fb)) {
+                    const v = document.getElementById('visits-val-' + key);
+                    const p = document.getElementById('players-val-' + key);
+                    const i = document.getElementById('visits-' + key);
+                    if (v && v.textContent === '...') v.textContent = vals.visits;
+                    if (p && p.textContent === '...') p.textContent = vals.players;
+                    if (i && i.textContent === '...') i.textContent = vals.visits;
+                }
+            }
+        })();
     </script>
 
 
