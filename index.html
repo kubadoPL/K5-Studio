@@ -312,6 +312,13 @@
                             <span class="stat-value" id="likes-val-${p.key}">...</span>
                             <span class="stat-label">Likes</span>
                         </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">⭐</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="favs-val-${p.key}">...</span>
+                            <span class="stat-label">Favorites</span>
+                        </div>
                     </div>`;
                 row.appendChild(tiles);
             }
@@ -510,8 +517,8 @@
                 } catch (e) { /* silently fail, leave "..." */ }
             }
 
-            // 2.5) Fetch visits/players from Roblox API for non-fairgames projects with universeId
-            const robloxProjects = projects.filter(p => p.universeId && !p.fairgames);
+            // 2.5) Fetch visits/players from Roblox API for projects with universeId
+            const robloxProjects = projects.filter(p => p.universeId);
             if (robloxProjects.length > 0) {
                 const uids = robloxProjects.map(p => p.universeId).join(',');
                 const foundKeys = new Set();
@@ -531,6 +538,12 @@
                             setEl('players-val-' + key, game.playing.toLocaleString());
                         } else {
                             setEl('players-val-' + key, '—');
+                        }
+                        if (game.favoritedCount != null) {
+                            setEl('favs-val-' + key, formatNum(game.favoritedCount));
+                        } else {
+                            const favEl = document.getElementById('favs-val-' + key);
+                            if (favEl) favEl.closest('.stat-tile').style.display = 'none';
                         }
                     });
                 } catch (e) { /* silently fail */ }
