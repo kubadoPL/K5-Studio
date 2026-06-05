@@ -522,17 +522,32 @@
             document.querySelector(".prev-point").addEventListener("click", () => navigateSlide(-1));
             document.querySelector(".next-point").addEventListener("click", () => navigateSlide(1));
 
-            // 2) Fetch live stats from fairgames API (only for projects with fairgames flag)
-            const fairgamesProjects = projects.filter(p => p.fairgames);
-            if (fairgamesProjects.length > 0) {
+            // ─── Continuous Stats Fetching System ───
+            // Stats are fetched per-project with a 2s cooldown between each fetch.
+            // Existing DOM values are never cleared — they stay until fresh data arrives.
+            // After all tasks complete, the cycle restarts from the beginning.
+
+            const FETCH_COOLDOWN_MS = 2000;
+            const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+
+            // Helper: wait ms milliseconds
+            const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+            // Track which tiles have been hidden (one-time decisions on first fetch)
+            const hiddenOnce = new Set();
+            let isFirstFetch = true;
+
+            // ── Individual fetch functions (update DOM only when data arrives) ──
+
+            async function fetchFairgamesStats(fairgamesProjects) {
+                if (fairgamesProjects.length === 0) return;
                 try {
-                    const res = await fetch('https://fairgames.gg/puppeteer-cached-stats');
+                    const res = await fetch('https://fairgames.gg/puppeteer-cached-stats', { cache: 'no-store' });
                     const data = await res.json();
                     const placeToKey = Object.fromEntries(fairgamesProjects.map(p => [p.placeId, p.key]));
                     data.details.forEach(entry => {
                         const key = placeToKey[entry.placeId];
                         if (!key) return;
-                        const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
                         if (entry.visits != null) {
                             setEl('visits-' + key, formatNum(entry.visits) + '+');
                             setEl('visits-val-' + key, formatNum(entry.visits) + '+');
@@ -543,23 +558,21 @@
                             setEl('players-val-' + key, '—');
                         }
                     });
-                } catch (e) { /* silently fail, leave "..." */ }
+                } catch (e) { /* silently fail, keep existing values */ }
             }
 
-            // 2.5) Fetch visits/players from Roblox API for projects with universeId
-            const robloxProjects = projects.filter(p => p.universeId);
-            if (robloxProjects.length > 0) {
+            async function fetchRobloxGameStats(robloxProjects) {
+                if (robloxProjects.length === 0) return;
                 const uids = robloxProjects.map(p => p.universeId).join(',');
                 const foundKeys = new Set();
                 try {
-                    const res = await fetch('https://games.roproxy.com/v1/games?universeIds=' + uids);
+                    const res = await fetch('https://games.roproxy.com/v1/games?universeIds=' + uids, { cache: 'no-store' });
                     const data = await res.json();
                     const uidToKey = Object.fromEntries(robloxProjects.map(p => [String(p.universeId), p.key]));
                     (data.data || []).forEach(game => {
                         const key = uidToKey[String(game.id)];
                         if (!key) return;
                         foundKeys.add(key);
-                        const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
                         if (game.visits != null) {
                             setEl('visits-val-' + key, formatNum(game.visits) + '+');
                         }
@@ -570,58 +583,59 @@
                         }
                         if (game.favoritedCount != null) {
                             setEl('favs-val-' + key, formatNum(game.favoritedCount));
-                        } else {
+                        } else if (isFirstFetch) {
                             const favEl = document.getElementById('favs-val-' + key);
                             if (favEl) favEl.closest('.stat-tile').style.display = 'none';
                         }
                     });
                 } catch (e) { /* silently fail */ }
-                // Hide stat tiles for projects not returned by API (e.g. private games)
-                for (const p of robloxProjects) {
-                    if (!foundKeys.has(p.key)) {
-                        const tiles = document.querySelector('#visits-val-' + p.key)?.closest('.stat-tiles');
-                        if (tiles) tiles.style.display = 'none';
+                // Hide stat tiles for projects not returned by API (only on first fetch)
+                if (isFirstFetch) {
+                    for (const p of robloxProjects) {
+                        if (!foundKeys.has(p.key)) {
+                            const tiles = document.querySelector('#visits-val-' + p.key)?.closest('.stat-tiles');
+                            if (tiles) tiles.style.display = 'none';
+                        }
                     }
                 }
             }
 
-            // 3) Fetch votes/likes (only public projects with universeId) — hide tile for others
-            const projectsWithUniverse = projects.filter(p => p.universeId);
-            for (const p of projectsWithUniverse) {
-                const el = document.getElementById('likes-val-' + p.key);
-                if (p.visibility === 'private') {
-                    if (el) el.closest('.stat-tile-likes').style.display = 'none';
-                    continue;
+            async function fetchRobloxVotes(project) {
+                const el = document.getElementById('likes-val-' + project.key);
+                if (project.visibility === 'private') {
+                    if (el && !hiddenOnce.has('likes-' + project.key)) {
+                        el.closest('.stat-tile-likes').style.display = 'none';
+                        hiddenOnce.add('likes-' + project.key);
+                    }
+                    return;
                 }
                 try {
-                    const res = await fetch('https://games.roproxy.com/v1/games/' + p.universeId + '/votes');
+                    const res = await fetch('https://games.roproxy.com/v1/games/' + project.universeId + '/votes', { cache: 'no-store' });
                     if (res.ok) {
                         const data = await res.json();
                         if (el && data.upVotes != null) {
                             el.textContent = data.upVotes.toLocaleString();
-                        } else if (el) {
+                        } else if (el && isFirstFetch) {
                             el.closest('.stat-tile-likes').style.display = 'none';
                         }
-                    } else if (el) {
+                    } else if (el && isFirstFetch) {
                         el.closest('.stat-tile-likes').style.display = 'none';
                     }
                 } catch (e) {
-                    if (el) el.closest('.stat-tile-likes').style.display = 'none';
+                    if (el && isFirstFetch) el.closest('.stat-tile-likes').style.display = 'none';
                 }
             }
 
-            // 4) Fetch Steam Workshop stats via K5API
-            const steamProjects = projects.filter(p => p.steamWorkshopId);
-            if (steamProjects.length > 0) {
+            async function fetchSteamWorkshopStats(steamProjects) {
+                if (steamProjects.length === 0) return;
                 const ids = steamProjects.map(p => p.steamWorkshopId).join(',');
                 const idToKey = Object.fromEntries(steamProjects.map(p => [p.steamWorkshopId, p.key]));
                 try {
-                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/steam/workshop-stats?ids=' + ids);
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/steam/workshop-stats?ids=' + ids, { cache: 'no-store' });
                     const data = await res.json();
                     (data.items || []).forEach(item => {
                         const key = idToKey[item.publishedfileid];
                         if (!key) return;
-                        const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
                         setEl('subs-ever-val-' + key, (item.lifetime_subscriptions || 0).toLocaleString());
                         setEl('subs-cur-val-' + key, (item.subscriptions || 0).toLocaleString());
                         setEl('favs-val-' + key, (item.lifetime_favorited || 0).toLocaleString());
@@ -629,60 +643,62 @@
                 } catch (e) { /* silently fail */ }
             }
 
-            // 5) Fetch Radio Gaming online listeners
-            const radioProjects = projects.filter(p => p.radioStations);
-            for (const p of radioProjects) {
+            async function fetchRadioListeners(project) {
                 let totalOnline = 0;
                 try {
-                    for (const station of p.radioStations) {
-                        const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/history/' + station);
+                    for (const station of project.radioStations) {
+                        const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/history/' + station, { cache: 'no-store' });
                         const data = await res.json();
                         totalOnline += data.online_count || 0;
                     }
-                    const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-                    setEl('radio-online-val-' + p.key, totalOnline.toLocaleString());
+                    setEl('radio-online-val-' + project.key, totalOnline.toLocaleString());
                 } catch (e) { /* silently fail */ }
             }
 
-            // 6) Fetch server uptime for bot-launcher
-            const uptimeProjects = projects.filter(p => p.showUptime);
-            if (uptimeProjects.length > 0) {
+            async function fetchUptime(uptimeProjects) {
+                if (uptimeProjects.length === 0) return;
                 try {
-                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/api/uptime');
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/api/uptime', { cache: 'no-store' });
                     if (res.ok) {
                         const data = await res.json();
                         const startedAt = data.started_at * 1000;
-                        function updateUptimeDisplay() {
-                            const diff = Date.now() - startedAt;
-                            const totalSec = Math.floor(diff / 1000);
-                            const d = Math.floor(totalSec / 86400);
-                            const h = Math.floor((totalSec % 86400) / 3600);
-                            const m = Math.floor((totalSec % 3600) / 60);
-                            const s = totalSec % 60;
-                            let text = '';
-                            if (d > 0) text += d + 'd ';
-                            if (d > 0 || h > 0) text += h + 'h ';
-                            text += m + 'm ' + s + 's';
-                            uptimeProjects.forEach(p => {
-                                const el = document.getElementById('uptime-val-' + p.key);
-                                if (el) el.textContent = text;
-                            });
+                        // Update uptime value and restart the ticker with fresh data
+                        if (!window._uptimeInterval) {
+                            function updateUptimeDisplay() {
+                                const diff = Date.now() - window._uptimeStartedAt;
+                                const totalSec = Math.floor(diff / 1000);
+                                const d = Math.floor(totalSec / 86400);
+                                const h = Math.floor((totalSec % 86400) / 3600);
+                                const m = Math.floor((totalSec % 3600) / 60);
+                                const s = totalSec % 60;
+                                let text = '';
+                                if (d > 0) text += d + 'd ';
+                                if (d > 0 || h > 0) text += h + 'h ';
+                                text += m + 'm ' + s + 's';
+                                uptimeProjects.forEach(p => {
+                                    const el = document.getElementById('uptime-val-' + p.key);
+                                    if (el) el.textContent = text;
+                                });
+                            }
+                            window._uptimeStartedAt = startedAt;
+                            updateUptimeDisplay();
+                            window._uptimeInterval = setInterval(updateUptimeDisplay, 1000);
+                        } else {
+                            // Just refresh the startedAt if the server restarted
+                            window._uptimeStartedAt = startedAt;
                         }
-                        updateUptimeDisplay();
-                        setInterval(updateUptimeDisplay, 1000);
                     }
                 } catch (e) { /* silently fail */ }
             }
-            // 7) Fetch FormBot stats
-            const formbotProjects = projects.filter(p => p.showFormbotStats);
-            if (formbotProjects.length > 0) {
+
+            async function fetchFormbotStats(formbotProjects) {
+                if (formbotProjects.length === 0) return;
                 try {
-                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/api/stats');
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/api/stats', { cache: 'no-store' });
                     if (res.ok) {
                         const data = await res.json();
                         const g = data.global || {};
                         formbotProjects.forEach(p => {
-                            const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
                             setEl('formbot-online-val-' + p.key, (data.online || 0).toLocaleString());
                             setEl('formbot-forms-val-' + p.key, formatNum(g.forms_submitted || 0));
                             setEl('formbot-questions-val-' + p.key, formatNum(g.questions_answered || 0));
@@ -690,6 +706,71 @@
                     }
                 } catch (e) { /* silently fail */ }
             }
+
+            // ── Per-task cooldown throttling ──
+            // Each task (keyed by name) has its own 2s cooldown.
+            // All tasks fire in parallel — but each one skips if it was called less than 2s ago.
+            // This prevents spamming the same project while letting different projects fetch simultaneously.
+
+            const lastFetchTimes = {};
+
+            async function throttledFetch(taskName, fetchFn) {
+                const now = Date.now();
+                if (lastFetchTimes[taskName] && (now - lastFetchTimes[taskName]) < FETCH_COOLDOWN_MS) {
+                    return; // Still in cooldown, skip this round
+                }
+                lastFetchTimes[taskName] = now;
+                try {
+                    await fetchFn();
+                } catch (e) {
+                    console.warn('Stats fetch failed for:', taskName, e);
+                }
+            }
+
+            const fairgamesProjects = projects.filter(p => p.fairgames);
+            const robloxProjects = projects.filter(p => p.universeId);
+            const steamProjects = projects.filter(p => p.steamWorkshopId);
+            const radioProjects = projects.filter(p => p.radioStations);
+            const uptimeProjects = projects.filter(p => p.showUptime);
+            const formbotProjects = projects.filter(p => p.showFormbotStats);
+
+            // ── Run the continuous fetch loop (all in parallel, per-task cooldown) ──
+            (async function statsLoop() {
+                while (true) {
+                    const tasks = [];
+
+                    if (fairgamesProjects.length > 0) {
+                        tasks.push(throttledFetch('fairgames', () => fetchFairgamesStats(fairgamesProjects)));
+                    }
+                    if (robloxProjects.length > 0) {
+                        tasks.push(throttledFetch('roblox-games', () => fetchRobloxGameStats(robloxProjects)));
+                    }
+                    for (const p of robloxProjects) {
+                        if (p.visibility !== 'private' || isFirstFetch) {
+                            tasks.push(throttledFetch('roblox-votes-' + p.key, () => fetchRobloxVotes(p)));
+                        }
+                    }
+                    if (steamProjects.length > 0) {
+                        tasks.push(throttledFetch('steam', () => fetchSteamWorkshopStats(steamProjects)));
+                    }
+                    for (const p of radioProjects) {
+                        tasks.push(throttledFetch('radio-' + p.key, () => fetchRadioListeners(p)));
+                    }
+                    if (uptimeProjects.length > 0) {
+                        tasks.push(throttledFetch('uptime', () => fetchUptime(uptimeProjects)));
+                    }
+                    if (formbotProjects.length > 0) {
+                        tasks.push(throttledFetch('formbot', () => fetchFormbotStats(formbotProjects)));
+                    }
+
+                    await Promise.all(tasks);
+                    isFirstFetch = false;
+
+                    // Small delay before next loop iteration to avoid CPU spin
+                    await wait(200);
+                }
+            })();
+
         })().catch(() => { });
 
         // ─── Typing Effect ───
