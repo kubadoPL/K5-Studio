@@ -25,7 +25,8 @@
         ],
         "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "☁️ Heroku", "🔗 GitHub", "🧪 Flask"],
         "visibility": "public",
-        "showUptime": true
+        "showUptime": true,
+        "showRunningServices": true
     },
     {
         "key": "formbot",

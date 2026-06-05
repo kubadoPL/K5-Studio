@@ -382,6 +382,28 @@
                 row.appendChild(tiles);
             }
 
+            // Running services stat tiles (bots + web services)
+            if (p.showRunningServices) {
+                const tiles = document.createElement('div');
+                tiles.className = 'stat-tiles';
+                tiles.innerHTML = `
+                    <div class="stat-tile stat-tile-live">
+                        <span class="stat-icon">🤖</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="bots-count-val-${p.key}">...</span>
+                            <span class="stat-label">Running Bots</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile stat-tile-live">
+                        <span class="stat-icon">🌐</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="webservices-count-val-${p.key}">...</span>
+                            <span class="stat-label">Web Services</span>
+                        </div>
+                    </div>`;
+                row.appendChild(tiles);
+            }
+
             // FormBot stat tiles (online, forms submitted, questions answered)
             if (p.showFormbotStats) {
                 const tiles = document.createElement('div');
@@ -709,6 +731,17 @@
                 } catch (e) { /* silently fail */ }
             }
 
+            async function fetchRunningServices(project) {
+                try {
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/api/running-services', { cache: 'no-store' });
+                    if (res.ok) {
+                        const data = await res.json();
+                        setEl('bots-count-val-' + project.key, (data.bots_count || 0).toLocaleString());
+                        setEl('webservices-count-val-' + project.key, (data.web_services_count || 0).toLocaleString());
+                    }
+                } catch (e) { /* silently fail */ }
+            }
+
             // ── Per-project cooldown throttling ──
             // Stats fetch only when user navigates to a slide.
             // Each project has its own 2s cooldown — spamming arrows won't spam APIs.
@@ -751,6 +784,9 @@
                 }
                 if (p.showFormbotStats) {
                     tasks.push(throttledFetch('formbot-' + key, () => fetchFormbotStats([p])));
+                }
+                if (p.showRunningServices) {
+                    tasks.push(throttledFetch('running-services-' + key, () => fetchRunningServices(p)));
                 }
 
                 if (tasks.length > 0) {
