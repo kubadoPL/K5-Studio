@@ -828,6 +828,50 @@ header nav ul li a:hover {
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
 }
 
+.radio-listeners-avatars {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.listener-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    margin-left: -8px;
+    object-fit: cover;
+    transition: all var(--transition-fast);
+    cursor: default;
+    background: rgba(15, 15, 25, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listener-avatar:first-child {
+    margin-left: 0;
+}
+
+.listener-avatar:hover {
+    transform: scale(1.2);
+    z-index: 5;
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+.listener-anon {
+    font-size: 13px;
+    line-height: 1;
+}
+
+.listener-more {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 28px;
+}
+
 .stat-icon {
     font-size: 16px;
     line-height: 1;

@@ -363,7 +363,8 @@
                             <span class="stat-value" id="radio-online-val-${p.key}">...</span>
                             <span class="stat-label">Listening Now</span>
                         </div>
-                    </div>`;
+                    </div>
+                    <div class="radio-listeners-avatars" id="radio-avatars-${p.key}"></div>`;
                 row.appendChild(tiles);
             }
 
@@ -705,13 +706,39 @@
 
             async function fetchRadioListeners(project) {
                 let totalOnline = 0;
+                let allUsers = [];
                 try {
                     for (const station of project.radioStations) {
-                        const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/history/' + station, { cache: 'no-store' });
+                        const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/history/' + station + '?stats_only=1', { cache: 'no-store' });
                         const data = await res.json();
                         totalOnline += data.online_count || 0;
+                        if (data.online_users) {
+                            data.online_users.forEach(u => {
+                                if (!allUsers.find(x => x.id === u.id)) allUsers.push(u);
+                            });
+                        }
                     }
                     setEl('radio-online-val-' + project.key, totalOnline.toLocaleString());
+
+                    // Render avatars
+                    const container = document.getElementById('radio-avatars-' + project.key);
+                    if (container) {
+                        const online = allUsers.filter(u => u.is_online);
+                        const MAX_SHOW = 8;
+                        let html = '';
+                        online.slice(0, MAX_SHOW).forEach(u => {
+                            const name = u.is_anonymous ? 'Anonymous' : (u.global_name || u.username);
+                            if (u.is_anonymous) {
+                                html += `<div class="listener-avatar" title="${name}"><span class="listener-anon">🎵</span></div>`;
+                            } else {
+                                html += `<img class="listener-avatar" src="${u.avatar_url}" alt="${name}" title="${name}">`;
+                            }
+                        });
+                        if (online.length > MAX_SHOW) {
+                            html += `<div class="listener-avatar listener-more">+${online.length - MAX_SHOW}</div>`;
+                        }
+                        container.innerHTML = html;
+                    }
                 } catch (e) { /* silently fail */ }
             }
 
