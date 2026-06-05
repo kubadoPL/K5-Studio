@@ -450,6 +450,8 @@
         // ─── Slideshow ───
         var slideIndex = 1;
         var slideshowTimeout;
+        var loadedProjects = []; // filled by init(), used by showSlides for stats fetch
+        var fetchStatsForProject = function() {}; // stub, replaced by init()
 
         function showSlides(n) {
             var slides = document.getElementsByClassName("slide");
@@ -482,6 +484,11 @@
             }, 900);
 
             clearTimeout(slideshowTimeout);
+
+            // Fetch stats for the currently visible project
+            if (loadedProjects.length > 0) {
+                fetchStatsForProject(loadedProjects[slideIndex - 1]);
+            }
         }
 
         function navigateSlide(n) {
@@ -514,9 +521,6 @@
                 dot.addEventListener('click', () => currentSlide(i + 1));
                 dotsContainer.appendChild(dot);
             });
-
-            // Init slideshow
-            showSlides(slideIndex);
 
             // Nav arrows
             document.querySelector(".prev-point").addEventListener("click", () => navigateSlide(-1));
@@ -707,17 +711,16 @@
                 } catch (e) { /* silently fail */ }
             }
 
-            // ── Per-task cooldown throttling ──
-            // Each task (keyed by name) has its own 2s cooldown.
-            // All tasks fire in parallel — but each one skips if it was called less than 2s ago.
-            // This prevents spamming the same project while letting different projects fetch simultaneously.
+            // ── Per-project cooldown throttling ──
+            // Stats fetch only when user navigates to a slide.
+            // Each project has its own 2s cooldown — spamming arrows won't spam APIs.
 
             const lastFetchTimes = {};
 
             async function throttledFetch(taskName, fetchFn) {
                 const now = Date.now();
                 if (lastFetchTimes[taskName] && (now - lastFetchTimes[taskName]) < FETCH_COOLDOWN_MS) {
-                    return; // Still in cooldown, skip this round
+                    return; // Still in cooldown, skip
                 }
                 lastFetchTimes[taskName] = now;
                 try {
@@ -727,49 +730,44 @@
                 }
             }
 
-            const fairgamesProjects = projects.filter(p => p.fairgames);
-            const robloxProjects = projects.filter(p => p.universeId);
-            const steamProjects = projects.filter(p => p.steamWorkshopId);
-            const radioProjects = projects.filter(p => p.radioStations);
-            const uptimeProjects = projects.filter(p => p.showUptime);
-            const formbotProjects = projects.filter(p => p.showFormbotStats);
+            // ── Fetch all stats for a single project (triggered by slide navigation) ──
+            fetchStatsForProject = function(p) {
+                const key = p.key;
+                const tasks = [];
 
-            // ── Run the continuous fetch loop (all in parallel, per-task cooldown) ──
-            (async function statsLoop() {
-                while (true) {
-                    const tasks = [];
-
-                    if (fairgamesProjects.length > 0) {
-                        tasks.push(throttledFetch('fairgames', () => fetchFairgamesStats(fairgamesProjects)));
-                    }
-                    if (robloxProjects.length > 0) {
-                        tasks.push(throttledFetch('roblox-games', () => fetchRobloxGameStats(robloxProjects)));
-                    }
-                    for (const p of robloxProjects) {
-                        if (p.visibility !== 'private' || isFirstFetch) {
-                            tasks.push(throttledFetch('roblox-votes-' + p.key, () => fetchRobloxVotes(p)));
-                        }
-                    }
-                    if (steamProjects.length > 0) {
-                        tasks.push(throttledFetch('steam', () => fetchSteamWorkshopStats(steamProjects)));
-                    }
-                    for (const p of radioProjects) {
-                        tasks.push(throttledFetch('radio-' + p.key, () => fetchRadioListeners(p)));
-                    }
-                    if (uptimeProjects.length > 0) {
-                        tasks.push(throttledFetch('uptime', () => fetchUptime(uptimeProjects)));
-                    }
-                    if (formbotProjects.length > 0) {
-                        tasks.push(throttledFetch('formbot', () => fetchFormbotStats(formbotProjects)));
-                    }
-
-                    await Promise.all(tasks);
-                    isFirstFetch = false;
-
-                    // Small delay before next loop iteration to avoid CPU spin
-                    await wait(200);
+                if (p.fairgames) {
+                    tasks.push(throttledFetch('fairgames-' + key, () => fetchFairgamesStats([p])));
                 }
-            })();
+                if (p.universeId) {
+                    tasks.push(throttledFetch('roblox-games-' + key, () => fetchRobloxGameStats([p])));
+                    tasks.push(throttledFetch('roblox-votes-' + key, () => fetchRobloxVotes(p)));
+                }
+                if (p.steamWorkshopId) {
+                    tasks.push(throttledFetch('steam-' + key, () => fetchSteamWorkshopStats([p])));
+                }
+                if (p.radioStations) {
+                    tasks.push(throttledFetch('radio-' + key, () => fetchRadioListeners(p)));
+                }
+                if (p.showUptime) {
+                    tasks.push(throttledFetch('uptime-' + key, () => fetchUptime([p])));
+                }
+                if (p.showFormbotStats) {
+                    tasks.push(throttledFetch('formbot-' + key, () => fetchFormbotStats([p])));
+                }
+
+                if (tasks.length > 0) {
+                    Promise.all(tasks).then(() => { isFirstFetch = false; });
+                }
+            }
+
+            // Make projects available to showSlides
+            loadedProjects = projects;
+
+            // Init slideshow (triggers fetch for first visible slide)
+            showSlides(slideIndex);
+
+            // Initial fetch for ALL projects on page load
+            projects.forEach(p => fetchStatsForProject(p));
 
         })().catch(() => { });
 
