@@ -11,7 +11,8 @@
         ],
         "tags": ["🌐 HTML", "🎨 CSS", "⚡ JavaScript", "🐍 Python", "📻 ICECAST", "🖌️ Adobe Photoshop"],
         "visibility": "public",
-        "radioStations": ["RADIOGAMING", "RADIOGAMINGDARK", "RADIOGAMINGMARONFM"]
+        "radioStations": ["RADIOGAMING", "RADIOGAMINGDARK", "RADIOGAMINGMARONFM"],
+        "showRadioStats": true
     },
      {
         "key": "bot-launcher",

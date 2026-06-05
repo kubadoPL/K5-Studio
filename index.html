@@ -367,6 +367,42 @@
                 row.appendChild(tiles);
             }
 
+            // Radio stats tiles (registered users, top listener, songs, total time)
+            if (p.showRadioStats) {
+                const tiles = document.createElement('div');
+                tiles.className = 'stat-tiles';
+                tiles.innerHTML = `
+                    <div class="stat-tile">
+                        <span class="stat-icon">👥</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="radio-users-val-${p.key}">...</span>
+                            <span class="stat-label">Registered Users</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">🏆</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="radio-toptime-val-${p.key}">...</span>
+                            <span class="stat-label">Top Listener Time</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">🎵</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="radio-songs-val-${p.key}">...</span>
+                            <span class="stat-label">Songs Tracked</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">⏳</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="radio-totaltime-val-${p.key}">...</span>
+                            <span class="stat-label">Total Listening Time</span>
+                        </div>
+                    </div>`;
+                row.appendChild(tiles);
+            }
+
             // Server uptime stat tile
             if (p.showUptime) {
                 const tiles = document.createElement('div');
@@ -742,6 +778,30 @@
                 } catch (e) { /* silently fail */ }
             }
 
+            function formatDuration(totalSeconds) {
+                const d = Math.floor(totalSeconds / 86400);
+                const h = Math.floor((totalSeconds % 86400) / 3600);
+                const m = Math.floor((totalSeconds % 3600) / 60);
+                let text = '';
+                if (d > 0) text += d + 'd ';
+                if (d > 0 || h > 0) text += h + 'h ';
+                text += m + 'm';
+                return text || '0m';
+            }
+
+            async function fetchRadioStats(project) {
+                try {
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/radio-stats', { cache: 'no-store' });
+                    if (res.ok) {
+                        const data = await res.json();
+                        setEl('radio-users-val-' + project.key, (data.total_registered_users || 0).toLocaleString());
+                        setEl('radio-toptime-val-' + project.key, formatDuration(data.top_listener_time_seconds || 0));
+                        setEl('radio-songs-val-' + project.key, (data.unique_songs_tracked || 0).toLocaleString());
+                        setEl('radio-totaltime-val-' + project.key, formatDuration(data.total_listening_time_seconds || 0));
+                    }
+                } catch (e) { /* silently fail */ }
+            }
+
             // ── Per-project cooldown throttling ──
             // Stats fetch only when user navigates to a slide.
             // Each project has its own 2s cooldown — spamming arrows won't spam APIs.
@@ -787,6 +847,9 @@
                 }
                 if (p.showRunningServices) {
                     tasks.push(throttledFetch('running-services-' + key, () => fetchRunningServices(p)));
+                }
+                if (p.showRadioStats) {
+                    tasks.push(throttledFetch('radio-stats-' + key, () => fetchRadioStats(p)));
                 }
 
                 if (tasks.length > 0) {
