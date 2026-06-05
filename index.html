@@ -714,7 +714,12 @@
                         totalOnline += data.online_count || 0;
                         if (data.online_users) {
                             data.online_users.forEach(u => {
-                                if (!allUsers.find(x => x.id === u.id)) allUsers.push(u);
+                                const existing = allUsers.find(x => x.id === u.id);
+                                if (!existing) {
+                                    allUsers.push(u);
+                                } else if (u.is_online && !existing.is_online) {
+                                    Object.assign(existing, u);
+                                }
                             });
                         }
                     }
