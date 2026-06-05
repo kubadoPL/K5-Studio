@@ -779,12 +779,10 @@
             }
 
             function formatDuration(totalSeconds) {
-                const d = Math.floor(totalSeconds / 86400);
-                const h = Math.floor((totalSeconds % 86400) / 3600);
+                const h = Math.floor(totalSeconds / 3600);
                 const m = Math.floor((totalSeconds % 3600) / 60);
                 let text = '';
-                if (d > 0) text += d + 'd ';
-                if (d > 0 || h > 0) text += h + 'h ';
+                if (h > 0) text += h + 'h ';
                 text += m + 'm';
                 return text || '0m';
             }
