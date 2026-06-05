@@ -593,13 +593,11 @@
                         }
                     });
                 } catch (e) { /* silently fail */ }
-                // Hide stat tiles for projects not returned by API (only on first fetch)
-                if (isFirstFetch) {
-                    for (const p of robloxProjects) {
-                        if (!foundKeys.has(p.key)) {
-                            const tiles = document.querySelector('#visits-val-' + p.key)?.closest('.stat-tiles');
-                            if (tiles) tiles.style.display = 'none';
-                        }
+                // Hide stat tiles for projects not returned by API (e.g. private games)
+                for (const p of robloxProjects) {
+                    if (!foundKeys.has(p.key)) {
+                        const tiles = document.querySelector('#visits-val-' + p.key)?.closest('.stat-tiles');
+                        if (tiles) tiles.style.display = 'none';
                     }
                 }
             }
