@@ -1164,6 +1164,42 @@ footer p {
     margin-top: 12px;
 }
 
+.footer-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.footer-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-radius: 20px;
+    transition: all var(--transition-fast);
+}
+
+.footer-stat:hover {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.25);
+}
+
+.footer-stat-icon {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.footer-stat-sep {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 16px;
+}
+
 /* ═══════════════════════════════
    RESPONSIVE — Mobile (<=1000px)
    ═══════════════════════════════ */

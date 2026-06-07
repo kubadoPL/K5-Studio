@@ -201,6 +201,17 @@
 
     <footer>
         <div class="footer-accent"></div>
+        <div class="footer-stats" id="footer-stats">
+            <span class="footer-stat" title="Total page views">
+                <span class="footer-stat-icon">👁️</span>
+                <span id="stat-totalvisits">...</span> views
+            </span>
+            <span class="footer-stat-sep">·</span>
+            <span class="footer-stat" title="Unique visitors">
+                <span class="footer-stat-icon">👤</span>
+                <span id="stat-uniqueusers">...</span> unique visitors
+            </span>
+        </div>
         <a href="#home">Go Back To The Top</a>
         <p>Jakub Drużbiński © 2026</p>
     </footer>
@@ -971,6 +982,36 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        // ─── Portfolio Visit Tracking ───
+        (async function trackVisit() {
+            const K5_API = 'https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager';
+            const VISITED_KEY = 'k5portfolio-visited';
+            const isNew = !localStorage.getItem(VISITED_KEY);
+            const postOpts = (body) => ({ method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+
+            try {
+                // Increment total visits
+                fetch(K5_API + '/stats/k5portfolio/totalvisits', postOpts({ increment: 1 })).catch(() => {});
+
+                // Increment unique users if first visit
+                if (isNew) {
+                    fetch(K5_API + '/stats/k5portfolio/uniqueusers', postOpts({ increment: 1 })).catch(() => {});
+                    localStorage.setItem(VISITED_KEY, '1');
+                }
+
+                // Read current stats to display
+                const res = await fetch(K5_API + '/stats/k5portfolio', { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    const stats = data.stats || {};
+                    const tv = document.getElementById('stat-totalvisits');
+                    const uu = document.getElementById('stat-uniqueusers');
+                    if (tv) tv.textContent = (stats.totalvisits || 0).toLocaleString();
+                    if (uu) uu.textContent = (stats.uniqueusers || 0).toLocaleString();
+                }
+            } catch (_) { /* silent */ }
+        })();
     </script>
 
 
