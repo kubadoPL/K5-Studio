@@ -1209,6 +1209,28 @@ footer p {
         padding: 12px 16px;
     }
 
+    .slideshow-container {
+        position: relative;
+        width: auto;
+        height: 500px;
+        margin: auto;
+        overflow: hidden;
+        user-select: none;
+        border-radius: var(--radius-xl);
+        animation: border-glow 4s infinite alternate;
+    }
+
+    .description {
+        max-height: 420px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .description::-webkit-scrollbar {
+        display: none;
+    }
+
     header.header-scrolled {
         padding: 8px 16px;
     }
@@ -1369,24 +1391,24 @@ footer p {
 
     .stat-tiles {
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 4px;
     }
 
     .stat-tile {
-        padding: 5px 8px;
-        gap: 5px;
+        padding: 3px 6px;
+        gap: 4px;
     }
 
     .stat-icon {
-        font-size: 14px;
+        font-size: 11px;
     }
 
     .stat-value {
-        font-size: 13px;
+        font-size: 11px;
     }
 
     .stat-label {
-        font-size: 9px;
+        font-size: 8px;
     }
 }
 
