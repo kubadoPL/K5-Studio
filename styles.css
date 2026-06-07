@@ -1312,16 +1312,16 @@ footer p {
     .prev-point,
     .next-point {
         position: absolute;
-        top: 10%;
-        transform: translateY(-50%);
-        width: 36px;
-        height: 36px;
-        background: rgba(10, 10, 15, 0.6);
+        top: 12px;
+        transform: none;
+        width: 32px;
+        height: 32px;
+        background: rgba(10, 10, 15, 0.7);
         backdrop-filter: blur(10px);
         color: #fff;
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
-        line-height: 36px;
+        line-height: 32px;
         cursor: pointer;
         z-index: 5;
         user-select: none;
@@ -1336,11 +1336,11 @@ footer p {
     }
 
     .prev-point {
-        left: 12px;
+        left: 8px;
     }
 
     .next-point {
-        right: 12px;
+        right: 8px;
     }
 
     .thumbnail {
@@ -1368,12 +1368,13 @@ footer p {
     }
 
     .stat-tiles {
+        flex-wrap: wrap;
         gap: 6px;
     }
 
     .stat-tile {
-        padding: 6px 10px;
-        gap: 6px;
+        padding: 5px 8px;
+        gap: 5px;
     }
 
     .stat-icon {
