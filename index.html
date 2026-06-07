@@ -991,24 +991,26 @@
             const postOpts = (body) => ({ method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
 
             try {
-                // Increment total visits
-                fetch(K5_API + '/stats/k5portfolio/totalvisits', postOpts({ increment: 1 })).catch(() => {});
+                // Increment total visits (await so DB is updated before we read)
+                const posts = [fetch(K5_API + '/stats/k5portfolio/totalvisits', postOpts({ increment: 1 }))];
 
                 // Increment unique users if first visit
                 if (isNew) {
-                    fetch(K5_API + '/stats/k5portfolio/uniqueusers', postOpts({ increment: 1 })).catch(() => {});
+                    posts.push(fetch(K5_API + '/stats/k5portfolio/uniqueusers', postOpts({ increment: 1 })));
                     localStorage.setItem(VISITED_KEY, '1');
                 }
 
-                // Read current stats to display
+                // Wait for all POSTs to finish, then read updated stats
+                await Promise.allSettled(posts);
+
                 const res = await fetch(K5_API + '/stats/k5portfolio', { cache: 'no-store' });
                 if (res.ok) {
                     const data = await res.json();
                     const stats = data.stats || {};
                     const tv = document.getElementById('stat-totalvisits');
                     const uu = document.getElementById('stat-uniqueusers');
-                    if (tv) tv.textContent = (stats.totalvisits || 0).toLocaleString();
-                    if (uu) uu.textContent = (stats.uniqueusers || 0).toLocaleString();
+                    if (tv) tv.textContent = ((stats.totalvisits && stats.totalvisits.value) || 0).toLocaleString();
+                    if (uu) uu.textContent = ((stats.uniqueusers && stats.uniqueusers.value) || 0).toLocaleString();
                 }
             } catch (_) { /* silent */ }
         })();
