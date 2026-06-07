@@ -400,6 +400,13 @@
                             <span class="stat-value" id="radio-totaltime-val-${p.key}">...</span>
                             <span class="stat-label">Total Listening Time</span>
                         </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">👻</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="radio-anon-val-${p.key}">...</span>
+                            <span class="stat-label">Unique Anonymous Users</span>
+                        </div>
                     </div>`;
                 row.appendChild(tiles);
             }
@@ -828,6 +835,7 @@
                         setEl('radio-toptime-val-' + project.key, formatDuration(data.top_listener_time_seconds || 0));
                         setEl('radio-songs-val-' + project.key, (data.unique_songs_tracked || 0).toLocaleString());
                         setEl('radio-totaltime-val-' + project.key, formatDuration(data.total_listening_time_seconds || 0));
+                        setEl('radio-anon-val-' + project.key, (data.total_unique_anonymous_users || 0).toLocaleString());
                     }
                 } catch (e) { /* silently fail */ }
             }
