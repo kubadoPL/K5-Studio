@@ -722,43 +722,85 @@
                 } catch (e) { /* silently fail */ }
             }
 
-            async function fetchRadioListeners(project) {
-                let totalOnline = 0;
-                let allUsers = [];
-                try {
-                    for (const station of project.radioStations) {
-                        const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/history/' + station + '?stats_only=1', { cache: 'no-store' });
-                        const data = await res.json();
-                        totalOnline += data.online_count || 0;
-                        if (data.online_users) {
-                            data.online_users.forEach(u => {
-                                const existing = allUsers.find(x => x.id === u.id);
-                                if (!existing) {
-                                    allUsers.push(u);
-                                } else if (u.is_online && !existing.is_online) {
-                                    Object.assign(existing, u);
-                                }
-                            });
-                        }
-                    }
-                    setEl('radio-online-val-' + project.key, totalOnline.toLocaleString());
+            // === OLD: per-station fetching (3 separate requests) ===
+            // async function fetchRadioListeners(project) {
+            //     let totalOnline = 0;
+            //     let allUsers = [];
+            //     try {
+            //         for (const station of project.radioStations) {
+            //             const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/history/' + station + '?stats_only=1', { cache: 'no-store' });
+            //             const data = await res.json();
+            //             totalOnline += data.online_count || 0;
+            //             if (data.online_users) {
+            //                 data.online_users.forEach(u => {
+            //                     const existing = allUsers.find(x => x.id === u.id);
+            //                     if (!existing) {
+            //                         allUsers.push(u);
+            //                     } else if (u.is_online && !existing.is_online) {
+            //                         Object.assign(existing, u);
+            //                     }
+            //                 });
+            //             }
+            //         }
+            //         setEl('radio-online-val-' + project.key, totalOnline.toLocaleString());
+            //
+            //         // Render avatars
+            //         const container = document.getElementById('radio-avatars-' + project.key);
+            //         if (container) {
+            //             const online = allUsers.filter(u => u.is_online);
+            //             const MAX_SHOW = 8;
+            //             let html = '';
+            //             online.slice(0, MAX_SHOW).forEach(u => {
+            //                 const name = u.is_anonymous ? 'Anonymous' : (u.global_name || u.username);
+            //                 if (u.is_anonymous) {
+            //                     html += `<div class="listener-avatar" title="${name}"><span class="listener-anon">🎵</span></div>`;
+            //                 } else {
+            //                     html += `<img class="listener-avatar" src="${u.avatar_url}" alt="${name}" title="${name}">`;
+            //                 }
+            //             });
+            //             if (online.length > MAX_SHOW) {
+            //                 html += `<div class="listener-avatar listener-more">+${online.length - MAX_SHOW}</div>`;
+            //             }
+            //             container.innerHTML = html;
+            //         }
+            //     } catch (e) { /* silently fail */ }
+            // }
+            // === END OLD ===
 
-                    // Render avatars
+            // === NEW: single /chat/radio-online request (server aggregates & deduplicates) ===
+            async function fetchRadioListeners(project) {
+                try {
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/DiscordAuthChatApi/chat/radio-online', { cache: 'no-store' });
+                    const data = await res.json();
+
+                    setEl('radio-online-val-' + project.key, (data.total_online || 0).toLocaleString());
+
+                    // Render avatars from deduplicated all_online_users
                     const container = document.getElementById('radio-avatars-' + project.key);
                     if (container) {
-                        const online = allUsers.filter(u => u.is_online);
+                        const onlineUsers = data.all_online_users || [];
+                        const anonCount = data.total_anonymous_online || 0;
                         const MAX_SHOW = 8;
                         let html = '';
-                        online.slice(0, MAX_SHOW).forEach(u => {
-                            const name = u.is_anonymous ? 'Anonymous' : (u.global_name || u.username);
-                            if (u.is_anonymous) {
-                                html += `<div class="listener-avatar" title="${name}"><span class="listener-anon">🎵</span></div>`;
-                            } else {
-                                html += `<img class="listener-avatar" src="${u.avatar_url}" alt="${name}" title="${name}">`;
-                            }
+                        let shown = 0;
+
+                        // Registered users (have avatars)
+                        onlineUsers.slice(0, MAX_SHOW).forEach(u => {
+                            const name = u.global_name || u.username || 'Unknown';
+                            html += `<img class="listener-avatar" src="${u.avatar_url}" alt="${name}" title="${name}">`;
+                            shown++;
                         });
-                        if (online.length > MAX_SHOW) {
-                            html += `<div class="listener-avatar listener-more">+${online.length - MAX_SHOW}</div>`;
+
+                        // Anonymous listeners (show music note icons for remaining slots)
+                        const anonSlots = Math.min(anonCount, MAX_SHOW - shown);
+                        for (let i = 0; i < anonSlots; i++) {
+                            html += `<div class="listener-avatar" title="Anonymous"><span class="listener-anon">🎵</span></div>`;
+                            shown++;
+                        }
+
+                        const totalPeople = onlineUsers.length + anonCount;
+                        if (totalPeople > MAX_SHOW) {
+                            html += `<div class="listener-avatar listener-more">+${totalPeople - shown}</div>`;
                         }
                         container.innerHTML = html;
                     }
@@ -885,6 +927,9 @@
                 if (p.steamWorkshopId) {
                     tasks.push(throttledFetch('steam-' + key, () => fetchSteamWorkshopStats([p])));
                 }
+                if (p.showRadioStats) {
+                    tasks.push(throttledFetch('radio-stats-' + key, () => fetchRadioStats(p)));
+                }
                 if (p.radioStations) {
                     tasks.push(throttledFetch('radio-' + key, () => fetchRadioListeners(p)));
                 }
@@ -896,9 +941,6 @@
                 }
                 if (p.showRunningServices) {
                     tasks.push(throttledFetch('running-services-' + key, () => fetchRunningServices(p)));
-                }
-                if (p.showRadioStats) {
-                    tasks.push(throttledFetch('radio-stats-' + key, () => fetchRadioStats(p)));
                 }
 
                 if (tasks.length > 0) {
