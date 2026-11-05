@@ -22,13 +22,17 @@
         <div class="logo"><a href="#home">K5 STUDIO</a></div>
         <nav>
             <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#achievements">My Achievements</a></li>
-                <li><a href="#portfolio">My Portfolio</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" data-pl="O mnie">About Me</a></li>
+                <li><a href="#achievements" data-pl="Moje osiągnięcia">My Achievements</a></li>
+                <li><a href="#portfolio" data-pl="Moje portfolio">My Portfolio</a></li>
+                <li><a href="#testimonials" data-pl="Opinie">Reviews</a></li>
+                <li><a href="#contact" data-pl="Kontakt">Contact</a></li>
             </ul>
         </nav>
+        <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="pl">PL</button>
+        </div>
     </header>
 
     <section id="home" class="hero">
@@ -41,8 +45,8 @@
             <!-- <span class="hero-badge">🚀 Available for Work</span> -->
             <h1>K5 Studio</h1>
             <h2 class="typing-subtitle"><span id="typed-text"></span><span class="cursor">|</span></h2>
-            <p>Programming, graphic, video and 3D services for everyone!</p>
-            <a href="#about"><button class="hero-btn">Explore My Work</button></a>
+            <p data-pl="Usługi programistyczne, graficzne, wideo i 3D dla każdego!">Programming, graphic, video and 3D services for everyone!</p>
+            <a href="#about"><button class="hero-btn" data-pl="Zobacz moje prace">Explore My Work</button></a>
         </div>
         <a href="#about" class="scroll-indicator">
             <div class="scroll-arrow"></div>
@@ -50,7 +54,7 @@
     </section>
 
     <section id="about" class="about">
-        <h2 class="section-title reveal">About me</h2>
+        <h2 class="section-title reveal" data-pl="O mnie">About me</h2>
         <div class="about-content">
             <div class="profile-image reveal reveal-left">
                 <img src="images/profile.jpg" alt="Profile Image">
@@ -71,25 +75,25 @@
                     <span>💻 Visual Studio</span>
                 </div>
                 <div class="about-description reveal delay-300">
-                    <h3>Creativity is my second Name!</h3>
+                    <h3 data-pl="Kreatywność to moje drugie imię!">Creativity is my second Name!</h3>
                     <p>
-                        Hello, I'm Jakub, a self-taught programmer, graphic
+                        <span data-pl="Cześć, jestem Jakub, programista-samouk, grafik i artysta 3D. Moja przygoda z tym wszystkim zaczęła się w wieku 14 lat, z pasji do tworzenia gier. Znam języki programowania takie jak Lua, C#, VBA, Python i trochę PHP. W grafice 3D korzystam z Blendera, a w 2D z Adobe Photoshopa. Te umiejętności zdobyłem wyłącznie z pasji, a teraz chcę dzielić się swoją pracą ze światem! Obecnie pracuję dla">Hello, I'm Jakub, a self-taught programmer, graphic
                         designer, and 3D artist. My journey into all of that started at 14, driven by a passion for
                         creating games. I know programming languages such as Lua, C#, VBA, Python, and a bit of PHP. In
                         the realm of 3D
                         art, I use Blender 3D, and for 2D work Adobe Photoshop. I acquired these skills purely out of
-                        passion and now aim to share my work with the world! I'm currently working for
+                        passion and now aim to share my work with the world! I'm currently working for</span>
                         <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener"><img class="company-logo"
                                     src="images/icons/fairentertainment.jpg" alt="">Fair
                                 Entertainment</a></strong>
-                        <span class="work-period" data-start="2025-11">(Nov 2025 – Present · 1 yr 1 mo)</span>,
-                        where I continue to grow and apply my skills in new projects. Previously, I worked for
+                        <span class="work-period" data-start="2025-11">(Nov 2025 – Present · 1 yr 1 mo)</span><span data-pl=", gdzie nadal się rozwijam i wykorzystuję swoje umiejętności w nowych projektach. Wcześniej pracowałem dla">,
+                        where I continue to grow and apply my skills in new projects. Previously, I worked for</span>
                         <strong><a href="https://www.game-changer.pl/" target="_blank" rel="noopener"><img
                                     class="company-logo" src="images/icons/gamechanger.jpg" alt="">Game
                                 Changer</a></strong>
                         <span class="work-period" data-start="2024-10" data-end="2026-10">(Oct 2024 – Oct 2026 · 2 yrs 1
-                            mo)</span>.
-                        I invite you to explore my portfolio and I hope to work for you soon!
+                            mo)</span><span data-pl=". Zapraszam do obejrzenia mojego portfolio i mam nadzieję, że wkrótce będę pracować dla Ciebie!">.
+                        I invite you to explore my portfolio and I hope to work for you soon!</span>
                     </p>
 
                     <a href="#"></a>
@@ -99,13 +103,13 @@
     </section>
 
     <section id="achievements" class="portfolio">
-        <h2 class="section-title reveal">My Achievements</h2>
+        <h2 class="section-title reveal" data-pl="Moje osiągnięcia">My Achievements</h2>
         <!-- Posts generated dynamically from achievements.json -->
         <div class="achievements-feed"></div>
     </section>
 
     <section id="portfolio" class="portfolio">
-        <h2 class="section-title reveal">My Best Work</h2>
+        <h2 class="section-title reveal" data-pl="Moje najlepsze prace">My Best Work</h2>
         <div class="slideshow-container reveal">
             <!-- Points to navigate to previous and next slides -->
             <div class="nav-points">
@@ -120,7 +124,7 @@
     </section>
 
     <section id="commissioned" class="portfolio">
-        <h2 class="section-title reveal">My Best Commissioned Work</h2>
+        <h2 class="section-title reveal" data-pl="Moje najlepsze prace na zlecenie">My Best Commissioned Work</h2>
         <div class="slideshow-container reveal">
             <!-- Points to navigate to previous and next slides -->
             <div class="nav-points">
@@ -136,7 +140,7 @@
 
 
     <section id="testimonials" class="testimonials">
-        <h2 class="section-title reveal">Reviews</h2>
+        <h2 class="section-title reveal" data-pl="Opinie">Reviews</h2>
         <div class="testimonial">
             <div class="review-container reveal reveal-zoom">
                 <div class="user-info">
@@ -145,7 +149,7 @@
                     <div>
                         <span class="user-name">singlefather</span>
                         <span class="user-location">
-                            United States
+                            <span data-pl="Stany Zjednoczone">United States</span>
                             <img src="images/Flags/usflag.png" alt="United States Flag" class="location-flag">
                         </span>
                     </div>
@@ -170,15 +174,15 @@
 
                 <div class="details">
                     <div class="detail-item">
-                        <span class="detail-label">Price:</span>
+                        <span class="detail-label" data-pl="Cena:">Price:</span>
                         <span class="detail-value">US$5</span>
                     </div>
                     <div class="detail-item">
-                        <span class="detail-label">Duration:</span>
-                        <span class="detail-value">3 days</span>
+                        <span class="detail-label" data-pl="Czas realizacji:">Duration:</span>
+                        <span class="detail-value" data-pl="3 dni">3 days</span>
                     </div>
                     <div class="detail-item">
-                        <span class="detail-label">Product:</span>
+                        <span class="detail-label" data-pl="Produkt:">Product:</span>
                         <a href="https://www.fiverr.com/s/YRYDeYK" target="_blank">
                             <img class="detail-value"
                                 src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/359435412/original/66dbeef569e3677318c1e4470d1fa75b517da3ea/import-your-3d-character-to-roblox-and-make-it-playable.png"
@@ -191,14 +195,14 @@
     </section>
 
     <section id="contact" class="contact">
-        <h2 class="section-title reveal">Contact</h2>
+        <h2 class="section-title reveal" data-pl="Kontakt">Contact</h2>
 
         <div class="contact-container">
             <div class="contact-info">
                 <a href="mailto:druzbinskijakub@gmail.com" target="_blank"
                     class="contact-card reveal reveal-zoom delay-100">
                     <img src="images/icons/mail.png" alt="Email Icon">
-                    <span>DruzbinskiJakub@gmail.com</span>
+                    <span data-pl="E-mail">Email</span>
                 </a>
                 <!-- <a href="mailto:j.druzbinski@game-changer.pl" target="_blank"
                     class="contact-card reveal reveal-zoom delay-200">
@@ -208,11 +212,11 @@
                 <a href="https://fiverr.com/kubado515" target="_blank"
                     class="contact-card reveal reveal-zoom delay-300">
                     <img src="images/icons/fiverr.png" alt="Fiverr Icon">
-                    <span>@kubado515</span>
+                    <span>Fiverr</span>
                 </a>
                 <a href="https://github.com/kubadoPL" target="_blank" class="contact-card reveal reveal-zoom delay-400">
                     <img src="images/icons/github.png" alt="Github Icon">
-                    <span>kubadoPL</span>
+                    <span>GitHub</span>
                 </a>
                 <a href="https://www.linkedin.com/in/jakub-dru%C5%BCbi%C5%84ski-53a240347/" target="_blank"
                     class="contact-card reveal reveal-zoom delay-500">
@@ -226,17 +230,17 @@
     <footer>
         <div class="footer-accent"></div>
         <div class="footer-stats" id="footer-stats">
-            <span class="footer-stat" title="Total page views">
+            <span class="footer-stat" title="Total page views" data-pl-title="Łączna liczba wyświetleń">
                 <span class="footer-stat-icon">👁️</span>
-                <span id="stat-totalvisits">...</span> views
+                <span id="stat-totalvisits">...</span> <span data-pl="wyświetleń">views</span>
             </span>
             <span class="footer-stat-sep">·</span>
-            <span class="footer-stat" title="Unique visitors">
+            <span class="footer-stat" title="Unique visitors" data-pl-title="Unikalni odwiedzający">
                 <span class="footer-stat-icon">👤</span>
-                <span id="stat-uniqueusers">...</span> unique visitors
+                <span id="stat-uniqueusers">...</span> <span data-pl="unikalnych odwiedzających">unique visitors</span>
             </span>
         </div>
-        <a href="#home">Go Back To The Top</a>
+        <a href="#home" data-pl="Wróć na górę">Go Back To The Top</a>
         <p>K5 Studio © <span id="current-year">2026</span></p>
     </footer>
 
@@ -244,6 +248,96 @@
 
 
     <script>
+        // ─── Language (English is the default and lives in the markup and JSON) ───
+        // Interface labels used in more than one place; page text carries its Polish in data-pl or *_pl fields.
+        const UI_PL = {
+            'Total Visits': 'Łącznie wizyt',
+            'Playing Now': 'Grających teraz',
+            'Likes': 'Polubienia',
+            'Favorites': 'Ulubione',
+            'Ever Subscribed': 'Subskrypcje łącznie',
+            'Currently Subscribed': 'Obecne subskrypcje',
+            'Listening Now': 'Słuchających teraz',
+            'Registered Users': 'Zarejestrowani użytkownicy',
+            'Top Listener Time': 'Czas najlepszego słuchacza',
+            'Songs Tracked': 'Śledzone utwory',
+            'Total Listening Time': 'Łączny czas słuchania',
+            'Unique Anonymous Users': 'Unikalni anonimowi użytkownicy',
+            'Uptime': 'Czas działania',
+            'Running Bots': 'Działające boty',
+            'Web Services': 'Usługi webowe',
+            'Online Now': 'Online teraz',
+            'Forms Submitted': 'Wysłane formularze',
+            'Questions Answered': 'Odpowiedzi na pytania',
+            'Unique Visitors': 'Unikalni odwiedzający',
+            'MP3 Converted': 'Przekonwertowane MP3',
+            'MP4 Converted': 'Przekonwertowane MP4',
+            'Files Downloaded': 'Pobrane pliki',
+            'Visit Website': 'Odwiedź stronę',
+            'See Source Code': 'Zobacz kod źródłowy',
+            'Play Now on Roblox': 'Zagraj na Roblox',
+            'See Recent Trailer': 'Zobacz najnowszy zwiastun',
+            'Get Here': 'Pobierz',
+            'View Preview': 'Zobacz podgląd'
+        };
+        const LANG_KEY = 'k5portfolio-lang';
+        const META_DESCRIPTION = {
+            en: 'K5 Studio: Programming, graphic design, video, and 3D services.',
+            pl: 'K5 Studio: usługi programistyczne, graficzne, wideo i 3D.'
+        };
+        const languageRenderers = [];
+        let lang = 'en';
+        try {
+            if (localStorage.getItem(LANG_KEY) === 'pl') lang = 'pl';
+        } catch (e) { /* storage unavailable: stay on the default */ }
+
+        // Marks an element as translatable. Without a Polish text it falls back to UI_PL, then to English.
+        function localize(el, en, pl) {
+            el.dataset.i18n = '';
+            el.dataset.en = en;
+            if (pl) el.dataset.pl = pl;
+            el.textContent = en;
+            return el;
+        }
+
+        function localizedSpan(en, pl) {
+            return localize(document.createElement('span'), en, pl);
+        }
+
+        function applyLanguage() {
+            document.documentElement.lang = lang;
+            document.querySelector('meta[name="description"]').content = META_DESCRIPTION[lang];
+
+            document.querySelectorAll('[data-pl], [data-i18n], .stat-label').forEach(el => {
+                if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+                const pl = el.dataset.pl || UI_PL[el.dataset.en.trim()];
+                el.textContent = lang === 'pl' && pl ? pl : el.dataset.en;
+            });
+
+            document.querySelectorAll('[data-pl-title]').forEach(el => {
+                if (el.dataset.enTitle === undefined) el.dataset.enTitle = el.title;
+                el.title = lang === 'pl' ? el.dataset.plTitle : el.dataset.enTitle;
+            });
+
+            languageRenderers.forEach(render => render());
+
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                const current = btn.dataset.lang === lang;
+                btn.classList.toggle('is-current', current);
+                btn.setAttribute('aria-pressed', current);
+            });
+        }
+
+        document.querySelectorAll('.lang-switch button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                lang = btn.dataset.lang;
+                try {
+                    localStorage.setItem(LANG_KEY, lang);
+                } catch (e) { /* storage unavailable: the choice lasts until the page closes */ }
+                applyLanguage();
+            });
+        });
+
         // ─── Helpers ───
         function formatNum(n) {
             if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
@@ -272,17 +366,22 @@
             desc.className = 'description';
 
             const h3 = document.createElement('h3');
-            h3.textContent = p.title;
+            localize(h3, p.title, p.title_pl);
             desc.appendChild(h3);
 
             // Description paragraph (with optional "Made for" + visit count)
             const para = document.createElement('p');
-            let descText = p.description;
-            if (p.madeFor) {
-                descText += ' Made for ';
+            para.appendChild(localizedSpan(p.description, p.description_pl));
+            if (p.contributingSince) {
+                para.appendChild(localizedSpan(' Contributing ', ' Współtworzę '));
+                const period = document.createElement('span');
+                period.className = 'work-period';
+                period.dataset.start = p.contributingSince;
+                para.appendChild(period);
+                para.appendChild(document.createTextNode('.'));
             }
-            para.textContent = descText;
             if (p.madeFor) {
+                para.appendChild(localizedSpan(' Made for ', ' Stworzone dla '));
                 const strong = document.createElement('strong');
                 const a = document.createElement('a');
                 a.href = p.madeFor.url;
@@ -291,15 +390,15 @@
                 a.textContent = p.madeFor.name;
                 strong.appendChild(a);
                 para.appendChild(strong);
-                para.appendChild(document.createTextNode(', who hold full rights to the project.'));
+                para.appendChild(localizedSpan(', who hold full rights to the project.', ', która ma pełne prawa do projektu.'));
             }
             if (p.fairgames) {
-                para.appendChild(document.createTextNode(' The game has reached over '));
+                para.appendChild(localizedSpan(' The game has reached over ', ' Gra osiągnęła ponad '));
                 const visitSpan = document.createElement('span');
                 visitSpan.id = 'visits-' + p.key;
                 visitSpan.textContent = '...';
                 para.appendChild(visitSpan);
-                para.appendChild(document.createTextNode(' visits since launch!'));
+                para.appendChild(localizedSpan(' visits since launch!', ' wizyt od premiery!'));
             }
             desc.appendChild(para);
 
@@ -318,7 +417,8 @@
                 img.src = 'images/icons/link.png';
                 img.alt = 'link Icon';
                 a.appendChild(img);
-                a.appendChild(document.createTextNode(' ' + btn.label));
+                a.appendChild(document.createTextNode(' '));
+                a.appendChild(localizedSpan(btn.label));
                 row.appendChild(a);
             });
 
@@ -590,20 +690,20 @@
             const visBadge = document.createElement('span');
             if (p.visibility === 'commissioned') {
                 visBadge.className = 'commissionedico';
-                visBadge.textContent = '💼 Commissioned Project';
+                localize(visBadge, '💼 Commissioned Project', '💼 Projekt na zlecenie');
             } else if (p.visibility === 'public') {
                 visBadge.className = 'publicico';
-                visBadge.textContent = '🔓 Public Project';
+                localize(visBadge, '🔓 Public Project', '🔓 Projekt publiczny');
             } else {
                 visBadge.className = 'privateico';
-                visBadge.textContent = '🔒 Private Project';
+                localize(visBadge, '🔒 Private Project', '🔒 Projekt prywatny');
             }
             tagsDiv.appendChild(visBadge);
             // Popular badge
             if (p.popular) {
                 const popBadge = document.createElement('span');
                 popBadge.className = 'popularico';
-                popBadge.textContent = '🔥 Popular';
+                localize(popBadge, '🔥 Popular', '🔥 Popularne');
                 tagsDiv.appendChild(popBadge);
             }
             desc.appendChild(tagsDiv);
@@ -694,6 +794,7 @@
                 createSlideshow(document.getElementById('portfolio'), projects.filter(p => !p.fairgames)),
                 createSlideshow(document.getElementById('commissioned'), projects.filter(p => p.fairgames))
             ];
+            applyLanguage();
 
             // ─── Continuous Stats Fetching System ───
             // Stats are fetched per-project with a 2s cooldown between each fetch.
@@ -1073,48 +1174,67 @@
         })().catch(() => { });
 
         // ─── Work Periods (LinkedIn style: both the first and last month count) ───
-        (function renderWorkPeriods() {
-            const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        languageRenderers.push(function renderWorkPeriods() {
+            const MONTHS = lang === 'pl'
+                ? ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru']
+                : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const parse = value => {
-                const [year, month] = value.split('-').map(Number);
-                return { year, month };
+                const [year, month, day] = value.split('-').map(Number);
+                return { year, month, day };
             };
-            const label = d => MONTHS[d.month - 1] + ' ' + d.year;
+            const MONTHS_FULL = lang === 'pl'
+                ? ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia']
+                : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const label = d => {
+                if (!d.day) return MONTHS[d.month - 1] + ' ' + d.year;
+                return lang === 'pl'
+                    ? d.day + ' ' + MONTHS_FULL[d.month - 1] + ' ' + d.year
+                    : MONTHS_FULL[d.month - 1] + ' ' + d.day + ', ' + d.year;
+            };
             const unit = (n, name) => n + ' ' + name + (n === 1 ? '' : 's');
+            const plYears = n => {
+                if (n === 1) return '1 rok';
+                const fewForm = n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14);
+                return n + (fewForm ? ' lata' : ' lat');
+            };
 
             const now = new Date();
-            const today = { year: now.getFullYear(), month: now.getMonth() + 1 };
+            const today = { year: now.getFullYear(), month: now.getMonth() + 1, dayOfMonth: now.getDate() };
 
             document.querySelectorAll('.work-period').forEach(el => {
                 const start = parse(el.dataset.start);
                 const end = el.dataset.end ? parse(el.dataset.end) : today;
-                const total = (end.year - start.year) * 12 + (end.month - start.month) + 1;
+                const monthsApart = (end.year - start.year) * 12 + (end.month - start.month);
+                // An exact start day counts completed months; month-only dates count both ends, like LinkedIn
+                const total = start.day
+                    ? monthsApart - ((end.dayOfMonth || 0) < start.day ? 1 : 0)
+                    : monthsApart + 1;
                 const years = Math.floor(total / 12);
                 const months = total % 12;
                 const parts = [];
-                if (years > 0) parts.push(unit(years, 'yr'));
-                if (months > 0) parts.push(unit(months, 'mo'));
-                const endLabel = el.dataset.end ? label(end) : 'Present';
+                if (years > 0) parts.push(lang === 'pl' ? plYears(years) : unit(years, 'yr'));
+                if (months > 0) parts.push(lang === 'pl' ? months + ' mies.' : unit(months, 'mo'));
+                if (parts.length === 0) parts.push(lang === 'pl' ? '<1 mies.' : '<1 mo');
+                const endLabel = el.dataset.end ? label(end) : (lang === 'pl' ? 'obecnie' : 'Present');
                 el.textContent = '(' + label(start) + ' – ' + endLabel + ' · ' + parts.join(' ') + ')';
             });
-        })();
+        });
 
         // ─── Footer year ───
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // ─── Typing Effect ───
-        const phrases = [
-            "Game Developer",
-            "3D Artist",
-            "Web Developer",
-            "Graphic Designer"
-        ];
+        const PHRASES = {
+            en: ["Game Developer", "3D Artist", "Web Developer", "Graphic Designer"],
+            pl: ["Twórca gier", "Artysta 3D", "Twórca stron WWW", "Grafik"]
+        };
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         const typedText = document.getElementById("typed-text");
 
         function typeEffect() {
+            const phrases = PHRASES[lang];
             const currentPhrase = phrases[phraseIndex];
 
             if (isDeleting) {
@@ -1138,6 +1258,17 @@
 
             setTimeout(typeEffect, typeSpeed);
         }
+
+        // Restart the typing from the first phrase of the chosen language
+        let typingLang = lang;
+        languageRenderers.push(() => {
+            if (typingLang === lang) return;
+            typingLang = lang;
+            phraseIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+            typedText.textContent = '';
+        });
 
         typeEffect();
 
@@ -1278,14 +1409,14 @@
             header.className = 'post-header';
             const badge = document.createElement('span');
             badge.className = 'achievement-badge';
-            badge.textContent = a.badge;
+            localize(badge, a.badge, a.badge_pl);
             const date = document.createElement('span');
             date.className = 'post-date';
-            date.textContent = a.date;
+            localize(date, a.date, a.date_pl);
             header.append(badge, date);
 
             const title = document.createElement('h3');
-            title.textContent = a.title;
+            localize(title, a.title, a.title_pl);
             const text = document.createElement('p');
             // Optional mentions turn those names in the text into highlighted links
             const buildMention = mention => {
@@ -1298,25 +1429,39 @@
                 strong.appendChild(link);
                 return strong;
             };
-            let textParts = [a.text];
-            (a.mentions || []).forEach(mention => {
-                textParts = textParts.flatMap(part => {
-                    if (typeof part !== 'string') return [part];
-                    return part.split(mention.name).flatMap((piece, i) => (i === 0 ? [piece] : [buildMention(mention), piece]));
+            // Optional running date after the text; the same nodes are kept across language changes
+            const textEnding = [];
+            if (a.contributedSince) {
+                const period = document.createElement('span');
+                period.className = 'work-period';
+                period.dataset.start = a.contributedSince;
+                textEnding.push(localizedSpan(' Contributed since ', ' Współtworzę od '), period, '.');
+                text.append(...textEnding);
+            }
+            languageRenderers.push(() => {
+                let textParts = [lang === 'pl' && a.text_pl ? a.text_pl : a.text];
+                (a.mentions || []).forEach(mention => {
+                    textParts = textParts.flatMap(part => {
+                        if (typeof part !== 'string') return [part];
+                        return part.split(mention.name).flatMap((piece, i) => (i === 0 ? [piece] : [buildMention(mention), piece]));
+                    });
                 });
+                text.replaceChildren(...textParts, ...textEnding);
             });
-            text.append(...textParts);
             post.append(header, title, text);
 
             if (a.images && a.images.length > 0) {
                 const gallery = buildGallery(a.images);
                 if (a.imageCredit) {
-                    const credit = document.createElement('a');
+                    // The credit is a link only when it has a url
+                    const credit = document.createElement(a.imageCredit.url ? 'a' : 'span');
                     credit.className = 'post-credit';
-                    credit.href = a.imageCredit.url;
-                    credit.target = '_blank';
-                    credit.rel = 'noopener';
-                    credit.textContent = a.imageCredit.label;
+                    if (a.imageCredit.url) {
+                        credit.href = a.imageCredit.url;
+                        credit.target = '_blank';
+                        credit.rel = 'noopener';
+                    }
+                    localize(credit, a.imageCredit.label, a.imageCredit.label_pl);
                     gallery.appendChild(credit);
                 }
                 post.appendChild(gallery);
@@ -1336,7 +1481,7 @@
                 icon.className = link.icon ? 'link-icon brand-icon' : 'link-icon';
                 icon.src = 'images/icons/' + (link.icon || 'link.png');
                 icon.alt = '';
-                anchor.append(icon, ' ' + link.label);
+                anchor.append(icon, ' ', localizedSpan(link.label, link.label_pl));
                 links.appendChild(anchor);
             });
 
@@ -1354,6 +1499,7 @@
                     feed.appendChild(post);
                     revealObserver.observe(post);
                 });
+                applyLanguage();
             } catch (e) {
                 console.error('Failed to load achievements.json', e);
                 section.style.display = 'none';
@@ -1369,6 +1515,8 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        applyLanguage();
 
         // ─── Portfolio Visit Tracking ───
         (async function trackVisit() {

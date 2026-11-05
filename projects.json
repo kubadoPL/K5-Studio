@@ -5,6 +5,7 @@
         "thumbnail": "images/thumbails/Radio Gaming Dark background.png",
         "icon": "images/Radio Gaming Logo.png",
         "description": "Are you ready to immerse yourself in the ultimate music experience? Whether you're a casual gamer, a competitive esports enthusiast, or simply someone who loves great music, Radio GAMING has something for everyone.",
+        "description_pl": "Chcesz zanurzyć się w muzyce jak nigdy dotąd? Niezależnie od tego, czy grasz okazjonalnie, rywalizujesz w esporcie, czy po prostu kochasz dobrą muzykę, Radio GAMING ma coś dla każdego.",
         "buttons": [
             { "label": "Visit Website", "url": "https://radio-gaming.stream/" },
             { "label": "See Source Code", "url": "https://github.com/kubadoPL/Gaming-Radio" }
@@ -17,9 +18,11 @@
      {
         "key": "bot-launcher",
         "title": "Discord Bot and Web Services Launcher Manager",
+        "title_pl": "Launcher i menedżer botów Discord oraz usług webowych",
         "thumbnail": "images/thumbails/bot launcher.png",
         "icon": "images/launcher ikona.jpg",
         "description": "A Python program for managing multiple Discord.py bots and web services by downloading their repositories from GitHub, extracting them, and running them. Supports API and Web Panel! You can run anything from web development projects to discord bots keeping all of them in one place!",
+        "description_pl": "Program w Pythonie do zarządzania wieloma botami Discord.py i usługami webowymi: pobiera ich repozytoria z GitHuba, rozpakowuje je i uruchamia. Obsługuje API i panel webowy! Możesz uruchamiać wszystko, od projektów webowych po boty Discord, trzymając je w jednym miejscu!",
         "buttons": [
             { "label": "Visit Website", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/" },
             { "label": "See Source Code", "url": "https://github.com/kubadoPL/Discord-Bot-Launcher-Manager" }
@@ -35,6 +38,7 @@
         "thumbnail": "images/thumbails/ytdownloader.webp",
         "icon": "images/ytdownloadericon.jpg",
         "description": "A web-based YouTube to MP3/MP4 converter with real-time progress tracking, quality selection, and automatic cleanup. Features async download jobs, rate limiting, and live usage statistics.",
+        "description_pl": "Internetowy konwerter YouTube do MP3/MP4 ze śledzeniem postępu w czasie rzeczywistym, wyborem jakości i automatycznym czyszczeniem plików. Oferuje asynchroniczne zadania pobierania, limity żądań i statystyki użycia na żywo.",
         "buttons": [
             { "label": "Visit Website", "url": "https://k5studio.dev/apps/youtube-downloader/" }
         ],
@@ -45,9 +49,11 @@
      {
         "key": "formbot",
         "title": "FormBot - AI Form Auto-filler",
+        "title_pl": "FormBot - automatyczne wypełnianie formularzy z AI",
         "thumbnail": "images/thumbails/formbot.webp",
         "icon": "images/formboticon.png",
         "description": "An intelligent form auto-filler that supports Google Forms and Microsoft Forms. Features AI-powered answers via Gemini for realistic, coherent responses with persona generation. Includes customizable timing delays, weighted answer control, real-time preview, live server statistics, and a queue system for concurrent sessions.",
+        "description_pl": "Inteligentne narzędzie do automatycznego wypełniania Formularzy Google i Microsoft Forms. Odpowiedzi generuje AI Gemini, dzięki czemu są realistyczne i spójne, a narzędzie tworzy też persony. Zawiera konfigurowalne opóźnienia, kontrolę wag odpowiedzi, podgląd na żywo, statystyki serwera i kolejkę dla równoczesnych sesji.",
         "buttons": [
             { "label": "Visit Website", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/" }
         ],
@@ -61,6 +67,7 @@
         "thumbnail": "images/thumbails/gamingsimnew.png",
         "icon": "images/gaming simulator ikona.png",
         "description": "Gaming Simulator is a multiverse game similar to gta v in gameplay. It has many minigames and a survival system, as well as quests and advanced dialogues with NPCs. There are 20+ characters to choose from in the game. For now it's private to my friends only!",
+        "description_pl": "Gaming Simulator to gra multiverse z rozgrywką podobną do GTA V. Ma wiele minigier i system przetrwania, a także questy i rozbudowane dialogi z NPC. W grze można wybrać ponad 20 postaci. Na razie jest dostępna tylko dla moich znajomych!",
         "universeId": "5296565543",
         "buttons": [
             { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/15355526319/GAMING-PARTY-SIMULATOR" }
@@ -74,6 +81,7 @@
         "thumbnail": "images/thumbails/scptlo.png",
         "icon": "images/scplogo.webp",
         "description": "Game is currently in development.",
+        "description_pl": "Gra jest obecnie w trakcie tworzenia.",
         "buttons": [
             { "label": "See Recent Trailer", "url": "https://youtu.be/iNhwDOUnHpc?si=oeHyRqZxyoYpJjrh" }
         ],
@@ -86,6 +94,8 @@
         "thumbnail": "images/thumbails/miniwar.png",
         "icon": "images/Mini-War-Wiki-Roblox-Logo.webp",
         "description": "I had the opportunity to help develop many game updates! Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
+        "description_pl": "Miałem okazję pomagać przy wielu aktualizacjach gry! Zbuduj swój kraj, rozwijaj gospodarkę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
+        "contributingSince": "2026-05-30",
         "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
         "fairgames": true,
         "placeId": "131346454575416",
@@ -104,6 +114,7 @@
         "thumbnail": "images/thumbails/growananimal.webp",
         "icon": "images/growananimallogo.webp",
         "description": "Grow An Animal is a casual Roblox experience where you hatch, raise, and evolve adorable creatures. Feed them and watch them transform into powerful animals. Collect rare species and compete with friends!",
+        "description_pl": "Grow An Animal to casualowa gra na Roblox, w której wykluwasz, wychowujesz i rozwijasz urocze stworzenia. Karm je i patrz, jak zmieniają się w potężne zwierzęta. Zbieraj rzadkie gatunki i rywalizuj ze znajomymi!",
         "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
         "fairgames": true,
         "placeId": "125616007292860",
@@ -122,6 +133,7 @@
         "thumbnail": "images/thumbails/CreateYourBrainrot.webp",
         "icon": "images/CreateBrainrot.png",
         "description": "Create your BRAINROT is a fun Roblox experience where you mix and match parts to build your own unique brainrot character.",
+        "description_pl": "Create your BRAINROT to zabawna gra na Roblox, w której łączysz różne części, aby zbudować własną, unikalną postać brainrot.",
         "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
         "fairgames": true,
         "placeId": "74637189843837",
@@ -140,6 +152,7 @@
         "thumbnail": "images/thumbails/gim31.png",
         "icon": "images/gim31royaleikona.jpg",
         "description": "Gim31 Battle Royale is a game from popular genre - last one standing wins. It has everything a battle royale needs. The game has 15+ skins available for purchase as well as a battlepass. There is also a system of time-limited events and private servers.",
+        "description_pl": "Gim31 Battle Royale to gra z popularnego gatunku, w którym wygrywa ostatni ocalały. Ma wszystko, czego potrzebuje battle royale. W grze można kupić ponad 15 skórek i battlepass, a do tego są wydarzenia czasowe i prywatne serwery.",
         "universeId": "3099329958",
         "buttons": [
             { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/8039070484/Gim-31-Battle-Royale-The-Definitve-Edition-BETA" },
@@ -152,9 +165,11 @@
     {
         "key": "alita-wallpaper",
         "title": "Alita: Battle Angel - Animated and Audio Responsive Wallpaper",
+        "title_pl": "Alita: Battle Angel - animowana tapeta reagująca na dźwięk",
         "thumbnail": "images/thumbails/alitawallpaper.png",
         "icon": "images/wallpaperengine.png",
         "description": "Alita: Battle Angel with a sword standing in front of Zalem. Wallpaper for Wallpaper Engine",
+        "description_pl": "Alita: Battle Angel z mieczem na tle Zalem. Tapeta do Wallpaper Engine",
         "steamWorkshopId": "2961836726",
         "buttons": [
             { "label": "Get Here", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2961836726" },
@@ -166,9 +181,11 @@
     {
         "key": "wednesday-wallpaper",
         "title": "Wednesday Addams from Netflix Series - Animated and Audio Responsive Wallpaper",
+        "title_pl": "Wednesday Addams z serialu Netflixa - animowana tapeta reagująca na dźwięk",
         "thumbnail": "images/thumbails/wednesdaythumbnail.png",
         "icon": "images/wallpaperengine.png",
         "description": "Wednesday Addams from new Netflix series wearing all favorite black cat suit. Wallpaper for Wallpaper Engine",
+        "description_pl": "Wednesday Addams z nowego serialu Netflixa w ulubionym czarnym kocim kostiumie. Tapeta do Wallpaper Engine",
         "steamWorkshopId": "2908364654",
         "buttons": [
             { "label": "Get Here", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2908364654" },

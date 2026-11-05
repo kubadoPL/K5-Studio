@@ -192,6 +192,38 @@ header .logo a {
     background-clip: text;
 }
 
+.lang-switch {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2px;
+    margin-left: 8px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+}
+
+.lang-switch button {
+    padding: 4px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.lang-switch button:hover {
+    color: var(--text-primary);
+}
+
+.lang-switch button.is-current {
+    background: rgba(139, 92, 246, 0.35);
+    color: #fff;
+}
+
 header nav {
     margin-left: auto;
     margin-right: 20px;
