@@ -1921,6 +1921,14 @@ footer p {
         transform: translateX(66%) scale(0.82);
     }
 
+    .slide.slide-far-left {
+        transform: translateX(-130%) scale(0.7);
+    }
+
+    .slide.slide-far-right {
+        transform: translateX(130%) scale(0.7);
+    }
+
     .slide.slide-prev:hover,
     .slide.slide-next:hover {
         opacity: 0.6;

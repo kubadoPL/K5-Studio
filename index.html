@@ -901,6 +901,12 @@
                     slide.classList.toggle('slide-prev', isPrev);
                     slide.classList.toggle('slide-next', isNext);
                     if (isPrev || isNext) slide.classList.remove('slide-exit');
+                    // Hidden slides wait on the side they will come from, so a new neighbour
+                    // slides in from the right when going forward and from the left when going back
+                    const offset = (i - (slideIndex - 1) + slides.length) % slides.length;
+                    const hidden = offset !== 0 && !isPrev && !isNext;
+                    slide.classList.toggle('slide-far-right', hidden && offset <= slides.length / 2);
+                    slide.classList.toggle('slide-far-left', hidden && offset > slides.length / 2);
                 });
 
                 setTimeout(() => {
