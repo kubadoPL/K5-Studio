@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jakub Drużbiński | K5 Studio</title>
+    <title>K5 Studio</title>
     <meta name="description" content="K5 Studio: Programming, graphic design, video, and 3D services.">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -74,7 +74,7 @@
                 <div class="about-description reveal delay-300">
                     <h3>Creativity is my second Name!</h3>
                     <p>
-                        Hello, I'm Jakub, a student at the University of Łódź. I'm a self-taught programmer, graphic
+                        Hello, I'm Jakub, a self-taught programmer, graphic
                         designer, and 3D artist. My journey into all of that started at 14, driven by a passion for
                         creating games. I know programming languages such as Lua, C#, VBA, Python, and a bit of PHP. In
                         the realm of 3D
@@ -213,7 +213,7 @@
             </span>
         </div>
         <a href="#home">Go Back To The Top</a>
-        <p>Jakub Drużbiński © 2026</p>
+        <p>K5 Studio © 2026</p>
     </footer>
 
 
@@ -484,6 +484,70 @@
                             <span class="stat-value" id="formbot-questions-val-${p.key}">...</span>
                             <span class="stat-label">Questions Answered</span>
                         </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">👁️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="formbot-visits-val-${p.key}">...</span>
+                            <span class="stat-label">Total Visits</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">👤</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="formbot-unique-val-${p.key}">...</span>
+                            <span class="stat-label">Unique Visitors</span>
+                        </div>
+                    </div>`;
+                row.appendChild(tiles);
+            }
+
+            // YouTube Downloader stat tiles
+            if (p.showYtdlStats) {
+                const tiles = document.createElement('div');
+                tiles.className = 'stat-tiles';
+                tiles.innerHTML = `
+                    <div class="stat-tile stat-tile-live">
+                        <span class="stat-icon">🟢</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="ytdl-online-val-${p.key}">...</span>
+                            <span class="stat-label">Online Now</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">👁️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="ytdl-visits-val-${p.key}">...</span>
+                            <span class="stat-label">Total Visits</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">👤</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="ytdl-unique-val-${p.key}">...</span>
+                            <span class="stat-label">Unique Visitors</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">🎵</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="ytdl-mp3-val-${p.key}">...</span>
+                            <span class="stat-label">MP3 Converted</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">🎬</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="ytdl-mp4-val-${p.key}">...</span>
+                            <span class="stat-label">MP4 Converted</span>
+                        </div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-icon">📥</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="ytdl-downloads-val-${p.key}">...</span>
+                            <span class="stat-label">Files Downloaded</span>
+                        </div>
                     </div>`;
                 row.appendChild(tiles);
             }
@@ -528,7 +592,7 @@
         var slideIndex = 1;
         var slideshowTimeout;
         var loadedProjects = []; // filled by init(), used by showSlides for stats fetch
-        var fetchStatsForProject = function() {}; // stub, replaced by init()
+        var fetchStatsForProject = function () { }; // stub, replaced by init()
 
         function showSlides(n) {
             var slides = document.getElementsByClassName("slide");
@@ -854,6 +918,27 @@
                             setEl('formbot-online-val-' + p.key, (data.online || 0).toLocaleString());
                             setEl('formbot-forms-val-' + p.key, formatNum(g.forms_submitted || 0));
                             setEl('formbot-questions-val-' + p.key, formatNum(g.questions_answered || 0));
+                            setEl('formbot-visits-val-' + p.key, formatNum(g.total_visits || 0));
+                            setEl('formbot-unique-val-' + p.key, formatNum(g.unique_visitors || 0));
+                        });
+                    }
+                } catch (e) { /* silently fail */ }
+            }
+
+            async function fetchYtdlStats(ytdlProjects) {
+                if (ytdlProjects.length === 0) return;
+                try {
+                    const res = await fetch('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/YouTubeDownloaderApi/api/stats', { cache: 'no-store' });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const g = data.global || {};
+                        ytdlProjects.forEach(p => {
+                            setEl('ytdl-online-val-' + p.key, (data.online || 0).toLocaleString());
+                            setEl('ytdl-visits-val-' + p.key, formatNum(g.total_visits || 0));
+                            setEl('ytdl-unique-val-' + p.key, formatNum(g.unique_visitors || 0));
+                            setEl('ytdl-mp3-val-' + p.key, formatNum(g.mp3_converted || 0));
+                            setEl('ytdl-mp4-val-' + p.key, formatNum(g.mp4_converted || 0));
+                            setEl('ytdl-downloads-val-' + p.key, formatNum((g.mp3_downloaded || 0) + (g.mp4_downloaded || 0)));
                         });
                     }
                 } catch (e) { /* silently fail */ }
@@ -913,7 +998,7 @@
             }
 
             // ── Fetch all stats for a single project (triggered by slide navigation) ──
-            fetchStatsForProject = function(p) {
+            fetchStatsForProject = function (p) {
                 const key = p.key;
                 const tasks = [];
 
@@ -939,6 +1024,9 @@
                 if (p.showFormbotStats) {
                     tasks.push(throttledFetch('formbot-' + key, () => fetchFormbotStats([p])));
                 }
+                if (p.showYtdlStats) {
+                    tasks.push(throttledFetch('ytdl-' + key, () => fetchYtdlStats([p])));
+                }
                 if (p.showRunningServices) {
                     tasks.push(throttledFetch('running-services-' + key, () => fetchRunningServices(p)));
                 }
@@ -961,7 +1049,6 @@
 
         // ─── Typing Effect ───
         const phrases = [
-            "Jakub Drużbiński",
             "Game Developer",
             "3D Artist",
             "Web Developer",

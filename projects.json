@@ -30,6 +30,19 @@
         "showRunningServices": true
     },
     {
+        "key": "ytdownloader",
+        "title": "YouTube Downloader",
+        "thumbnail": "images/thumbails/ytdownloader.webp",
+        "icon": "images/ytdownloadericon.jpg",
+        "description": "A web-based YouTube to MP3/MP4 converter with real-time progress tracking, quality selection, and automatic cleanup. Features async download jobs, rate limiting, and live usage statistics.",
+        "buttons": [
+            { "label": "Visit Website", "url": "https://k5studio.dev/apps/youtube-downloader/" }
+        ],
+        "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "🧪 Flask", "☁️ Heroku"],
+        "visibility": "public",
+        "showYtdlStats": true
+    },
+     {
         "key": "formbot",
         "title": "FormBot - AI Form Auto-filler",
         "thumbnail": "images/thumbails/formbot.webp",
@@ -39,7 +52,7 @@
             { "label": "Visit Website", "url": "https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/MSFormsApi/" }
         ],
         "tags": ["🐍 Python", "🎨 CSS", "🌐 HTML", "⚡ JavaScript", "🧪 Flask", "🤖 Gemini AI", "☁️ Heroku"],
-        "visibility": "private",
+        "visibility": "public",
         "showFormbotStats": true
     },
     {
@@ -50,8 +63,7 @@
         "description": "Gaming Simulator is a multiverse game similar to gta v in gameplay. It has many minigames and a survival system, as well as quests and advanced dialogues with NPCs. There are 20+ characters to choose from in the game. For now it's private to my friends only!",
         "universeId": "5296565543",
         "buttons": [
-            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/15355526319/GAMING-PARTY-SIMULATOR" },
-            { "label": "See Recent Trailer", "url": "https://youtu.be/dL3IxgXtps8?si=U7tAbdUrfcsdxr_d" }
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/15355526319/GAMING-PARTY-SIMULATOR" }
         ],
         "tags": ["🎮 Roblox", "🌙 Lua", "🧊 Blender 3D", "🖌️ Adobe Photoshop"],
         "visibility": "private"
@@ -68,7 +80,61 @@
         "tags": ["🎮 Roblox", "🌙 Lua", "🧊 Blender 3D", "🖌️ Adobe Photoshop"],
         "visibility": "private"
     },
+      {
+        "key": "miniwar",
+        "title": "Mini War",
+        "thumbnail": "images/thumbails/miniwar.png",
+        "icon": "images/Mini-War-Wiki-Roblox-Logo.webp",
+        "description": "I had the opportunity to help develop many game updates! Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
+        "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
+        "fairgames": true,
+        "placeId": "131346454575416",
+        "universeId": "9837612476",
+        "buttons": [
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/131346454575416/Mini-War" }
+        ],
+        "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "commissioned",
+        "popular": true,
+        "hideProject": false
+    },
     {
+        "key": "animal",
+        "title": "Grow An Animal",
+        "thumbnail": "images/thumbails/growananimal.webp",
+        "icon": "images/growananimallogo.webp",
+        "description": "Grow An Animal is a casual Roblox experience where you hatch, raise, and evolve adorable creatures. Feed them and watch them transform into powerful animals. Collect rare species and compete with friends!",
+        "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
+        "fairgames": true,
+        "placeId": "125616007292860",
+        "universeId": "9943413601",
+        "buttons": [
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/125616007292860/Grow-An-Animal" }
+        ],
+        "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "commissioned",
+        "popular": true,
+        "hideProject": false
+    },
+    {
+        "key": "create",
+        "title": "Create your BRAINROT",
+        "thumbnail": "images/thumbails/CreateYourBrainrot.webp",
+        "icon": "images/CreateBrainrot.png",
+        "description": "Create your BRAINROT is a fun Roblox experience where you mix and match parts to build your own unique brainrot character.",
+        "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
+        "fairgames": true,
+        "placeId": "74637189843837",
+        "universeId": "9305408287",
+        "buttons": [
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/74637189843837/Create-your-BRAINROT" }
+        ],
+        "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "commissioned",
+        "popular": true,
+        "hideProject": false
+    },
+      {
         "key": "gim31",
         "title": "Gim31 Battle Royale",
         "thumbnail": "images/thumbails/gim31.png",
@@ -110,41 +176,6 @@
         ],
         "tags": ["🖥️ Wallpaper Engine", "📜 Scene Script", "🖌️ Adobe Photoshop"],
         "visibility": "public"
-    },
-    {
-        "key": "animal",
-        "title": "Grow An Animal",
-        "thumbnail": "images/thumbails/growananimal.webp",
-        "icon": "images/growananimallogo.webp",
-        "description": "Grow An Animal is a casual Roblox experience where you hatch, raise, and evolve adorable creatures. Feed them and watch them transform into powerful animals. Collect rare species and compete with friends!",
-        "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
-        "fairgames": true,
-        "placeId": "125616007292860",
-        "universeId": "9943413601",
-        "buttons": [
-            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/125616007292860/Grow-An-Animal" }
-        ],
-        "tags": ["🎮 Roblox", "🌙 Lua"],
-        "visibility": "commissioned",
-        "popular": true,
-        "hideProject": true
-    },
-    {
-        "key": "create",
-        "title": "Create your BRAINROT",
-        "thumbnail": "images/thumbails/CreateYourBrainrot.webp",
-        "icon": "images/CreateBrainrot.png",
-        "description": "Create your BRAINROT is a fun Roblox experience where you mix and match parts to build your own unique brainrot character.",
-        "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
-        "fairgames": true,
-        "placeId": "74637189843837",
-        "universeId": "9305408287",
-        "buttons": [
-            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/74637189843837/Create-your-BRAINROT" }
-        ],
-        "tags": ["🎮 Roblox", "🌙 Lua"],
-        "visibility": "commissioned",
-        "popular": true,
-        "hideProject": true
     }
+
 ]

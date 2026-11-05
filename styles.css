@@ -1308,6 +1308,7 @@ footer p {
         border-radius: var(--radius-md);
         object-fit: cover;
         user-select: none;
+        background: white;
         display: none !important;
     }
 
@@ -1450,6 +1451,7 @@ footer p {
         border-radius: var(--radius-md);
         object-fit: cover;
         user-select: none;
+        background: white;
     }
 
     .game-button {
