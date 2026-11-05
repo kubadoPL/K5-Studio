@@ -749,6 +749,9 @@
                     photo.alt = '';
                     photo.loading = 'lazy';
                     photo.referrerPolicy = 'no-referrer';
+                    // Channel whose current avatar replaces the stored photo (see refreshArtistAvatars)
+                    const channelMatch = (artist.channelId || artist.url).match(/UC[\w-]{22}/);
+                    if (channelMatch) photo.dataset.channel = channelMatch[0];
                     // If the photo link stops working, the circle shows the first letter instead
                     photo.addEventListener('error', () => {
                         link.textContent = artist.name.charAt(0).toUpperCase();
@@ -861,6 +864,20 @@
             });
         }
 
+        // Artist photos follow each channel's current YouTube avatar. The stored "image" links in
+        // projects.json stay as the fallback when the K5 API Manager can't answer.
+        async function refreshArtistAvatars() {
+            const photos = [...document.querySelectorAll('.artist-avatar img[data-channel]')];
+            const ids = [...new Set(photos.map(img => img.dataset.channel))];
+            if (ids.length === 0) return;
+            const res = await fetchJsonRetry('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager/api/channel-avatars?ids=' + ids.join(','), 2);
+            const avatars = (res.ok && res.data && res.data.avatars) || {};
+            photos.forEach(img => {
+                const url = avatars[img.dataset.channel];
+                if (url && img.src !== url) img.src = url;
+            });
+        }
+
         // Builds one independent slideshow inside a section. Returns a function
         // that shows the current slide, or null if there is nothing to show.
         function createSlideshow(section, sectionProjects) {
@@ -964,6 +981,7 @@
             ];
             applyLanguage();
             refreshRobloxImages(projects);
+            refreshArtistAvatars();
 
             // ─── Continuous Stats Fetching System ───
             // Stats are fetched per-project with a 2s cooldown between each fetch.

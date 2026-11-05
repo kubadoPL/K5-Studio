@@ -215,15 +215,15 @@
         "universeId": "5850410178",
         "hideStats": true,
     "artists": [
-        {"name":"bambi","url":"https://music.youtube.com/channel/UCnSfBIGJG4ixRpPyrPG-xRQ","image":"https://yt3.googleusercontent.com/40GKYzbBSc3X88oW6zCJfcqngLXQmDd1uTeavszlmYCPrELsaU-oanKmyHMPZG3mueBe8e2Df3WsEQM=w160-h160-l90-rj"},
-        {"name":"Chivas","url":"https://music.youtube.com/channel/UCL6YqK5mw-VW5CPw92ga8yA","image":"https://yt3.googleusercontent.com/-CtDyK4iXm1f24faZtzDxe8La0osSE9elYPuAYK_6Im0PWGnSrOtKKkuEo5pn6PbUtwrbpxAWNiHuLo1=w160-h160-l90-rj"},
-        {"name":"TYMEK","url":"https://music.youtube.com/channel/UC3a-bs2o2viIDDq7plYJF0w","image":"https://yt3.googleusercontent.com/fNr25bbBIyfDF43XUa0FpnZOpOsvQ4uZ1OuesLe-xilRj1sbbe3onNVV82PkeYP2Kghj_jYlOwj51w=w160-h160-l90-rj"},
-        {"name":"Young Igi","url":"https://music.youtube.com/channel/UCh7xw2AzoROY6PMnCbHmZSQ","image":"https://lh3.googleusercontent.com/MnAFofc_xe3aYGLkHfaFIr5tK9t2rr4yLglra0MEbhqI7Hfa4kyilhGbeEaWLV80RZWh3a3qlKd6hdE=w160-h160-l90-rj"},
-        {"name":"Żabson","url":"https://music.youtube.com/channel/UCIhUd7PAWCQwwBnN2RXfpGQ","image":"https://lh3.googleusercontent.com/yy54RNnR9Tl9nDni8MQqPo_Uzu2J2iIC0V8pcUqIL5aenP_hCGHcBb-m1V_2Sc_YehcrTuP49E2mJzot=w160-h160-l90-rj"},
-        {"name":"MIÜ","url":"https://music.youtube.com/channel/UCL-vFjQgsOI5c9Ws6V8tDtA","image":"https://yt3.googleusercontent.com/WW2bX0Mcf92pQLM3ZmaUwkRfR8J2RroZQCMKr7-MP61J__nPk5neOIT4PCaHlDWght7V6bLkjeJZRwE=w160-h160-l90-rj"},
-        {"name":"Palion","url":"https://music.youtube.com/channel/UCBPBvG4nZwJOISqD1WDSp6A","image":"https://yt3.googleusercontent.com/A17Wm9HfIPSqQApl-BNwE2MpbiLZEuGelzuw0A7Ny8HuEYVfMA6TuLnidjrvIpa0OgcWuAVbmvpjGbw=w160-h160-l90-rj"},
-        {"name":"Eryk Moczko","url":"https://music.youtube.com/channel/UCVDmX6ACodsruzWOyWrAqrA","image":"https://yt3.googleusercontent.com/bfgkdWHpw-LsG4LiSFCrYhEXZYiec8EyNl_kBIdjUL8h-zIKhtGZS2J1Fz1N8eYKllvnmKmtow=w160-h160-l90-rj"},
-        {"name":"Zippy Ogar","url":"https://music.youtube.com/channel/UCBBUoXnySJqbK_PXDe-VHpw","image":"https://yt3.googleusercontent.com/M2ZqOns9iQyeEpA03_jbofWUlBt2dY66oeBCh2mQDADj7mC6saq3gPveKrn-mFY3_ZhvSrfv=w160-h160-l90-rj"}
+        {"name":"bambi", "channelId": "UCiWLkfm2XpSikywO27gGHAQ","url":"https://music.youtube.com/channel/UCnSfBIGJG4ixRpPyrPG-xRQ","image":"https://yt3.googleusercontent.com/40GKYzbBSc3X88oW6zCJfcqngLXQmDd1uTeavszlmYCPrELsaU-oanKmyHMPZG3mueBe8e2Df3WsEQM=w160-h160-l90-rj"},
+        {"name":"Chivas", "channelId": "UCcrFx-FV2T521aOggKyGuiQ","url":"https://music.youtube.com/channel/UCL6YqK5mw-VW5CPw92ga8yA","image":"https://yt3.googleusercontent.com/-CtDyK4iXm1f24faZtzDxe8La0osSE9elYPuAYK_6Im0PWGnSrOtKKkuEo5pn6PbUtwrbpxAWNiHuLo1=w160-h160-l90-rj"},
+        {"name":"TYMEK", "channelId": "UCMK8k_XqVEMGqsytc8MRRUg","url":"https://music.youtube.com/channel/UC3a-bs2o2viIDDq7plYJF0w","image":"https://yt3.googleusercontent.com/fNr25bbBIyfDF43XUa0FpnZOpOsvQ4uZ1OuesLe-xilRj1sbbe3onNVV82PkeYP2Kghj_jYlOwj51w=w160-h160-l90-rj"},
+        {"name":"Young Igi", "channelId": "UCvj_LrAbqqSUkqR-C2v5MAw","url":"https://music.youtube.com/channel/UCh7xw2AzoROY6PMnCbHmZSQ","image":"https://lh3.googleusercontent.com/MnAFofc_xe3aYGLkHfaFIr5tK9t2rr4yLglra0MEbhqI7Hfa4kyilhGbeEaWLV80RZWh3a3qlKd6hdE=w160-h160-l90-rj"},
+        {"name":"Żabson", "channelId": "UCmUBbTrtvBYjmTNKPZYD2qA","url":"https://music.youtube.com/channel/UCIhUd7PAWCQwwBnN2RXfpGQ","image":"https://lh3.googleusercontent.com/yy54RNnR9Tl9nDni8MQqPo_Uzu2J2iIC0V8pcUqIL5aenP_hCGHcBb-m1V_2Sc_YehcrTuP49E2mJzot=w160-h160-l90-rj"},
+        {"name":"MIÜ", "channelId": "UCwGTAOAliJBvAoNxwzaLbMQ","url":"https://music.youtube.com/channel/UCL-vFjQgsOI5c9Ws6V8tDtA","image":"https://yt3.googleusercontent.com/WW2bX0Mcf92pQLM3ZmaUwkRfR8J2RroZQCMKr7-MP61J__nPk5neOIT4PCaHlDWght7V6bLkjeJZRwE=w160-h160-l90-rj"},
+        {"name":"Palion", "channelId": "UC4MO_OktH6oXB-oCI7yjTkA","url":"https://music.youtube.com/channel/UCBPBvG4nZwJOISqD1WDSp6A","image":"https://yt3.googleusercontent.com/A17Wm9HfIPSqQApl-BNwE2MpbiLZEuGelzuw0A7Ny8HuEYVfMA6TuLnidjrvIpa0OgcWuAVbmvpjGbw=w160-h160-l90-rj"},
+        {"name":"Eryk Moczko", "channelId": "UCgtKx5ikgjnW2E1uc02w2iA","url":"https://music.youtube.com/channel/UCVDmX6ACodsruzWOyWrAqrA","image":"https://yt3.googleusercontent.com/bfgkdWHpw-LsG4LiSFCrYhEXZYiec8EyNl_kBIdjUL8h-zIKhtGZS2J1Fz1N8eYKllvnmKmtow=w160-h160-l90-rj"},
+        {"name":"Zippy Ogar", "channelId": "UCpw7wrI_lazxjBTkkZVQ0Dg","url":"https://music.youtube.com/channel/UCBBUoXnySJqbK_PXDe-VHpw","image":"https://yt3.googleusercontent.com/M2ZqOns9iQyeEpA03_jbofWUlBt2dY66oeBCh2mQDADj7mC6saq3gPveKrn-mFY3_ZhvSrfv=w160-h160-l90-rj"}
     ],
         "buttons": [
             {
@@ -372,37 +372,37 @@
         ],
         "artists": [
             {
-                "name": "Edzio",
+                "name": "Edzio", "channelId": "UCNXPgLPZYwlOPBYJ78Elv0Q",
                 "url": "https://music.youtube.com/channel/UCPn3jwhvpaC7jD4b0DTetQQ",
                 "image": "https://yt3.googleusercontent.com/mXFrFXsaB-bs54BxX-Wq3c1qQE5KcpKucCgOXTwlDOif4Fat6Jle5_es9PZ1E-Uaq98oRV10sTF0tN9y=w160-h160-l90-rj"
             },
             {
-                "name": "Fusialka",
+                "name": "Fusialka", "channelId": "UCEDh4HzlkIUlln_gp0CdJ3A",
                 "url": "https://music.youtube.com/channel/UChKh5L05CsIPNFypmv8x7-g",
                 "image": "https://yt3.googleusercontent.com/G4oXOyNURgRBoAwDtv4M4_M2vvxwz5DWMX-ja09Ts3HUzP-xrkAVNzMSxa1LjODIBwD6N14wnp3-tU64=w160-h160-l90-rj"
             },
             {
-                "name": "Qry",
+                "name": "Qry", "channelId": "UCMr8Z2B0f-qPVnwEn2Tajjg",
                 "url": "https://music.youtube.com/channel/UCzFEpbakGMaCfkyaETU5gDQ",
                 "image": "https://yt3.googleusercontent.com/vwCJx8Mmv3905BSpcphwUWzcGFgxkPqleRl7w4kLnZz3y2fyPBk1zTz3WpHSTCCKR5hOrZ_85g=w160-h160-l90-rj"
             },
             {
-                "name": "Waksy",
+                "name": "Waksy", "channelId": "UCrtZVvEXEYWO1J_nOzL3fiw",
                 "url": "https://music.youtube.com/channel/UCZ_ygwIpvGWq7cVU8MKjleQ",
                 "image": "https://yt3.ggpht.com/TvOvJnPTABZFAv0G8zPLYRm6hbCnGcSrt218IPr6C1MGbyzNl2AMdIf_xOCyj1tWAXVd2Xo8=s160-c-k-c0x00ffffff-no-rj-mo"
             },
             {
-                "name": "Ercio",
+                "name": "Ercio", "channelId": "UC64E18zuK_E6f_qwnbDMGQQ",
                 "url": "https://music.youtube.com/channel/UCoyD_7kfTagA1mhP7f-99gA",
                 "image": "https://yt3.ggpht.com/RG09fEUuQZnXwwOLEi1VHV8o7vzfG2dK4nhQ6Sk3ptmEObYS3ksWrqz1bLiL_AYUs1dmVor7=s160-c-k-c0x00ffffff-no-rj-mo"
             },
             {
-                "name": "PatiX",
+                "name": "PatiX", "channelId": "UCvqBqDpuUyJAWCqr4KE2HSw",
                 "url": "https://www.youtube.com/@PaatiX",
                 "image": "https://yt3.ggpht.com/WJkeRPTQ4XHkxgu1tqS_WEIfYgTedr-GYueS1VReQEC6N2e-hGW3F5TQ4S1r6GbTArPzewLt=s160-c-k-c0x00ffffff-no-rj-mo"
             },
             {
-                "name": "SmileSlow",
+                "name": "SmileSlow", "channelId": "UCo9YmZIp3fBlPUdGOagryQA",
                 "url": "https://music.youtube.com/channel/UCvXUWDqEUtu8IIC3BnAe1Tg",
                 "image": "https://yt3.googleusercontent.com/Am_E-eeOLJvOJZl4Ewvgum31juv2B9zAei9LQ_fC_LjU8XlbAB-arqaAWQyE-96eejHdo7xfbl4CCeB9=w160-h160-l90-rj"
             }
