@@ -137,7 +137,8 @@
         "tags": ["🎮 Roblox", "🌙 Lua"],
         "visibility": "commissioned",
         "popular": true,
-        "hideProject": false
+        "hideProject": false,
+        "autoImages": true
     },
     {
         "key": "animal",
