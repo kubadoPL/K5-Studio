@@ -804,35 +804,61 @@
         // ─── Slideshow ───
         var fetchStatsForProject = function () { }; // stub, replaced by init()
 
+        // Fetches JSON and retries when the server is rate limiting (429) or the network fails.
+        // Returns { ok, data }; ok is false when no usable answer came back.
+        async function fetchJsonRetry(url, attempts = 3) {
+            for (let i = 0; i < attempts; i++) {
+                try {
+                    const res = await fetch(url, { cache: 'no-store' });
+                    if (res.status !== 429) {
+                        return { ok: res.ok, data: res.ok ? await res.json() : null };
+                    }
+                } catch (e) { /* network error: retry */ }
+                if (i < attempts - 1) await new Promise(resolve => setTimeout(resolve, 2000 * (i + 1)));
+            }
+            return { ok: false, data: null };
+        }
+
+        // Roblox data goes through K5 API Manager first (it caches answers and the site isn't
+        // rate limited there); roproxy is the fallback when that server can't answer.
+        const ROBLOX_SOURCES = {
+            games: ['/api/game-stats?universeIds=', 'https://games.roproxy.com/v1/games?universeIds='],
+            votes: ['/api/game-votes?universeIds=', 'https://games.roproxy.com/v1/games/votes?universeIds='],
+            icons: ['/api/game-icons?universeIds=', 'https://thumbnails.roproxy.com/v1/games/icons?size=512x512&format=Webp&isCircular=false&universeIds='],
+            thumbnails: ['/api/game-thumbnails?universeIds=', 'https://thumbnails.roproxy.com/v1/games/multiget/thumbnails?countPerUniverse=1&size=768x432&format=Webp&universeIds=']
+        };
+        async function fetchRoblox(kind, universeIds) {
+            const [proxyPath, fallback] = ROBLOX_SOURCES[kind];
+            const ids = universeIds.join(',');
+            const viaProxy = await fetchJsonRetry('https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager' + proxyPath + ids, 1);
+            if (viaProxy.ok) return viaProxy;
+            return fetchJsonRetry(fallback + ids);
+        }
+
         // Projects with "autoImages" show the game's current Roblox art. Links to it expire, so the
         // links in projects.json are only a fallback for when this lookup fails.
         async function refreshRobloxImages(projects) {
             const robloxProjects = projects.filter(p => p.autoImages && p.universeId);
             if (robloxProjects.length === 0) return;
 
-            const ids = robloxProjects.map(p => p.universeId).join(',');
+            const ids = robloxProjects.map(p => p.universeId);
             const keyFor = Object.fromEntries(robloxProjects.map(p => [String(p.universeId), p.key]));
             const setImage = (key, className, url) => {
                 const img = document.querySelector('img.' + className + '[data-image-for="' + key + '"]');
                 if (img && url && img.src !== url) img.src = url;
             };
 
-            try {
-                const res = await fetch('https://thumbnails.roproxy.com/v1/games/icons?universeIds=' + ids + '&size=512x512&format=Webp&isCircular=false');
-                const data = await res.json();
-                (data.data || []).forEach(item => {
-                    if (item.state === 'Completed') setImage(keyFor[String(item.targetId)], 'game-icon', item.imageUrl);
-                });
-            } catch (e) { /* keep the fallback icons */ }
+            // On failure the fallback images from projects.json simply stay
+            const icons = await fetchRoblox('icons', ids);
+            ((icons.data && icons.data.data) || []).forEach(item => {
+                if (item.state === 'Completed') setImage(keyFor[String(item.targetId)], 'game-icon', item.imageUrl);
+            });
 
-            try {
-                const res = await fetch('https://thumbnails.roproxy.com/v1/games/multiget/thumbnails?universeIds=' + ids + '&countPerUniverse=1&size=768x432&format=Webp');
-                const data = await res.json();
-                (data.data || []).forEach(item => {
-                    const first = (item.thumbnails || [])[0];
-                    if (first && first.state === 'Completed') setImage(keyFor[String(item.universeId)], 'thumbnail', first.imageUrl);
-                });
-            } catch (e) { /* keep the fallback thumbnails */ }
+            const thumbs = await fetchRoblox('thumbnails', ids);
+            ((thumbs.data && thumbs.data.data) || []).forEach(item => {
+                const first = (item.thumbnails || [])[0];
+                if (first && first.state === 'Completed') setImage(keyFor[String(item.universeId)], 'thumbnail', first.imageUrl);
+            });
         }
 
         // Builds one independent slideshow inside a section. Returns a function
@@ -866,6 +892,17 @@
                 slides[slideIndex - 1].classList.add('slide-active');
                 dots[slideIndex - 1].classList.add('active');
 
+                // Neighbours peek out on both sides (styled on wide screens only)
+                const prevIndex = (slideIndex - 2 + slides.length) % slides.length;
+                const nextIndex = slideIndex % slides.length;
+                slides.forEach((slide, i) => {
+                    const isPrev = slides.length > 2 && i === prevIndex;
+                    const isNext = slides.length > 1 && i === nextIndex && i !== slideIndex - 1;
+                    slide.classList.toggle('slide-prev', isPrev);
+                    slide.classList.toggle('slide-next', isNext);
+                    if (isPrev || isNext) slide.classList.remove('slide-exit');
+                });
+
                 setTimeout(() => {
                     slides.forEach(slide => {
                         if (!slide.classList.contains('slide-active')) {
@@ -882,6 +919,11 @@
                 const slide = buildSlide(p);
                 container.appendChild(slide);
                 slides.push(slide);
+                // Clicking a peeking neighbour brings it to the front
+                slide.addEventListener('click', () => {
+                    if (slide.classList.contains('slide-prev')) showSlides(slideIndex - 1);
+                    else if (slide.classList.contains('slide-next')) showSlides(slideIndex + 1);
+                });
 
                 const dot = document.createElement('span');
                 dot.className = 'dot';
@@ -958,11 +1000,12 @@
 
             async function fetchRobloxGameStats(robloxProjects) {
                 if (robloxProjects.length === 0) return;
-                const uids = robloxProjects.map(p => p.universeId).join(',');
                 const foundKeys = new Set();
+                let answered = false;
                 try {
-                    const res = await fetch('https://games.roproxy.com/v1/games?universeIds=' + uids, { cache: 'no-store' });
-                    const data = await res.json();
+                    const res = await fetchRoblox('games', robloxProjects.map(p => p.universeId));
+                    const data = res.data || {};
+                    answered = res.ok && Array.isArray(data.data);
                     const uidToKey = Object.fromEntries(robloxProjects.map(p => [String(p.universeId), p.key]));
                     (data.data || []).forEach(game => {
                         const key = uidToKey[String(game.id)];
@@ -985,39 +1028,52 @@
                         }
                     });
                 } catch (e) { /* silently fail */ }
-                // Hide stat tiles for projects not returned by API (e.g. private games)
+                // Hide stat tiles for projects the API left out (e.g. private games).
+                // A failed or rate-limited request says nothing about the game, so it hides nothing.
                 for (const p of robloxProjects) {
-                    if (!foundKeys.has(p.key)) {
+                    if (answered && !foundKeys.has(p.key)) {
                         const tiles = document.querySelector('#visits-val-' + p.key)?.closest('.stat-tiles');
                         if (tiles) tiles.style.display = 'none';
                     }
                 }
             }
 
-            async function fetchRobloxVotes(project) {
-                const el = document.getElementById('likes-val-' + project.key);
-                if (project.visibility === 'private') {
-                    if (el && !hiddenOnce.has('likes-' + project.key)) {
-                        el.closest('.stat-tile-likes').style.display = 'none';
-                        hiddenOnce.add('likes-' + project.key);
-                    }
-                    return;
-                }
-                try {
-                    const res = await fetch('https://games.roproxy.com/v1/games/' + project.universeId + '/votes', { cache: 'no-store' });
-                    if (res.ok) {
-                        const data = await res.json();
-                        if (el && data.upVotes != null) {
-                            el.textContent = data.upVotes.toLocaleString();
-                        } else if (el && isFirstFetch) {
-                            el.closest('.stat-tile-likes').style.display = 'none';
-                        }
-                    } else if (el && isFirstFetch) {
-                        el.closest('.stat-tile-likes').style.display = 'none';
-                    }
-                } catch (e) {
-                    if (el && isFirstFetch) el.closest('.stat-tile-likes').style.display = 'none';
-                }
+            // Likes for all Roblox games in one request
+            async function fetchRobloxVotes(robloxProjects) {
+                const hideLikes = p => {
+                    const el = document.getElementById('likes-val-' + p.key);
+                    if (el) el.closest('.stat-tile-likes').style.display = 'none';
+                };
+                robloxProjects.filter(p => p.visibility === 'private').forEach(hideLikes);
+                const publicProjects = robloxProjects.filter(p => p.visibility !== 'private');
+                if (publicProjects.length === 0) return;
+
+                const res = await fetchRoblox('votes', publicProjects.map(p => p.universeId));
+                if (!res.ok || !res.data || !Array.isArray(res.data.data)) return; // no answer: keep what is shown
+                const votes = Object.fromEntries(res.data.data.map(v => [String(v.id), v.upVotes]));
+                publicProjects.forEach(p => {
+                    const up = votes[String(p.universeId)];
+                    if (up != null) setEl('likes-val-' + p.key, up.toLocaleString());
+                    else if (isFirstFetch) hideLikes(p);
+                });
+            }
+
+            // All Roblox stats come from two shared requests, refreshed at most once a minute,
+            // because one request per game makes Roblox's proxy answer 429 (too many requests).
+            const ROBLOX_REFRESH_MS = 60000;
+            const robloxStatsProjects = projects.filter(p => p.universeId && !p.hideStats);
+            let robloxLoadedAt = 0;
+            let robloxLoading = null;
+            function refreshRobloxStats() {
+                if (robloxLoading) return robloxLoading;
+                if (Date.now() - robloxLoadedAt < ROBLOX_REFRESH_MS) return Promise.resolve();
+                robloxLoading = fetchRobloxGameStats(robloxStatsProjects)
+                    .then(() => fetchRobloxVotes(robloxStatsProjects))
+                    .finally(() => {
+                        robloxLoadedAt = Date.now();
+                        robloxLoading = null;
+                    });
+                return robloxLoading;
             }
 
             async function fetchSteamWorkshopStats(steamProjects) {
@@ -1257,8 +1313,7 @@
                     tasks.push(throttledFetch('fairgames-' + key, () => fetchFairgamesStats([p])));
                 }
                 if (p.universeId && !p.hideStats) {
-                    tasks.push(throttledFetch('roblox-games-' + key, () => fetchRobloxGameStats([p])));
-                    tasks.push(throttledFetch('roblox-votes-' + key, () => fetchRobloxVotes(p)));
+                    tasks.push(refreshRobloxStats());
                 }
                 if (p.steamWorkshopId) {
                     tasks.push(throttledFetch('steam-' + key, () => fetchSteamWorkshopStats([p])));

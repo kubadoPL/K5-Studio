@@ -1877,18 +1877,58 @@ footer p {
    ═══════════════════════════════ */
 @media only screen and (min-width: 1001px) {
 
+    /* Each slide is its own card, so the neighbours can peek out beside the active one */
     .slideshow-container {
         position: relative;
         width: 80%;
         height: 500px;
         margin: auto;
-        overflow: hidden;
-        object-fit: scale-down;
+        overflow: visible;
         user-select: none;
-        border-radius: var(--radius-lg);
+    }
+
+    #portfolio,
+    #commissioned {
+        overflow-x: clip;
+    }
+
+    .slide {
+        box-sizing: border-box;
+        overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-lg);
+    }
+
+    .slide.slide-active {
         box-shadow: var(--shadow-lg);
         animation: border-glow 4s infinite alternate;
+    }
+
+    .slide.slide-prev,
+    .slide.slide-next {
+        opacity: 0.4;
+        filter: brightness(0.6) saturate(0.8);
+        pointer-events: auto;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .slide.slide-prev {
+        transform: translateX(-66%) scale(0.82);
+    }
+
+    .slide.slide-next {
+        transform: translateX(66%) scale(0.82);
+    }
+
+    .slide.slide-prev:hover,
+    .slide.slide-next:hover {
+        opacity: 0.6;
+    }
+
+    .slide.slide-prev .description,
+    .slide.slide-next .description {
+        visibility: hidden;
     }
 
     .thumbnail {
