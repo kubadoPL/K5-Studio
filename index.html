@@ -387,12 +387,14 @@
             const thumb = document.createElement('img');
             thumb.className = 'thumbnail';
             thumb.src = p.thumbnail;
+            thumb.dataset.imageFor = p.key;
             thumb.alt = p.title;
             slide.appendChild(thumb);
 
             const icon = document.createElement('img');
             icon.className = 'game-icon';
             icon.src = p.icon;
+            icon.dataset.imageFor = p.key;
             icon.alt = 'Game Icon';
             slide.appendChild(icon);
 
@@ -753,6 +755,37 @@
         // ─── Slideshow ───
         var fetchStatsForProject = function () { }; // stub, replaced by init()
 
+        // Projects with "autoImages" show the game's current Roblox art. Links to it expire, so the
+        // links in projects.json are only a fallback for when this lookup fails.
+        async function refreshRobloxImages(projects) {
+            const robloxProjects = projects.filter(p => p.autoImages && p.universeId);
+            if (robloxProjects.length === 0) return;
+
+            const ids = robloxProjects.map(p => p.universeId).join(',');
+            const keyFor = Object.fromEntries(robloxProjects.map(p => [String(p.universeId), p.key]));
+            const setImage = (key, className, url) => {
+                const img = document.querySelector('img.' + className + '[data-image-for="' + key + '"]');
+                if (img && url && img.src !== url) img.src = url;
+            };
+
+            try {
+                const res = await fetch('https://thumbnails.roproxy.com/v1/games/icons?universeIds=' + ids + '&size=512x512&format=Webp&isCircular=false');
+                const data = await res.json();
+                (data.data || []).forEach(item => {
+                    if (item.state === 'Completed') setImage(keyFor[String(item.targetId)], 'game-icon', item.imageUrl);
+                });
+            } catch (e) { /* keep the fallback icons */ }
+
+            try {
+                const res = await fetch('https://thumbnails.roproxy.com/v1/games/multiget/thumbnails?universeIds=' + ids + '&countPerUniverse=1&size=768x432&format=Webp');
+                const data = await res.json();
+                (data.data || []).forEach(item => {
+                    const first = (item.thumbnails || [])[0];
+                    if (first && first.state === 'Completed') setImage(keyFor[String(item.universeId)], 'thumbnail', first.imageUrl);
+                });
+            } catch (e) { /* keep the fallback thumbnails */ }
+        }
+
         // Builds one independent slideshow inside a section. Returns a function
         // that shows the current slide, or null if there is nothing to show.
         function createSlideshow(section, sectionProjects) {
@@ -833,6 +866,7 @@
                 createSlideshow(document.getElementById('commissioned'), projects.filter(p => p.visibility === 'commissioned'))
             ];
             applyLanguage();
+            refreshRobloxImages(projects);
 
             // ─── Continuous Stats Fetching System ───
             // Stats are fetched per-project with a 2s cooldown between each fetch.

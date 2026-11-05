@@ -181,9 +181,13 @@
         "key": "helios-cinema",
         "title": "Helios Cinema Tycoon",
         "thumbnail": "https://tr.rbxcdn.com/180DAY-8b54124712747aa3b0c2028349ee2e42/768/432/Image/Webp/noFilter",
-        "icon": "https://tr.rbxcdn.com/180DAY-95bba565dffacfe3ace0057317ca8915/600/600/Image/Webp/noFilter",
-        "description": "Build the best cinema on Roblox in Helios Cinema Tycoon! Earn money serving NPCs, sell popcorn, drinks and merch, play movies in your theaters, and grow your cinema with upgrades, staff and rebirths.",
-        "description_pl": "Zbuduj najlepsze kino na Roblox w Helios Cinema Tycoon! Zarabiaj, obsługując NPC, sprzedawaj popcorn, napoje i gadżety, puszczaj filmy w swoich salach i rozwijaj kino dzięki ulepszeniom, personelowi i rebirthom.",
+        "icon": "https://tr.rbxcdn.com/180DAY-95bba565dffacfe3ace0057317ca8915/512/512/Image/Webp/noFilter",
+        "autoImages": true,
+        "description": "I helped develop this game, created for the Helios cinema chain. Build the best cinema on Roblox in Helios Cinema Tycoon! Earn money serving NPCs, sell popcorn, drinks and merch, play movies in your theaters, and grow your cinema with upgrades, staff and rebirths.",
+        "description_pl": "Pomagałem przy tworzeniu tej gry, stworzonej dla sieci kin Helios. Zbuduj najlepsze kino na Roblox w Helios Cinema Tycoon! Zarabiaj, obsługując NPC, sprzedawaj popcorn, napoje i gadżety, puszczaj filmy w swoich salach i rozwijaj kino dzięki ulepszeniom, personelowi i rebirthom.",
+        "mentions": [
+            { "name": "Helios cinema chain", "name_pl": "sieci kin Helios", "url": "https://helios.pl/filmy/witajcie-w-hope-4600" }
+        ],
         "madeFor": { "name": "Game Changer", "url": "https://www.game-changer.pl/" },
         "placeId": "140422012851942",
         "universeId": "8996733657",
