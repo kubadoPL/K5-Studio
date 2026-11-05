@@ -107,7 +107,22 @@
         </div>
         <br>
         <!-- Navigation dots generated dynamically -->
-        <div id="dots-container" style="text-align:center"></div>
+        <div class="dots-container" style="text-align:center"></div>
+    </section>
+
+    <section id="commissioned" class="portfolio">
+        <h2 class="section-title reveal">My Best Commissioned Work</h2>
+        <div class="slideshow-container reveal">
+            <!-- Points to navigate to previous and next slides -->
+            <div class="nav-points">
+                <div class="prev-point">&#9664;</div>
+                <div class="next-point">&#9654;</div>
+            </div>
+            <!-- Slides generated dynamically from projects.json (projects with "fairgames": true) -->
+        </div>
+        <br>
+        <!-- Navigation dots generated dynamically -->
+        <div class="dots-container" style="text-align:center"></div>
     </section>
 
 
@@ -589,55 +604,68 @@
         }
 
         // ─── Slideshow ───
-        var slideIndex = 1;
-        var slideshowTimeout;
-        var loadedProjects = []; // filled by init(), used by showSlides for stats fetch
         var fetchStatsForProject = function () { }; // stub, replaced by init()
 
-        function showSlides(n) {
-            var slides = document.getElementsByClassName("slide");
-            var dots = document.getElementsByClassName("dot");
-            if (slides.length === 0) return;
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-
-            for (var i = 0; i < slides.length; i++) {
-                if (slides[i].classList.contains("slide-active")) {
-                    slides[i].classList.remove("slide-active");
-                    slides[i].classList.add("slide-exit");
-                }
+        // Builds one independent slideshow inside a section. Returns a function
+        // that shows the current slide, or null if there is nothing to show.
+        function createSlideshow(section, sectionProjects) {
+            if (sectionProjects.length === 0) {
+                section.style.display = 'none';
+                return null;
             }
 
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
+            const container = section.querySelector('.slideshow-container');
+            const dotsContainer = section.querySelector('.dots-container');
+            const slides = [];
+            const dots = [];
+            let slideIndex = 1;
 
-            slides[slideIndex - 1].classList.remove("slide-exit");
-            slides[slideIndex - 1].classList.add("slide-active");
-            dots[slideIndex - 1].className += " active";
+            function showSlides(n) {
+                slideIndex = n;
+                if (slideIndex > slides.length) slideIndex = 1;
+                if (slideIndex < 1) slideIndex = slides.length;
 
-            setTimeout(() => {
-                for (var j = 0; j < slides.length; j++) {
-                    if (!slides[j].classList.contains("slide-active")) {
-                        slides[j].classList.remove("slide-exit");
+                slides.forEach(slide => {
+                    if (slide.classList.contains('slide-active')) {
+                        slide.classList.remove('slide-active');
+                        slide.classList.add('slide-exit');
                     }
-                }
-            }, 900);
+                });
+                dots.forEach(dot => dot.classList.remove('active'));
 
-            clearTimeout(slideshowTimeout);
+                slides[slideIndex - 1].classList.remove('slide-exit');
+                slides[slideIndex - 1].classList.add('slide-active');
+                dots[slideIndex - 1].classList.add('active');
 
-            // Fetch stats for the currently visible project
-            if (loadedProjects.length > 0) {
-                fetchStatsForProject(loadedProjects[slideIndex - 1]);
+                setTimeout(() => {
+                    slides.forEach(slide => {
+                        if (!slide.classList.contains('slide-active')) {
+                            slide.classList.remove('slide-exit');
+                        }
+                    });
+                }, 900);
+
+                // Fetch stats for the currently visible project
+                fetchStatsForProject(sectionProjects[slideIndex - 1]);
             }
-        }
 
-        function navigateSlide(n) {
-            showSlides(slideIndex += n);
-        }
+            sectionProjects.forEach((p, i) => {
+                const slide = buildSlide(p);
+                container.appendChild(slide);
+                slides.push(slide);
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.addEventListener('click', () => showSlides(i + 1));
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            });
+
+            // Nav arrows
+            section.querySelector('.prev-point').addEventListener('click', () => showSlides(slideIndex - 1));
+            section.querySelector('.next-point').addEventListener('click', () => showSlides(slideIndex + 1));
+
+            return () => showSlides(slideIndex);
         }
 
         // ─── Load projects from JSON & init everything ───
@@ -652,20 +680,11 @@
                 return;
             }
 
-            const container = document.querySelector('.slideshow-container');
-            const dotsContainer = document.getElementById('dots-container');
-
-            projects.forEach((p, i) => {
-                container.appendChild(buildSlide(p));
-                const dot = document.createElement('span');
-                dot.className = 'dot';
-                dot.addEventListener('click', () => currentSlide(i + 1));
-                dotsContainer.appendChild(dot);
-            });
-
-            // Nav arrows
-            document.querySelector(".prev-point").addEventListener("click", () => navigateSlide(-1));
-            document.querySelector(".next-point").addEventListener("click", () => navigateSlide(1));
+            // Fair Entertainment projects get their own "commissioned" slideshow
+            const slideshows = [
+                createSlideshow(document.getElementById('portfolio'), projects.filter(p => !p.fairgames)),
+                createSlideshow(document.getElementById('commissioned'), projects.filter(p => p.fairgames))
+            ];
 
             // ─── Continuous Stats Fetching System ───
             // Stats are fetched per-project with a 2s cooldown between each fetch.
@@ -1036,11 +1055,8 @@
                 }
             }
 
-            // Make projects available to showSlides
-            loadedProjects = projects;
-
-            // Init slideshow (triggers fetch for first visible slide)
-            showSlides(slideIndex);
+            // Init slideshows (triggers fetch for first visible slides)
+            slideshows.forEach(show => { if (show) show(); });
 
             // Initial fetch for ALL projects on page load
             projects.forEach(p => fetchStatsForProject(p));
