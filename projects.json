@@ -124,8 +124,8 @@
         "title": "Mini War",
         "thumbnail": "images/thumbails/miniwar.png",
         "icon": "images/Mini-War-Wiki-Roblox-Logo.webp",
-        "description": "I had the opportunity to help develop many game updates! Contributing {contributedSince}. Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
-        "description_pl": "Miałem okazję pomagać przy wielu aktualizacjach gry! Współtworzę {contributedSince}. Zbuduj swój kraj, rozwijaj gospodarkę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
+        "description": "Main Developer of the game, since: {contributedSince}. Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
+        "description_pl": "Jestem głównym deweloperem tej gry, twrozę w niej: {contributedSince}. Zbuduj swój kraj, rozwijaj gospodaókę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
         "contributedSince": "2026-05-30",
         "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
         "fairgames": true,
@@ -342,8 +342,8 @@
         "thumbnail": "https://tr.rbxcdn.com/180DAY-ea39368ecbda4e7608941ba85b369ec3/768/432/Image/Webp/noFilter",
         "icon": "https://tr.rbxcdn.com/180DAY-4e508f51f15315641b7c442360fb406d/512/512/Image/Webp/noFilter",
         "autoImages": true,
-        "description": "For Game Changer, I worked on updates and events in this educational game made for ING Bank Śląski, including the Rap Battle with Edzio and Fusialka on February 8, 2025, Qry's concert on November 8, 2025, the Waksy crew's concert on March 21, 2026 and the Ercio, PatiX and SmileSlow concert in October 2026.",
-        "description_pl": "Dla Game Changer pracowałem przy aktualizacjach i wydarzeniach w tej edukacyjnej grze stworzonej dla ING Banku Śląskiego, m.in. przy Bitwie na rymy z Edziem i Fusialką z 8 lutego 2025, koncercie Qry z 8 listopada 2025, koncercie ekipy Waksy z 21 marca 2026 i koncercie Ercia, PatiX i SmileSlowa z października 2026.",
+        "description": "For Game Changer, I worked on updates and events in this educational game made for ING Bank Śląski, including the Rap Battle with Edzio and Fusialka on February 8, 2025, Qry's concert on November 8, 2025, the Waksy crew's concert on March 21, 2026 and the Ercio, PatiX and SmileSlow concert on October 3, 2026.",
+        "description_pl": "Dla Game Changer pracowałem przy aktualizacjach i wydarzeniach w tej edukacyjnej grze stworzonej dla ING Banku Śląskiego, m.in. przy Bitwie na rymy z Edziem i Fusialką z 8 lutego 2025, koncercie Qry z 8 listopada 2025, koncercie ekipy Waksy z 21 marca 2026 i koncercie Ercia, PatiX i SmileSlowa z 3 października 2026.",
         "mentions": [
             {
                 "name": "Game Changer",
@@ -368,6 +368,11 @@
                 "name": "March 21, 2026",
                 "name_pl": "21 marca 2026",
                 "url": "https://media.ing.pl/informacje-prasowe/926/pr/866784/ruszyl-5-sezon-gry-edukacyjnej-miasto-ing-w-roblox"
+            },
+            {
+                "name": "October 3, 2026",
+                "name_pl": "3 października 2026",
+                "url": "https://www.ing.pl/lp/nastolatki/miasto-ing-event"
             }
         ],
         "artists": [
