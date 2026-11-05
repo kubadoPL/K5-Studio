@@ -80,13 +80,17 @@
                         the realm of 3D
                         art, I use Blender 3D, and for 2D work Adobe Photoshop. I acquired these skills purely out of
                         passion and now aim to share my work with the world! I'm currently working for
-                        <strong><a href="https://www.game-changer.pl/" target="_blank" rel="noopener">Game
+                        <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener"><img class="company-logo"
+                                    src="images/icons/fairentertainment.jpg" alt="">Fair
+                                Entertainment</a></strong>
+                        <span class="work-period" data-start="2025-11">(Nov 2025 – Present · 1 yr 1 mo)</span>,
+                        where I continue to grow and apply my skills in new projects. Previously, I worked for
+                        <strong><a href="https://www.game-changer.pl/" target="_blank" rel="noopener"><img
+                                    class="company-logo" src="images/icons/gamechanger.jpg" alt="">Game
                                 Changer</a></strong>
-                        and
-                        <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener">Fair
-                                Entertainment</a>
-                        </strong>, where I continue to grow and apply my skills in new
-                        projects. I invite you to explore my portfolio and I hope to work for you soon!
+                        <span class="work-period" data-start="2024-10" data-end="2026-10">(Oct 2024 – Oct 2026 · 2 yrs 1
+                            mo)</span>.
+                        I invite you to explore my portfolio and I hope to work for you soon!
                     </p>
 
                     <a href="#"></a>
@@ -191,11 +195,11 @@
                     <img src="images/icons/mail.png" alt="Email Icon">
                     <span>DruzbinskiJakub@gmail.com</span>
                 </a>
-                <a href="mailto:j.druzbinski@game-changer.pl" target="_blank"
+                <!-- <a href="mailto:j.druzbinski@game-changer.pl" target="_blank"
                     class="contact-card reveal reveal-zoom delay-200">
                     <img src="images/icons/mail.png" alt="Email Icon">
                     <span>J.Druzbinski@game-changer.pl</span>
-                </a>
+                </a> -->
                 <a href="https://fiverr.com/kubado515" target="_blank"
                     class="contact-card reveal reveal-zoom delay-300">
                     <img src="images/icons/fiverr.png" alt="Fiverr Icon">
@@ -1062,6 +1066,33 @@
             projects.forEach(p => fetchStatsForProject(p));
 
         })().catch(() => { });
+
+        // ─── Work Periods (LinkedIn style: both the first and last month count) ───
+        (function renderWorkPeriods() {
+            const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const parse = value => {
+                const [year, month] = value.split('-').map(Number);
+                return { year, month };
+            };
+            const label = d => MONTHS[d.month - 1] + ' ' + d.year;
+            const unit = (n, name) => n + ' ' + name + (n === 1 ? '' : 's');
+
+            const now = new Date();
+            const today = { year: now.getFullYear(), month: now.getMonth() + 1 };
+
+            document.querySelectorAll('.work-period').forEach(el => {
+                const start = parse(el.dataset.start);
+                const end = el.dataset.end ? parse(el.dataset.end) : today;
+                const total = (end.year - start.year) * 12 + (end.month - start.month) + 1;
+                const years = Math.floor(total / 12);
+                const months = total % 12;
+                const parts = [];
+                if (years > 0) parts.push(unit(years, 'yr'));
+                if (months > 0) parts.push(unit(months, 'mo'));
+                const endLabel = el.dataset.end ? label(end) : 'Present';
+                el.textContent = '(' + label(start) + ' – ' + endLabel + ' · ' + parts.join(' ') + ')';
+            });
+        })();
 
         // ─── Typing Effect ───
         const phrases = [

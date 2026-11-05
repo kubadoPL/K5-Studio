@@ -443,6 +443,21 @@ header nav ul li a:hover {
     background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
 }
 
+/* Work history logos and dates in the About section */
+.company-logo {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.3em;
+    border-radius: 4px;
+    object-fit: cover;
+    vertical-align: -0.25em;
+}
+
+.work-period {
+    font-size: 0.9em;
+    opacity: 0.75;
+}
+
 /* Section Titles */
 .section-title {
     text-align: center;
