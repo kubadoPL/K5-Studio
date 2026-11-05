@@ -62,6 +62,24 @@
         "showFormbotStats": true
     },
     {
+        "key": "polski-index",
+        "title": "Polski Index",
+        "thumbnail": "images/thumbails/polskiindex.webp",
+        "icon": "images/polskiindexicon.webp",
+        "description": "Polski Index is a Roblox game made for the Roblox x PGA Challenge, where it took second place. Explore a typical Polish town and find iconic Polish places, memes and people: record Paweł Jumper's legendary stunt, visit the famous Wawel Dragon monument and prove you're hardcore by climbing a fiber-optic cable!",
+        "description_pl": "Polski Index to gra na Roblox stworzona na konkurs Roblox x PGA, w którym zajęła drugie miejsce. Zanurz się w świat typowego polskiego miasta i odnajdź ikoniczne polskie miejsca, memy i osoby: nagraj legendarny wyczyn Pawła Jumpera, odwiedź słynny pomnik Smoka Wawelskiego i udowodnij, że jesteś hardkorem, wspinając się na kablu od światłowodu!",
+        "mentions": [
+            { "name": "Roblox x PGA Challenge", "name_pl": "konkurs Roblox x PGA", "url": "https://gamearena.pl/pl/dla-zwiedzajacych/co-gdzie-kiedy/konkurs-pga-x-roblox/" }
+        ],
+        "universeId": "8717572628",
+        "placeId": "86926608779000",
+        "buttons": [
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/86926608779000/Polski-Index" }
+        ],
+        "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "public"
+    },
+    {
         "key": "gaming-simulator",
         "title": "Gaming Simulator",
         "thumbnail": "images/thumbails/gamingsimnew.png",
@@ -93,9 +111,9 @@
         "title": "Mini War",
         "thumbnail": "images/thumbails/miniwar.png",
         "icon": "images/Mini-War-Wiki-Roblox-Logo.webp",
-        "description": "I had the opportunity to help develop many game updates! Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
-        "description_pl": "Miałem okazję pomagać przy wielu aktualizacjach gry! Zbuduj swój kraj, rozwijaj gospodarkę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
-        "contributingSince": "2026-05-30",
+        "description": "I had the opportunity to help develop many game updates! Contributing {contributedSince}. Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
+        "description_pl": "Miałem okazję pomagać przy wielu aktualizacjach gry! Współtworzę {contributedSince}. Zbuduj swój kraj, rozwijaj gospodarkę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
+        "contributedSince": "2026-05-30",
         "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
         "fairgames": true,
         "placeId": "131346454575416",

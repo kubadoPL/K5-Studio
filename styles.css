@@ -522,6 +522,20 @@ header nav ul li a:hover {
     scroll-snap-align: start;
 }
 
+/* Compact buttons so a post's links stay on one line; narrow screens wrap them */
+.post-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.post-links .game-button {
+    margin: 0;
+    padding: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
 .achievement-post:hover {
     border-color: rgba(139, 92, 246, 0.3);
     box-shadow: var(--shadow-lg), var(--shadow-glow);
@@ -729,6 +743,65 @@ header nav ul li a:hover {
 
 .lightbox .gallery-arrow {
     z-index: 1;
+}
+
+/* Menu button: only on screens too narrow for the full navigation */
+.nav-toggle {
+    display: none;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    margin-left: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    header {
+        position: fixed;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 8px 16px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--bg-secondary);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    header.nav-open nav {
+        display: block;
+    }
+
+    header.nav-open {
+        background: var(--bg-secondary);
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 2px;
+        text-align: left;
+    }
+
+    header.nav-open nav ul li a {
+        display: block;
+        padding: 12px;
+        font-size: 16px;
+    }
 }
 
 /* Section Titles */
@@ -1528,31 +1601,11 @@ footer p {
         padding: 8px 16px;
     }
 
-    /* Links that don't fit next to the logo scroll sideways instead of being cut off */
-    header .logo {
-        margin-right: 12px;
-    }
-
     header nav {
-        min-width: 0;
-        margin-left: 0;
         margin-right: 0;
-        justify-content: flex-start;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    header nav::-webkit-scrollbar {
-        display: none;
-    }
-
-    header nav ul {
-        margin-left: auto;
     }
 
     header nav ul li a {
-        display: block;
         font-size: 12px;
         padding: 6px 10px;
     }
