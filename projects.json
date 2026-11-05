@@ -148,12 +148,24 @@
         "thumbnail": "https://tr.rbxcdn.com/180DAY-642868bc4ae246393a504b47065fca8b/768/432/Image/Webp/noFilter",
         "icon": "https://tr.rbxcdn.com/180DAY-8e060bcadfd8e23a77acf20b95f40475/512/512/Image/Webp/noFilter",
         "autoImages": true,
-        "description": "Virtual Vibes is a virtual music festival on Roblox. For Game Changer, I worked on the concerts held on June 13, 2025, January 29, 2026 and September 23, 2026, with partners such as Pepsi, Bank Millennium, Doritos, BLIK and Helios.",
-        "description_pl": "Virtual Vibes to wirtualny festiwal muzyczny na Roblox. Dla Game Changer pracowałem przy koncertach z 13 czerwca 2025, 29 stycznia 2026 i 23 września 2026, z partnerami takimi jak Pepsi, Bank Millennium, Doritos, BLIK i Helios.",
+        "description": "Virtual Vibes is a virtual music festival on Roblox. For Game Changer, I worked on the concerts held on June 13, 2025, January 29, 2026 and September 23, 2026, with partners such as Bank Millennium, Pepsi, Doritos, BLIK, Helios, Eventim, Radio ESKA, Wirtualna Polska, Vibez and eBilet.",
+        "description_pl": "Virtual Vibes to wirtualny festiwal muzyczny na Roblox. Dla Game Changer pracowałem przy koncertach z 13 czerwca 2025, 29 stycznia 2026 i 23 września 2026, z partnerami takimi jak Bank Millennium, Pepsi, Doritos, BLIK, Helios, Eventim, Radio ESKA, Wirtualna Polska, Vibez i eBilet.",
         "mentions": [
-            {"name":"June 13, 2025","name_pl":"13 czerwca 2025","url":"https://lnkd.in/p/dFNgbkYm"},
-            {"name":"January 29, 2026","name_pl":"29 stycznia 2026","url":"https://lnkd.in/p/d_aiWvHU"},
-            {"name":"September 23, 2026","name_pl":"23 września 2026","url":"https://lnkd.in/p/dsynF98Q"},
+            {
+                "name": "June 13, 2025",
+                "name_pl": "13 czerwca 2025",
+                "url": "https://lnkd.in/p/dFNgbkYm"
+            },
+            {
+                "name": "January 29, 2026",
+                "name_pl": "29 stycznia 2026",
+                "url": "https://lnkd.in/p/d_aiWvHU"
+            },
+            {
+                "name": "September 23, 2026",
+                "name_pl": "23 września 2026",
+                "url": "https://lnkd.in/p/dsynF98Q"
+            },
             {
                 "name": "Game Changer",
                 "url": "https://www.game-changer.pl/"
@@ -177,6 +189,26 @@
             {
                 "name": "Helios",
                 "url": "https://helios.pl/"
+            },
+            {
+                "name": "Eventim",
+                "url": "https://www.eventim.pl/"
+            },
+            {
+                "name": "Radio ESKA",
+                "url": "https://www.eska.pl/"
+            },
+            {
+                "name": "Wirtualna Polska",
+                "url": "https://www.wp.pl/"
+            },
+            {
+                "name": "Vibez",
+                "url": "https://vibez.pl/"
+            },
+            {
+                "name": "eBilet",
+                "url": "https://www.ebilet.pl/"
             }
         ],
         "placeId": "17067024883",
@@ -204,6 +236,7 @@
             "🌙 Lua"
         ],
         "visibility": "commissioned",
+        "popular": true,
         "hideProject": false
     },
     {
@@ -293,6 +326,93 @@
             {
                 "label": "Play Now on Roblox",
                 "url": "https://www.roblox.com/games/78403106549851/Foodziki-Evolution"
+            }
+        ],
+        "tags": [
+            "🎮 Roblox",
+            "🌙 Lua"
+        ],
+        "visibility": "commissioned",
+        "popular": true,
+        "hideProject": false
+    },
+    {
+        "key": "miasto-ing",
+        "title": "Miasto ING",
+        "thumbnail": "https://tr.rbxcdn.com/180DAY-ea39368ecbda4e7608941ba85b369ec3/768/432/Image/Webp/noFilter",
+        "icon": "https://tr.rbxcdn.com/180DAY-4e508f51f15315641b7c442360fb406d/512/512/Image/Webp/noFilter",
+        "autoImages": true,
+        "description": "For Game Changer, I worked on updates and events in this educational game made for ING Bank Śląski, including the Rap Battle with Edzio and Fusialka on February 8, 2025, Qry's concert on November 8, 2025, the Waksy crew's concert on March 21, 2026 and the Ercio, PatiX and SmileSlow concert in October 2026.",
+        "description_pl": "Dla Game Changer pracowałem przy aktualizacjach i wydarzeniach w tej edukacyjnej grze stworzonej dla ING Banku Śląskiego, m.in. przy Bitwie na rymy z Edziem i Fusialką z 8 lutego 2025, koncercie Qry z 8 listopada 2025, koncercie ekipy Waksy z 21 marca 2026 i koncercie Ercia, PatiX i SmileSlowa z października 2026.",
+        "mentions": [
+            {
+                "name": "Game Changer",
+                "url": "https://www.game-changer.pl/"
+            },
+            {
+                "name": "ING Bank Śląski",
+                "name_pl": "ING Banku Śląskiego",
+                "url": "https://www.ing.pl/"
+            },
+            {
+                "name": "February 8, 2025",
+                "name_pl": "8 lutego 2025",
+                "url": "https://mixx-awards.pl/casebook-2025/games-esport/07-01-srebro-bitwa-na-rymy-w-miescie-ing-w-roblox/"
+            },
+            {
+                "name": "November 8, 2025",
+                "name_pl": "8 listopada 2025",
+                "url": "https://media.ing.pl/informacje-prasowe/926/pr/861051/ponad-12-tysiecy-fanow-na-koncercie-polskiego-wykonawcy-qry-w-roblox-w-grze-miasto-ing"
+            },
+            {
+                "name": "March 21, 2026",
+                "name_pl": "21 marca 2026",
+                "url": "https://media.ing.pl/informacje-prasowe/926/pr/866784/ruszyl-5-sezon-gry-edukacyjnej-miasto-ing-w-roblox"
+            }
+        ],
+        "artists": [
+            {
+                "name": "Edzio",
+                "url": "https://music.youtube.com/channel/UCPn3jwhvpaC7jD4b0DTetQQ",
+                "image": "https://yt3.googleusercontent.com/mXFrFXsaB-bs54BxX-Wq3c1qQE5KcpKucCgOXTwlDOif4Fat6Jle5_es9PZ1E-Uaq98oRV10sTF0tN9y=w160-h160-l90-rj"
+            },
+            {
+                "name": "Fusialka",
+                "url": "https://music.youtube.com/channel/UChKh5L05CsIPNFypmv8x7-g",
+                "image": "https://yt3.googleusercontent.com/G4oXOyNURgRBoAwDtv4M4_M2vvxwz5DWMX-ja09Ts3HUzP-xrkAVNzMSxa1LjODIBwD6N14wnp3-tU64=w160-h160-l90-rj"
+            },
+            {
+                "name": "Qry",
+                "url": "https://music.youtube.com/channel/UCzFEpbakGMaCfkyaETU5gDQ",
+                "image": "https://yt3.googleusercontent.com/vwCJx8Mmv3905BSpcphwUWzcGFgxkPqleRl7w4kLnZz3y2fyPBk1zTz3WpHSTCCKR5hOrZ_85g=w160-h160-l90-rj"
+            },
+            {
+                "name": "Waksy",
+                "url": "https://music.youtube.com/channel/UCZ_ygwIpvGWq7cVU8MKjleQ",
+                "image": "https://yt3.ggpht.com/TvOvJnPTABZFAv0G8zPLYRm6hbCnGcSrt218IPr6C1MGbyzNl2AMdIf_xOCyj1tWAXVd2Xo8=s160-c-k-c0x00ffffff-no-rj-mo"
+            },
+            {
+                "name": "Ercio",
+                "url": "https://music.youtube.com/channel/UCoyD_7kfTagA1mhP7f-99gA",
+                "image": "https://yt3.ggpht.com/RG09fEUuQZnXwwOLEi1VHV8o7vzfG2dK4nhQ6Sk3ptmEObYS3ksWrqz1bLiL_AYUs1dmVor7=s160-c-k-c0x00ffffff-no-rj-mo"
+            },
+            {
+                "name": "PatiX",
+                "url": "https://www.youtube.com/@PaatiX",
+                "image": "https://yt3.ggpht.com/WJkeRPTQ4XHkxgu1tqS_WEIfYgTedr-GYueS1VReQEC6N2e-hGW3F5TQ4S1r6GbTArPzewLt=s160-c-k-c0x00ffffff-no-rj-mo"
+            },
+            {
+                "name": "SmileSlow",
+                "url": "https://music.youtube.com/channel/UCvXUWDqEUtu8IIC3BnAe1Tg",
+                "image": "https://yt3.googleusercontent.com/Am_E-eeOLJvOJZl4Ewvgum31juv2B9zAei9LQ_fC_LjU8XlbAB-arqaAWQyE-96eejHdo7xfbl4CCeB9=w160-h160-l90-rj"
+            }
+        ],
+        "placeId": "8458974184",
+        "universeId": "3233351170",
+        "buttons": [
+            {
+                "label": "Play Now on Roblox",
+                "url": "https://www.roblox.com/games/8458974184/Wejd-do-Miasta-ING-w-Roblox"
             }
         ],
         "tags": [

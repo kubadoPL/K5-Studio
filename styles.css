@@ -1939,7 +1939,7 @@ footer p {
     .prev-point,
     .next-point {
         position: absolute;
-        top: 40%;
+        top: 28%;
         transform: translateY(-50%);
         width: 42px;
         height: 42px;
