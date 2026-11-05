@@ -1,0 +1,42 @@
+[
+    {
+        "key": "ria-2026",
+        "badge": "🏆 RIA 2026 Winner",
+        "date": "September 2026",
+        "title": "Roblox Innovation Awards",
+        "text": "Mini War, a Roblox game I contributed to as a developer for Fair Entertainment, won Best Strategy Experience at the 2026 Roblox Innovation Awards, presented at RDC 2026.",
+        "mentions": [
+            { "name": "Fair Entertainment", "url": "https://fairgames.gg/" }
+        ],
+        "imageCredit": { "label": "Images: Fair Entertainment on LinkedIn", "url": "https://www.linkedin.com/company/fairentertaiment/posts/" },
+        "images": [
+            { "src": "images/icons/Miniwar winner.jpg", "alt": "Winner graphic: Mini War, Best Strategy Experience" },
+            { "src": "images/photos/ria/miniwarnomination.jpg", "alt": "Nomination graphic: Mini War nominated for Best Strategy Experience at the Roblox Innovation Awards 2026" }
+        ],
+        "links": [
+            { "label": "Roblox's Post", "url": "https://x.com/Roblox/status/2098971887795916993", "icon": "x.svg" },
+            { "label": "FairGames' Post", "url": "https://lnkd.in/p/dt6pETaQ", "icon": "linkedin.png" },
+            { "label": "Award Moment", "url": "https://youtu.be/HXZRH-2zurk?t=4000", "icon": "youtube.svg" }
+        ]
+    },
+    {
+        "key": "pga-2025",
+        "badge": "🥈 2nd Place · 2025",
+        "date": "October 2025",
+        "title": "Roblox x PGA Challenge",
+        "text": "Took second place and received a certificate of recognition from Roblox in the challenge held with Poznań Game Arena 2025, where experiences were built from scratch around Polish culture, traditions, places and legends. At the event, Ruben Veiga presented me with the award, and after the ceremony I joined a focus group with him, where we talked about Roblox's future tech.",
+        "mentions": [
+            { "name": "Poznań Game Arena", "url": "https://gamearena.pl/" },
+            { "name": "Ruben Veiga", "url": "https://www.linkedin.com/in/ruben-veiga/" }
+        ],
+        "images": [
+            { "src": "images/icons/Pga Nagroda 2025.png", "alt": "Roblox certificate of recognition for second place in the Roblox x PGA Challenge" },
+            { "src": "images/photos/pga/IMG_4089.jpeg", "alt": "Roblox x PGA Challenge award winners with their certificates on stage at Poznań Game Arena", "position": "center 59%" }
+        ],
+        "links": [
+
+            { "label": "About the Challenge", "url": "https://gamearena.pl/pl/dla-zwiedzajacych/co-gdzie-kiedy/konkurs-pga-x-roblox/" },
+            { "label": "Watch PGA Recap", "url": "https://youtu.be/EWYQlGE4UL0", "icon": "youtube.svg" }
+        ]
+    }
+]

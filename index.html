@@ -100,60 +100,8 @@
 
     <section id="achievements" class="portfolio">
         <h2 class="section-title reveal">My Achievements</h2>
-        <div class="achievements-grid">
-            <article class="achievement-card reveal reveal-zoom delay-100">
-                <a class="achievement-media" href="images/icons/Miniwar winner.jpg" target="_blank" rel="noopener">
-                    <img src="images/icons/Miniwar winner.jpg" alt="Winner graphic: Mini War, Best Strategy Experience"
-                        loading="lazy">
-                </a>
-                <div class="achievement-body">
-                    <span class="achievement-badge">🏆 RIA 2026 Winner</span>
-                    <h3>Roblox Innovation Awards</h3>
-                    <p>Mini War, a Roblox game I contributed to as a developer for Fair Entertainment, won Best
-                        Strategy Experience at the 2026 Roblox Innovation Awards, presented at RDC 2026.</p>
-                    <div class="achievement-links">
-                        <a class="game-button" href="https://x.com/Roblox/status/2098971887795916993" target="_blank"
-                            rel="noopener"><img class="link-icon" src="images/icons/link.png" alt=""> See Roblox's
-                            Post</a>
-                        <a class="game-button" href="https://lnkd.in/p/dt6pETaQ" target="_blank" rel="noopener"><img
-                                class="link-icon" src="images/icons/link.png" alt=""> See FairGames'
-                            Post</a>
-                        <a class="game-button" href="https://www.roblox.com/games/131346454575416/Mini-War"
-                            target="_blank" rel="noopener"><img class="link-icon" src="images/icons/link.png" alt="">
-                            Play Mini War</a>
-                        <a class="game-button" href="https://youtu.be/HXZRH-2zurk?t=4000" target="_blank"
-                            rel="noopener"><img class="link-icon" src="images/icons/link.png" alt=""> Watch the Award
-                            Moment</a>
-                    </div>
-                </div>
-            </article>
-            <article class="achievement-card reveal reveal-zoom delay-200">
-                <a class="achievement-media" href="images/icons/Pga Nagroda 2025-1.png" target="_blank" rel="noopener">
-                    <img src="images/icons/Pga Nagroda 2025-1.png"
-                        alt="Roblox certificate of recognition for second place in the Roblox x PGA Challenge"
-                        loading="lazy">
-                </a>
-                <div class="achievement-body">
-                    <span class="achievement-badge">🥈 2nd Place · 2025</span>
-                    <h3>Roblox x PGA Challenge</h3>
-                    <p>Took second place and received a certificate of recognition from Roblox in the challenge held
-                        with Poznań Game Arena 2025, where experiences were built from scratch around Polish culture,
-                        traditions, places and legends.</p>
-                    <div class="achievement-links">
-                        <a class="game-button" href="images/icons/Pga Nagroda 2025-1.png" target="_blank"
-                            rel="noopener"><img class="link-icon" src="images/icons/link.png" alt=""> View
-                            Certificate</a>
-                        <a class="game-button"
-                            href="https://gamearena.pl/pl/dla-zwiedzajacych/co-gdzie-kiedy/konkurs-pga-x-roblox/"
-                            target="_blank" rel="noopener"><img class="link-icon" src="images/icons/link.png" alt="">
-                            About the Challenge</a>
-                        <a class="game-button" href="https://youtu.be/EWYQlGE4UL0" target="_blank" rel="noopener"><img
-                                class="link-icon" src="images/icons/link.png" alt=""> Watch PGA
-                            Recap</a>
-                    </div>
-                </div>
-            </article>
-        </div>
+        <!-- Posts generated dynamically from achievements.json -->
+        <div class="achievements-feed"></div>
     </section>
 
     <section id="portfolio" class="portfolio">
@@ -289,7 +237,7 @@
             </span>
         </div>
         <a href="#home">Go Back To The Top</a>
-        <p>K5 Studio © 2026</p>
+        <p>K5 Studio © <span id="current-year">2026</span></p>
     </footer>
 
 
@@ -1151,6 +1099,9 @@
             });
         })();
 
+        // ─── Footer year ───
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         // ─── Typing Effect ───
         const phrases = [
             "Game Developer",
@@ -1205,6 +1156,209 @@
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+
+        // ─── Achievements (posts from achievements.json) ───
+        const lightbox = (function createLightbox() {
+            const dialog = document.createElement('dialog');
+            dialog.className = 'lightbox';
+            dialog.innerHTML = `
+                <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+                <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous photo">&#9664;</button>
+                <button class="gallery-arrow gallery-next" type="button" aria-label="Next photo">&#9654;</button>
+                <img alt="">`;
+            document.body.appendChild(dialog);
+
+            const img = dialog.querySelector('img');
+            const prev = dialog.querySelector('.gallery-prev');
+            const next = dialog.querySelector('.gallery-next');
+            let images = [];
+            let index = 0;
+
+            function show(n) {
+                index = (n + images.length) % images.length;
+                img.src = images[index].src;
+                img.alt = images[index].alt;
+            }
+
+            prev.addEventListener('click', () => show(index - 1));
+            next.addEventListener('click', () => show(index + 1));
+            dialog.querySelector('.lightbox-close').addEventListener('click', () => dialog.close());
+            img.addEventListener('click', () => dialog.close());
+            dialog.addEventListener('keydown', e => {
+                if (images.length < 2) return;
+                if (e.key === 'ArrowLeft') show(index - 1);
+                if (e.key === 'ArrowRight') show(index + 1);
+            });
+
+            return {
+                open(newImages, n) {
+                    images = newImages;
+                    prev.hidden = next.hidden = images.length < 2;
+                    show(n);
+                    dialog.showModal();
+                }
+            };
+        })();
+
+        function buildGallery(images) {
+            const gallery = document.createElement('div');
+            gallery.className = 'post-gallery';
+
+            const stage = document.createElement('div');
+            stage.className = 'gallery-stage';
+            const open = document.createElement('button');
+            open.className = 'gallery-open';
+            open.type = 'button';
+            open.setAttribute('aria-label', 'Open full size');
+            const main = document.createElement('img');
+            main.loading = 'lazy';
+            open.appendChild(main);
+            stage.appendChild(open);
+            gallery.appendChild(stage);
+
+            let index = 0;
+            const thumbs = [];
+            let count = null;
+
+            function show(n) {
+                index = (n + images.length) % images.length;
+                main.src = images[index].src;
+                main.alt = images[index].alt;
+                main.style.objectPosition = images[index].position || '';
+                if (count) count.textContent = (index + 1) + ' / ' + images.length;
+                thumbs.forEach((thumb, i) => thumb.classList.toggle('is-current', i === index));
+            }
+
+            open.addEventListener('click', () => lightbox.open(images, index));
+
+            // Arrows, counter and thumbnails only appear for posts with several photos
+            if (images.length > 1) {
+                [['prev', '&#9664;', -1, 'Previous photo'], ['next', '&#9654;', 1, 'Next photo']].forEach(([name, symbol, step, label]) => {
+                    const arrow = document.createElement('button');
+                    arrow.className = 'gallery-arrow gallery-' + name;
+                    arrow.type = 'button';
+                    arrow.innerHTML = symbol;
+                    arrow.setAttribute('aria-label', label);
+                    arrow.addEventListener('click', () => show(index + step));
+                    stage.appendChild(arrow);
+                });
+
+                count = document.createElement('span');
+                count.className = 'gallery-count';
+                stage.appendChild(count);
+
+                const strip = document.createElement('div');
+                strip.className = 'gallery-thumbs';
+                images.forEach((image, i) => {
+                    const thumb = document.createElement('button');
+                    thumb.className = 'gallery-thumb';
+                    thumb.type = 'button';
+                    thumb.setAttribute('aria-label', 'Show photo ' + (i + 1));
+                    const thumbImg = document.createElement('img');
+                    thumbImg.src = image.src;
+                    thumbImg.alt = '';
+                    thumbImg.loading = 'lazy';
+                    thumb.appendChild(thumbImg);
+                    thumb.addEventListener('click', () => show(i));
+                    strip.appendChild(thumb);
+                    thumbs.push(thumb);
+                });
+                gallery.appendChild(strip);
+            }
+
+            show(0);
+            return gallery;
+        }
+
+        function buildAchievementPost(a) {
+            const post = document.createElement('article');
+            post.className = 'achievement-post reveal reveal-zoom';
+
+            const header = document.createElement('div');
+            header.className = 'post-header';
+            const badge = document.createElement('span');
+            badge.className = 'achievement-badge';
+            badge.textContent = a.badge;
+            const date = document.createElement('span');
+            date.className = 'post-date';
+            date.textContent = a.date;
+            header.append(badge, date);
+
+            const title = document.createElement('h3');
+            title.textContent = a.title;
+            const text = document.createElement('p');
+            // Optional mentions turn those names in the text into highlighted links
+            const buildMention = mention => {
+                const strong = document.createElement('strong');
+                const link = document.createElement('a');
+                link.href = mention.url;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.textContent = mention.name;
+                strong.appendChild(link);
+                return strong;
+            };
+            let textParts = [a.text];
+            (a.mentions || []).forEach(mention => {
+                textParts = textParts.flatMap(part => {
+                    if (typeof part !== 'string') return [part];
+                    return part.split(mention.name).flatMap((piece, i) => (i === 0 ? [piece] : [buildMention(mention), piece]));
+                });
+            });
+            text.append(...textParts);
+            post.append(header, title, text);
+
+            if (a.images && a.images.length > 0) {
+                const gallery = buildGallery(a.images);
+                if (a.imageCredit) {
+                    const credit = document.createElement('a');
+                    credit.className = 'post-credit';
+                    credit.href = a.imageCredit.url;
+                    credit.target = '_blank';
+                    credit.rel = 'noopener';
+                    credit.textContent = a.imageCredit.label;
+                    gallery.appendChild(credit);
+                }
+                post.appendChild(gallery);
+            }
+
+            const links = document.createElement('div');
+            links.className = 'post-links';
+            post.appendChild(links);
+
+            (a.links || []).forEach(link => {
+                const anchor = document.createElement('a');
+                anchor.className = 'game-button';
+                anchor.href = link.url;
+                anchor.target = '_blank';
+                anchor.rel = 'noopener';
+                const icon = document.createElement('img');
+                icon.className = link.icon ? 'link-icon brand-icon' : 'link-icon';
+                icon.src = 'images/icons/' + (link.icon || 'link.png');
+                icon.alt = '';
+                anchor.append(icon, ' ' + link.label);
+                links.appendChild(anchor);
+            });
+
+            return post;
+        }
+
+        (async function renderAchievements() {
+            const section = document.getElementById('achievements');
+            try {
+                const res = await fetch('achievements.json');
+                const achievements = await res.json();
+                const feed = section.querySelector('.achievements-feed');
+                achievements.forEach(a => {
+                    const post = buildAchievementPost(a);
+                    feed.appendChild(post);
+                    revealObserver.observe(post);
+                });
+            } catch (e) {
+                console.error('Failed to load achievements.json', e);
+                section.style.display = 'none';
+            }
+        })();
 
         // ─── Header scroll effect ───
         const header = document.querySelector('header');
