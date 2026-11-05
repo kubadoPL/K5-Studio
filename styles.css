@@ -552,12 +552,13 @@ header nav ul li a:hover {
 
 .achievement-badge {
     padding: 4px 12px;
-    border: 1px solid rgba(245, 158, 11, 0.35);
+    border: 1px solid rgba(253, 230, 138, 0.8);
     border-radius: 999px;
-    background: rgba(245, 158, 11, 0.1);
-    color: #fbbf24;
+    background: linear-gradient(135deg, #f59e0b, #fde68a);
+    color: #1a1205;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);
 }
 
 .post-date {
@@ -804,6 +805,86 @@ header nav ul li a:hover {
     }
 }
 
+/* Artist avatars on project cards */
+.artist-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-top: 10px;
+}
+
+.artist-label {
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.artist-stack {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+}
+
+.artist-avatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    margin-left: -10px;
+    padding: 2px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 0 2px var(--bg-primary);
+    color: #fff;
+    font-weight: 700;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.artist-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.artist-avatar:hover,
+.artist-avatar:focus-visible {
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 16px rgba(139, 92, 246, 0.8);
+    transform: translateY(-4px) scale(1.2);
+}
+
+/* Name bubble above the hovered avatar */
+.artist-avatar::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%);
+    transition: opacity var(--transition-fast);
+}
+
+.artist-avatar:hover::after,
+.artist-avatar:focus-visible::after {
+    opacity: 1;
+}
+
 /* Section Titles */
 .section-title {
     text-align: center;
@@ -967,6 +1048,14 @@ header nav ul li a:hover {
     background-color: rgba(16, 185, 129, 0.15) !important;
     color: var(--accent-green) !important;
     border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.awardico {
+    background: linear-gradient(135deg, #f59e0b, #fde68a) !important;
+    color: #1a1205 !important;
+    border-color: rgba(253, 230, 138, 0.8) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);
 }
 
 .popularico {

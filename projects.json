@@ -137,8 +137,74 @@
         "tags": ["🎮 Roblox", "🌙 Lua"],
         "visibility": "commissioned",
         "popular": true,
+        "award": "🏆 RDC RIA 2026 Winner Game",
+        "award_pl": "🏆 Gra - zwycięzca RDC RIA 2026",
         "hideProject": false,
         "autoImages": true
+    },
+    {
+        "key": "virtual-vibes",
+        "title": "Virtual Vibes Festival",
+        "thumbnail": "https://tr.rbxcdn.com/180DAY-642868bc4ae246393a504b47065fca8b/768/432/Image/Webp/noFilter",
+        "icon": "https://tr.rbxcdn.com/180DAY-8e060bcadfd8e23a77acf20b95f40475/512/512/Image/Webp/noFilter",
+        "autoImages": true,
+        "description": "Virtual Vibes is a virtual music festival on Roblox. For Game Changer, I worked on the concerts held on June 13, 2025, January 29, 2026 and September 23, 2026, with partners such as Pepsi, Bank Millennium, Doritos, BLIK and Helios.",
+        "description_pl": "Virtual Vibes to wirtualny festiwal muzyczny na Roblox. Dla Game Changer pracowałem przy koncertach z 13 czerwca 2025, 29 stycznia 2026 i 23 września 2026, z partnerami takimi jak Pepsi, Bank Millennium, Doritos, BLIK i Helios.",
+        "mentions": [
+            {"name":"June 13, 2025","name_pl":"13 czerwca 2025","url":"https://lnkd.in/p/dFNgbkYm"},
+            {"name":"January 29, 2026","name_pl":"29 stycznia 2026","url":"https://lnkd.in/p/d_aiWvHU"},
+            {"name":"September 23, 2026","name_pl":"23 września 2026","url":"https://lnkd.in/p/dsynF98Q"},
+            {
+                "name": "Game Changer",
+                "url": "https://www.game-changer.pl/"
+            },
+            {
+                "name": "Pepsi",
+                "url": "https://www.pepsi.pl/"
+            },
+            {
+                "name": "Bank Millennium",
+                "url": "https://www.bankmillennium.pl/"
+            },
+            {
+                "name": "Doritos",
+                "url": "https://www.doritospolska.pl/"
+            },
+            {
+                "name": "BLIK",
+                "url": "https://www.blik.com/"
+            },
+            {
+                "name": "Helios",
+                "url": "https://helios.pl/"
+            }
+        ],
+        "placeId": "17067024883",
+        "universeId": "5850410178",
+        "hideStats": true,
+    "artists": [
+        {"name":"bambi","url":"https://music.youtube.com/channel/UCnSfBIGJG4ixRpPyrPG-xRQ","image":"https://yt3.googleusercontent.com/40GKYzbBSc3X88oW6zCJfcqngLXQmDd1uTeavszlmYCPrELsaU-oanKmyHMPZG3mueBe8e2Df3WsEQM=w160-h160-l90-rj"},
+        {"name":"Chivas","url":"https://music.youtube.com/channel/UCL6YqK5mw-VW5CPw92ga8yA","image":"https://yt3.googleusercontent.com/-CtDyK4iXm1f24faZtzDxe8La0osSE9elYPuAYK_6Im0PWGnSrOtKKkuEo5pn6PbUtwrbpxAWNiHuLo1=w160-h160-l90-rj"},
+        {"name":"TYMEK","url":"https://music.youtube.com/channel/UC3a-bs2o2viIDDq7plYJF0w","image":"https://yt3.googleusercontent.com/fNr25bbBIyfDF43XUa0FpnZOpOsvQ4uZ1OuesLe-xilRj1sbbe3onNVV82PkeYP2Kghj_jYlOwj51w=w160-h160-l90-rj"},
+        {"name":"Young Igi","url":"https://music.youtube.com/channel/UCh7xw2AzoROY6PMnCbHmZSQ","image":"https://lh3.googleusercontent.com/MnAFofc_xe3aYGLkHfaFIr5tK9t2rr4yLglra0MEbhqI7Hfa4kyilhGbeEaWLV80RZWh3a3qlKd6hdE=w160-h160-l90-rj"},
+        {"name":"Żabson","url":"https://music.youtube.com/channel/UCIhUd7PAWCQwwBnN2RXfpGQ","image":"https://lh3.googleusercontent.com/yy54RNnR9Tl9nDni8MQqPo_Uzu2J2iIC0V8pcUqIL5aenP_hCGHcBb-m1V_2Sc_YehcrTuP49E2mJzot=w160-h160-l90-rj"},
+        {"name":"MIÜ","url":"https://music.youtube.com/channel/UCL-vFjQgsOI5c9Ws6V8tDtA","image":"https://yt3.googleusercontent.com/WW2bX0Mcf92pQLM3ZmaUwkRfR8J2RroZQCMKr7-MP61J__nPk5neOIT4PCaHlDWght7V6bLkjeJZRwE=w160-h160-l90-rj"},
+        {"name":"Palion","url":"https://music.youtube.com/channel/UCBPBvG4nZwJOISqD1WDSp6A","image":"https://yt3.googleusercontent.com/A17Wm9HfIPSqQApl-BNwE2MpbiLZEuGelzuw0A7Ny8HuEYVfMA6TuLnidjrvIpa0OgcWuAVbmvpjGbw=w160-h160-l90-rj"},
+        {"name":"Eryk Moczko","url":"https://music.youtube.com/channel/UCVDmX6ACodsruzWOyWrAqrA","image":"https://yt3.googleusercontent.com/bfgkdWHpw-LsG4LiSFCrYhEXZYiec8EyNl_kBIdjUL8h-zIKhtGZS2J1Fz1N8eYKllvnmKmtow=w160-h160-l90-rj"},
+        {"name":"Zippy Ogar","url":"https://music.youtube.com/channel/UCBBUoXnySJqbK_PXDe-VHpw","image":"https://yt3.googleusercontent.com/M2ZqOns9iQyeEpA03_jbofWUlBt2dY66oeBCh2mQDADj7mC6saq3gPveKrn-mFY3_ZhvSrfv=w160-h160-l90-rj"}
+    ],
+        "buttons": [
+            {
+                "label": "View on Roblox",
+                "url": "https://www.roblox.com/games/17067024883/virtual-vibes-festival"
+            }
+        ],
+        "tags": [
+            "🎮 Roblox",
+            "🌙 Lua"
+        ],
+        "visibility": "commissioned",
+        "hideProject": false
     },
     {
         "key": "animal",
@@ -198,6 +264,41 @@
             { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/140422012851942/Helios-Cinema-Tycoon" }
         ],
         "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "commissioned",
+        "popular": true,
+        "hideProject": false
+    },
+    {
+        "key": "foodziki",
+        "title": "Foodziki Evolution",
+        "thumbnail": "https://tr.rbxcdn.com/180DAY-4f822ba7bf20f566a893ee0d770c1813/768/432/Image/Webp/noFilter",
+        "icon": "https://tr.rbxcdn.com/180DAY-ddfce8896a0df23325d1bac1b34abea0/512/512/Image/Webp/noFilter",
+        "autoImages": true,
+        "description": "For Game Changer, I worked on this game made for the Żabka convenience store chain in Poland. Unleash music and earn levels to unlock new Foodziks, collect money, boosts and instruments, and discover all the evolutions and new maps inspired by Roblox classics!",
+        "description_pl": "Dla Game Changer pracowałem przy tej grze, stworzonej dla sieci sklepów Żabka w Polsce. Graj muzykę i zdobywaj poziomy, aby odblokować nowe Foodziki, zbieraj pieniądze, boosty i instrumenty, a także odkrywaj wszystkie ewolucje i nowe mapy inspirowane klasykami Roblox!",
+        "mentions": [
+            {
+                "name": "Game Changer",
+                "url": "https://www.game-changer.pl/"
+            },
+            {
+                "name": "Żabka convenience store chain",
+                "name_pl": "sieci sklepów Żabka",
+                "url": "https://www.zabka.pl/"
+            }
+        ],
+        "placeId": "78403106549851",
+        "universeId": "8990962036",
+        "buttons": [
+            {
+                "label": "Play Now on Roblox",
+                "url": "https://www.roblox.com/games/78403106549851/Foodziki-Evolution"
+            }
+        ],
+        "tags": [
+            "🎮 Roblox",
+            "🌙 Lua"
+        ],
         "visibility": "commissioned",
         "popular": true,
         "hideProject": false

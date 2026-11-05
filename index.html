@@ -47,7 +47,8 @@
             <!-- <span class="hero-badge">🚀 Available for Work</span> -->
             <h1>K5 Studio</h1>
             <h2 class="typing-subtitle"><span id="typed-text"></span><span class="cursor">|</span></h2>
-            <p data-pl="Usługi programistyczne, graficzne, wideo i 3D dla każdego!">Programming, graphic, video and 3D services for everyone!</p>
+            <p data-pl="Usługi programistyczne, graficzne, wideo i 3D dla każdego!">Programming, graphic, video and 3D
+                services for everyone!</p>
             <a href="#about"><button class="hero-btn" data-pl="Zobacz moje prace">Explore My Work</button></a>
         </div>
         <a href="#about" class="scroll-indicator">
@@ -63,6 +64,7 @@
             </div>
             <div class="skills">
                 <div class="skills-tags reveal reveal-right delay-200">
+                    <span class="awardico" data-pl="🏆 Zwycięzca RDC RIA 2026">🏆 RDC RIA 2026 Winner</span>
                     <span>🌙 Lua</span>
                     <span>⚙️ C#</span>
                     <span>🐍 Python</span>
@@ -79,23 +81,30 @@
                 <div class="about-description reveal delay-300">
                     <h3 data-pl="Kreatywność to moje drugie imię!">Creativity is my second Name!</h3>
                     <p>
-                        <span data-pl="Cześć, jestem Jakub, programista-samouk, grafik i artysta 3D. Moja przygoda z tym wszystkim zaczęła się w wieku 14 lat, z pasji do tworzenia gier. Znam języki programowania takie jak Lua, C#, VBA, Python i trochę PHP. W grafice 3D korzystam z Blendera, a w 2D z Adobe Photoshopa. Te umiejętności zdobyłem wyłącznie z pasji, a teraz chcę dzielić się swoją pracą ze światem! Obecnie pracuję dla">Hello, I'm Jakub, a self-taught programmer, graphic
-                        designer, and 3D artist. My journey into all of that started at 14, driven by a passion for
-                        creating games. I know programming languages such as Lua, C#, VBA, Python, and a bit of PHP. In
-                        the realm of 3D
-                        art, I use Blender 3D, and for 2D work Adobe Photoshop. I acquired these skills purely out of
-                        passion and now aim to share my work with the world! I'm currently working for</span>
+                        <span
+                            data-pl="Cześć, jestem Jakub, programista-samouk, grafik i artysta 3D. Moja przygoda z tym wszystkim zaczęła się w wieku 14 lat, z pasji do tworzenia gier. Znam języki programowania takie jak Lua, C#, VBA, Python i trochę PHP. W grafice 3D korzystam z Blendera, a w 2D z Adobe Photoshopa. Te umiejętności zdobyłem wyłącznie z pasji, a teraz chcę dzielić się swoją pracą ze światem! Obecnie pracuję dla">Hello,
+                            I'm Jakub, a self-taught programmer, graphic
+                            designer, and 3D artist. My journey into all of that started at 14, driven by a passion for
+                            creating games. I know programming languages such as Lua, C#, VBA, Python, and a bit of PHP.
+                            In
+                            the realm of 3D
+                            art, I use Blender 3D, and for 2D work Adobe Photoshop. I acquired these skills purely out
+                            of
+                            passion and now aim to share my work with the world! I'm currently working for</span>
                         <strong><a href="https://fairgames.gg/" target="_blank" rel="noopener"><img class="company-logo"
                                     src="images/icons/fairentertainment.jpg" alt="">Fair
                                 Entertainment</a></strong>
-                        <span class="work-period" data-start="2025-11">(Nov 2025 – Present · 1 yr 1 mo)</span><span data-pl=", gdzie nadal się rozwijam i wykorzystuję swoje umiejętności w nowych projektach. Wcześniej pracowałem dla">,
-                        where I continue to grow and apply my skills in new projects. Previously, I worked for</span>
+                        <span class="work-period" data-start="2025-11">(Nov 2025 – Present · 1 yr 1 mo)</span><span
+                            data-pl=", gdzie nadal się rozwijam i wykorzystuję swoje umiejętności w nowych projektach. Wcześniej pracowałem dla">,
+                            where I continue to grow and apply my skills in new projects. Previously, I worked
+                            for</span>
                         <strong><a href="https://www.game-changer.pl/" target="_blank" rel="noopener"><img
                                     class="company-logo" src="images/icons/gamechanger.jpg" alt="">Game
                                 Changer</a></strong>
                         <span class="work-period" data-start="2024-10" data-end="2026-10">(Oct 2024 – Oct 2026 · 2 yrs 1
-                            mo)</span><span data-pl=". Zapraszam do obejrzenia mojego portfolio i mam nadzieję, że wkrótce będę pracować dla Ciebie!">.
-                        I invite you to explore my portfolio and I hope to work for you soon!</span>
+                            mo)</span><span
+                            data-pl=". Zapraszam do obejrzenia mojego portfolio i mam nadzieję, że wkrótce będę pracować dla Ciebie!">.
+                            I invite you to explore my portfolio and I hope to work for you soon!</span>
                     </p>
 
                     <a href="#"></a>
@@ -280,7 +289,8 @@
             'Play Now on Roblox': 'Zagraj na Roblox',
             'See Recent Trailer': 'Zobacz najnowszy zwiastun',
             'Get Here': 'Pobierz',
-            'View Preview': 'Zobacz podgląd'
+            'View Preview': 'Zobacz podgląd',
+            'View on Roblox': 'Zobacz na Roblox'
         };
         const LANG_KEY = 'k5portfolio-lang';
         const META_DESCRIPTION = {
@@ -432,7 +442,7 @@
                 para.appendChild(strong);
                 para.appendChild(localizedSpan(', who hold full rights to the project.', ', która ma pełne prawa do projektu.'));
             }
-            if (p.visibility === 'commissioned') {
+            if (p.visibility === 'commissioned' && !p.hideStats) {
                 para.appendChild(localizedSpan(' The game has reached over ', ' Gra osiągnęła ponad '));
                 const visitSpan = document.createElement('span');
                 visitSpan.id = 'visits-' + p.key;
@@ -453,17 +463,17 @@
                 a.target = '_blank';
                 a.className = 'game-button';
                 const img = document.createElement('img');
-                img.className = 'link-icon';
-                img.src = 'images/icons/link.png';
+                img.className = btn.icon ? 'link-icon brand-icon' : 'link-icon';
+                img.src = 'images/icons/' + (btn.icon || 'link.png');
                 img.alt = 'link Icon';
                 a.appendChild(img);
                 a.appendChild(document.createTextNode(' '));
-                a.appendChild(localizedSpan(btn.label));
+                a.appendChild(localizedSpan(btn.label, btn.label_pl));
                 row.appendChild(a);
             });
 
-            // Stat tiles (only for projects with universeId)
-            if (p.universeId) {
+            // Stat tiles (only for projects with universeId; private games report no real numbers)
+            if (p.universeId && !p.hideStats) {
                 const tiles = document.createElement('div');
                 tiles.className = 'stat-tiles';
                 tiles.innerHTML = `
@@ -718,6 +728,38 @@
 
             desc.appendChild(row);
 
+            // Artists: overlapping round avatars linking to their YouTube Music profiles
+            if (p.artists && p.artists.length > 0) {
+                const artists = document.createElement('div');
+                artists.className = 'artist-row';
+                artists.appendChild(localize(document.createElement('span'), 'Featuring', 'Wystąpili'));
+                artists.lastChild.className = 'artist-label';
+                const stack = document.createElement('div');
+                stack.className = 'artist-stack';
+                p.artists.forEach(artist => {
+                    const link = document.createElement('a');
+                    link.className = 'artist-avatar';
+                    link.href = artist.url;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    link.dataset.name = artist.name;
+                    link.setAttribute('aria-label', artist.name + ' (YouTube Music)');
+                    const photo = document.createElement('img');
+                    photo.src = artist.image;
+                    photo.alt = '';
+                    photo.loading = 'lazy';
+                    photo.referrerPolicy = 'no-referrer';
+                    // If the photo link stops working, the circle shows the first letter instead
+                    photo.addEventListener('error', () => {
+                        link.textContent = artist.name.charAt(0).toUpperCase();
+                    });
+                    link.appendChild(photo);
+                    stack.appendChild(link);
+                });
+                artists.appendChild(stack);
+                desc.appendChild(artists);
+            }
+
             // Tags
             const tagsDiv = document.createElement('div');
             tagsDiv.className = 'skills-tags2';
@@ -745,6 +787,13 @@
                 popBadge.className = 'popularico';
                 localize(popBadge, '🔥 Popular', '🔥 Popularne');
                 tagsDiv.appendChild(popBadge);
+            }
+            // Award badge, shown first so it stands out
+            if (p.award) {
+                const awardBadge = document.createElement('span');
+                awardBadge.className = 'awardico';
+                localize(awardBadge, p.award, p.award_pl);
+                tagsDiv.prepend(awardBadge);
             }
             desc.appendChild(tagsDiv);
 
@@ -1207,7 +1256,7 @@
                 if (p.fairgames) {
                     tasks.push(throttledFetch('fairgames-' + key, () => fetchFairgamesStats([p])));
                 }
-                if (p.universeId) {
+                if (p.universeId && !p.hideStats) {
                     tasks.push(throttledFetch('roblox-games-' + key, () => fetchRobloxGameStats([p])));
                     tasks.push(throttledFetch('roblox-votes-' + key, () => fetchRobloxVotes(p)));
                 }
