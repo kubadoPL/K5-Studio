@@ -133,7 +133,7 @@
                 <div class="prev-point">&#9664;</div>
                 <div class="next-point">&#9654;</div>
             </div>
-            <!-- Slides generated dynamically from projects.json (projects with "fairgames": true) -->
+            <!-- Slides generated dynamically from projects.json (projects with "visibility": "commissioned") -->
         </div>
         <br>
         <!-- Navigation dots generated dynamically -->
@@ -430,7 +430,7 @@
                 para.appendChild(strong);
                 para.appendChild(localizedSpan(', who hold full rights to the project.', ', która ma pełne prawa do projektu.'));
             }
-            if (p.fairgames) {
+            if (p.visibility === 'commissioned') {
                 para.appendChild(localizedSpan(' The game has reached over ', ' Gra osiągnęła ponad '));
                 const visitSpan = document.createElement('span');
                 visitSpan.id = 'visits-' + p.key;
@@ -827,10 +827,10 @@
                 return;
             }
 
-            // Fair Entertainment projects get their own "commissioned" slideshow
+            // Commissioned projects get their own slideshow
             const slideshows = [
-                createSlideshow(document.getElementById('portfolio'), projects.filter(p => !p.fairgames)),
-                createSlideshow(document.getElementById('commissioned'), projects.filter(p => p.fairgames))
+                createSlideshow(document.getElementById('portfolio'), projects.filter(p => p.visibility !== 'commissioned')),
+                createSlideshow(document.getElementById('commissioned'), projects.filter(p => p.visibility === 'commissioned'))
             ];
             applyLanguage();
 
@@ -886,6 +886,7 @@
                         if (!key) return;
                         foundKeys.add(key);
                         if (game.visits != null) {
+                            setEl('visits-' + key, formatNum(game.visits) + '+');
                             setEl('visits-val-' + key, formatNum(game.visits) + '+');
                         }
                         if (game.playing != null) {

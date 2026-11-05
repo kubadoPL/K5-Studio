@@ -62,6 +62,19 @@
         "showFormbotStats": true
     },
     {
+        "key": "roblox-monetization",
+        "title": "Roblox Monetization Handler & Image Uploader MCP",
+        "thumbnail": "images/thumbails/robloxmonetizatrionbakground.webp",
+        "icon": "images/robloxmonetizationicon.png",
+        "description": "A Python tool for copying and syncing developer products and game passes between Roblox experiences, and for uploading images as decals. It previews every change, is safe to re-run, and saves old-to-new ID mappings as ready-to-paste Lua tables. Includes an MCP server, so AI assistants such as Claude Code can list, create, update and disable products for you.",
+        "description_pl": "Narzędzie w Pythonie do kopiowania i synchronizowania developer products oraz game passów między grami na Roblox, a także do wgrywania obrazów jako decali. Pokazuje podgląd każdej zmiany, można je bezpiecznie uruchamiać ponownie, a mapowanie starych ID na nowe zapisuje jako gotowe do wklejenia tabele Lua. Ma też serwer MCP, dzięki któremu asystenci AI, tacy jak Claude Code, mogą za Ciebie wyświetlać, tworzyć, aktualizować i wyłączać produkty.",
+        "buttons": [
+            { "label": "See Source Code", "url": "https://github.com/kubadoPL/Roblox-Monetization-Handler-And-Image-Uploader-MCP" }
+        ],
+        "tags": ["🐍 Python", "🎮 Roblox", "🤖 MCP", "🔗 GitHub"],
+        "visibility": "public"
+    },
+    {
         "key": "polski-index",
         "title": "Polski Index",
         "thumbnail": "images/thumbails/polskiindex.webp",
@@ -158,6 +171,24 @@
         "universeId": "9305408287",
         "buttons": [
             { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/74637189843837/Create-your-BRAINROT" }
+        ],
+        "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "commissioned",
+        "popular": true,
+        "hideProject": false
+    },
+    {
+        "key": "helios-cinema",
+        "title": "Helios Cinema Tycoon",
+        "thumbnail": "https://tr.rbxcdn.com/180DAY-8b54124712747aa3b0c2028349ee2e42/768/432/Image/Webp/noFilter",
+        "icon": "https://tr.rbxcdn.com/180DAY-95bba565dffacfe3ace0057317ca8915/600/600/Image/Webp/noFilter",
+        "description": "Build the best cinema on Roblox in Helios Cinema Tycoon! Earn money serving NPCs, sell popcorn, drinks and merch, play movies in your theaters, and grow your cinema with upgrades, staff and rebirths.",
+        "description_pl": "Zbuduj najlepsze kino na Roblox w Helios Cinema Tycoon! Zarabiaj, obsługując NPC, sprzedawaj popcorn, napoje i gadżety, puszczaj filmy w swoich salach i rozwijaj kino dzięki ulepszeniom, personelowi i rebirthom.",
+        "madeFor": { "name": "Game Changer", "url": "https://www.game-changer.pl/" },
+        "placeId": "140422012851942",
+        "universeId": "8996733657",
+        "buttons": [
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/140422012851942/Helios-Cinema-Tycoon" }
         ],
         "tags": ["🎮 Roblox", "🌙 Lua"],
         "visibility": "commissioned",
