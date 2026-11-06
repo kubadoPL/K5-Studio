@@ -241,6 +241,11 @@
     <footer>
         <div class="footer-accent"></div>
         <div class="footer-stats" id="footer-stats">
+            <span class="footer-stat footer-stat-online" title="People viewing this page right now" data-pl-title="Osoby przeglądające tę stronę teraz">
+                <span class="online-dot"></span>
+                <span id="stat-online">1</span> <span data-pl="online teraz">online now</span>
+            </span>
+            <span class="footer-stat-sep">·</span>
             <span class="footer-stat" title="Total page views" data-pl-title="Łączna liczba wyświetleń">
                 <span class="footer-stat-icon">👁️</span>
                 <span id="stat-totalvisits">...</span> <span data-pl="wyświetleń">views</span>
@@ -1720,36 +1725,57 @@
 
         applyLanguage();
 
-        // ─── Portfolio Visit Tracking ───
-        (async function trackVisit() {
+        // ─── Portfolio Visit Tracking + Online Counter ───
+        (() => {
             const K5_API = 'https://bot-launcher-discord-017f7d5f49d9.herokuapp.com/K5ApiManager';
             const VISITED_KEY = 'k5portfolio-visited';
-            const isNew = !localStorage.getItem(VISITED_KEY);
+            const HEARTBEAT_INTERVAL = 15000;
+            const SERVICE = 'portfolio';
             const postOpts = (body) => ({ method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
 
-            try {
-                // Increment total visits (await so DB is updated before we read)
-                const posts = [fetch(K5_API + '/stats/k5portfolio/totalvisits', postOpts({ increment: 1 }))];
+            // Stable session ID for this browser tab
+            let sid = sessionStorage.getItem('k5portfolio-sid');
+            if (!sid) { sid = Math.random().toString(36).substring(2, 10); try { sessionStorage.setItem('k5portfolio-sid', sid); } catch (_) {} }
 
-                // Increment unique users if first visit
-                if (isNew) {
-                    posts.push(fetch(K5_API + '/stats/k5portfolio/uniqueusers', postOpts({ increment: 1 })));
-                    localStorage.setItem(VISITED_KEY, '1');
-                }
+            // Update the online badge
+            function setOnline(n) {
+                const el = document.getElementById('stat-online');
+                if (el) el.textContent = n;
+            }
 
-                // Wait for all POSTs to finish, then read updated stats
-                await Promise.allSettled(posts);
+            // Heartbeat — fires immediately, then every 15s
+            function sendHeartbeat() {
+                fetch(K5_API + '/api/heartbeat', postOpts({ sid, service: SERVICE }))
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => { if (d && d.online !== undefined) setOnline(d.online); })
+                    .catch(() => {});
+            }
+            sendHeartbeat();
+            setInterval(sendHeartbeat, HEARTBEAT_INTERVAL);
 
-                const res = await fetch(K5_API + '/stats/k5portfolio', { cache: 'no-store' });
-                if (res.ok) {
-                    const data = await res.json();
-                    const stats = data.stats || {};
-                    const tv = document.getElementById('stat-totalvisits');
-                    const uu = document.getElementById('stat-uniqueusers');
-                    if (tv) tv.textContent = ((stats.totalvisits && stats.totalvisits.value) || 0).toLocaleString();
-                    if (uu) uu.textContent = ((stats.uniqueusers && stats.uniqueusers.value) || 0).toLocaleString();
-                }
-            } catch (_) { /* silent */ }
+            // Visit tracking + stats
+            (async function trackVisit() {
+                const isNew = !localStorage.getItem(VISITED_KEY);
+
+                try {
+                    const posts = [fetch(K5_API + '/stats/k5portfolio/totalvisits', postOpts({ increment: 1 }))];
+                    if (isNew) {
+                        posts.push(fetch(K5_API + '/stats/k5portfolio/uniqueusers', postOpts({ increment: 1 })));
+                        try { localStorage.setItem(VISITED_KEY, '1'); } catch (_) {}
+                    }
+                    await Promise.allSettled(posts);
+
+                    const res = await fetch(K5_API + '/stats/k5portfolio', { cache: 'no-store' });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const stats = data.stats || {};
+                        const tv = document.getElementById('stat-totalvisits');
+                        const uu = document.getElementById('stat-uniqueusers');
+                        if (tv) tv.textContent = ((stats.totalvisits && stats.totalvisits.value) || 0).toLocaleString();
+                        if (uu) uu.textContent = ((stats.uniqueusers && stats.uniqueusers.value) || 0).toLocaleString();
+                    }
+                } catch (_) { /* silent */ }
+            })();
         })();
     </script>
 
