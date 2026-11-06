@@ -401,14 +401,14 @@
 
             const thumb = document.createElement('img');
             thumb.className = 'thumbnail';
-            thumb.src = p.thumbnail;
+            if (p.thumbnail) thumb.src = p.thumbnail;
             thumb.dataset.imageFor = p.key;
             thumb.alt = p.title;
             slide.appendChild(thumb);
 
             const icon = document.createElement('img');
             icon.className = 'game-icon';
-            icon.src = p.icon;
+            if (p.icon) icon.src = p.icon;
             icon.dataset.imageFor = p.key;
             icon.alt = 'Game Icon';
             slide.appendChild(icon);
@@ -750,7 +750,7 @@
                     link.dataset.name = artist.name;
                     link.setAttribute('aria-label', artist.name + ' (YouTube Music)');
                     const photo = document.createElement('img');
-                    photo.src = artist.image;
+                    if (artist.image) photo.src = artist.image;
                     photo.alt = '';
                     photo.loading = 'lazy';
                     photo.referrerPolicy = 'no-referrer';
