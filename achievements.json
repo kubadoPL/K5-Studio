@@ -45,7 +45,9 @@
         "imageCredit": { "label": "Images from personal library", "label_pl": "Zdjęcia z prywatnej biblioteki" },
         "images": [
             { "src": "images/icons/Pga Nagroda 2025.png", "alt": "Roblox certificate of recognition for second place in the Roblox x PGA Challenge" },
-            { "src": "images/photos/pga/IMG_4089.jpeg", "alt": "Roblox x PGA Challenge award winners with their certificates on stage at Poznań Game Arena", "position": "center 59%" }
+            { "src": "images/photos/pga/IMG_4089.jpeg", "alt": "Roblox x PGA Challenge award winners with their certificates on stage at Poznań Game Arena", "position": "center 59%" },
+                  { "src": "images/photos/pga/robloxhat.jpg", "alt": "" },
+                    { "src": "images/photos/pga/pga.png", "alt": "" }
         ],
         "links": [
             { "label": "Play Polski Index", "label_pl": "Zagraj w Polski Index", "url": "https://www.roblox.com/games/86926608779000/Polski-Index" },
