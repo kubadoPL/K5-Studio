@@ -124,8 +124,8 @@
         "title": "Mini War",
         "thumbnail": "images/thumbails/miniwar.png",
         "icon": "images/Mini-War-Wiki-Roblox-Logo.webp",
-        "description": "Main Developer of the game, since: {contributedSince}. Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
-        "description_pl": "Jestem głównym deweloperem tej gry, twrozę w niej: {contributedSince}. Zbuduj swój kraj, rozwijaj gospodaókę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
+        "description": "Main Developer of the game {contributedSince}. Build your country, grow your economy, and command an army to dominate. Features city building, factory upgrades, military training with tanks, planes and helicopters, clan systems, land capture PvP, and dynamic weather events.",
+        "description_pl": "Jestem głównym deweloperem tej gry {contributedSince}. Zbuduj swój kraj, rozwijaj gospodaókę i dowodź armią, aby zdominować innych. W grze znajdziesz budowanie miast, ulepszanie fabryk, szkolenie wojska z czołgami, samolotami i helikopterami, klany, zdobywanie terenu w PvP oraz dynamiczne zjawiska pogodowe.",
         "contributedSince": "2026-05-30",
         "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
         "fairgames": true,
@@ -434,6 +434,23 @@
         ],
         "visibility": "commissioned",
         "popular": true,
+        "hideProject": false
+    },
+    {
+        "key": "merge-war",
+        "title": "Merge War",
+        "autoImages": true,
+        "description": "I helped launch this game and worked on game updates. Merge your troops, build your army and dominate the battlefield in this strategic merge experience.",
+        "description_pl": "Pomagałem postawić tę grę na release i pracowałem przy aktualizacjach. Łącz oddziały, buduj armię i dominuj na polu bitwy w tej strategicznej grze typu merge.",
+        "madeFor": { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
+        "fairgames": true,
+        "placeId": "118928928970775",
+        "universeId": "10773645374",
+        "buttons": [
+            { "label": "Play Now on Roblox", "url": "https://www.roblox.com/games/118928928970775/Merge-War" }
+        ],
+        "tags": ["🎮 Roblox", "🌙 Lua"],
+        "visibility": "commissioned",
         "hideProject": false
     },
       {
