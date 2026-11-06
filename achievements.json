@@ -11,12 +11,15 @@
         "contributedSince": "2026-05-30",
         "mentions": [
             { "name": "Mini War", "url": "https://www.roblox.com/games/131346454575416/Mini-War" },
-            { "name": "Fair Entertainment", "url": "https://fairgames.gg/" }
+            { "name": "Fair Entertainment", "url": "https://fairgames.gg/" },
+            { "name": "RDC 2026", "name_pl": "RDC 2026", "url": "https://youtu.be/HXZRH-2zurk?t=4000" }
         ],
         "imageCredit": { "label": "Images: Fair Entertainment on LinkedIn", "label_pl": "Zdjęcia: Fair Entertainment na LinkedInie", "url": "https://www.linkedin.com/company/fairentertaiment/posts/" },
         "images": [
             { "src": "images/icons/Miniwar winner.jpg", "alt": "Winner graphic: Mini War, Best Strategy Experience" },
-            { "src": "images/photos/ria/miniwarnomination.jpg", "alt": "Nomination graphic: Mini War nominated for Best Strategy Experience at the Roblox Innovation Awards 2026" }
+            { "src": "images/photos/ria/miniwarnomination.jpg", "alt": "Nomination graphic: Mini War nominated for Best Strategy Experience at the Roblox Innovation Awards 2026" },
+            { "src": "images/photos/ria/miniwar1.png", "alt": "Nomination graphic: Mini War nominated for Best Strategy Experience at the Roblox Innovation Awards 2026" },
+           { "src": "images/photos/ria/miniwar2.png", "alt": "Nomination graphic: Mini War nominated for Best Strategy Experience at the Roblox Innovation Awards 2026" }
         ],
         "links": [
             { "label": "Play Mini War", "label_pl": "Zagraj", "url": "https://www.roblox.com/games/131346454575416/Mini-War" },
